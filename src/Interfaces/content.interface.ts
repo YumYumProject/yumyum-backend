@@ -1,4 +1,4 @@
-import { Document, ObjectId } from "mongoose";
+import { Document } from "mongoose";
 
 // import { QueryResult } from "../paginate/paginate";
 // import { AccessAndRefreshTokens } from "../token/token.interfaces";
@@ -31,14 +31,15 @@ export interface ICookingStep extends Document {
 
 export interface IComment extends Document {
   description: string;
+  rating: number;
   commentBy: string;
   commentedAt: Date;
 }
 
-export interface IRating extends Document {
-  value: number;
-  user: { id: ObjectId };
-}
+// export interface IRating extends Document {
+//   value: number;
+//   user: { id: ObjectId };
+// }
 export interface ICalories extends Document {
   value: number;
   unit: string;
@@ -56,5 +57,6 @@ export interface IContent extends Document {
   cooking_step: ICookingStep[];
   updated_at: Date;
   comment: IComment[];
-  rating: IRating[];
+  average_rating: number;
+  rating_count: number;
 }

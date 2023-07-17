@@ -17,7 +17,7 @@ const contentSchema: Schema = new Schema({
     required: true,
   }, // use the correct enum values
   healthy_concern: {
-    type: String,
+    type: [String],
     enum: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
     required: true,
   }, // use the correct enum values
@@ -38,20 +38,19 @@ const contentSchema: Schema = new Schema({
   comment: [
     {
       description: { type: String },
-      commentBy: {
-        name: { type: String },
+      rating: { type: Number },
+      comment_by: {
+        display_name: { type: String },
+        user_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "user",
+        },
         commentedAt: { type: Date, default: Date.now },
       },
     },
   ],
-  rating: [
-    {
-      value: { type: Number },
-      user: {
-        id: { type: Object }, // use the correct reference
-      },
-    },
-  ],
+  average_rating: { type: Number, default: 0 },
+  rating_count: { type: Number, default: 0 },
 });
 
 export const contentModel = mongoose.model<IContent>("content", contentSchema);

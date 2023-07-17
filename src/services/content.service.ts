@@ -11,14 +11,14 @@ mongoose.connect(
 
 async function createContent() {
   const newContent: IContent = new contentModel({
-    menu_name: "สปาเก้ตตี้คาโบนาร่า",
+    menu_name: "สปาเกตตี้คาโบนาร่า",
     description: "",
     menu_image_url:
       "https://img.salehere.co.th/p/1200x0/2021/09/07/1mwq6tqejkdw.jpg",
     calories: { value: 317, unit: "กิโลแคลอรี่" },
     process: "ผัด",
     nationality: "อิตาเลี่ยน",
-    healthy_concern: "เบาหวาน",
+    healthy_concern: ["เบาหวาน", "อ้วน"],
     material: [
       { name: "เส้นสปาเก็ตตี้", quantity: 100, unit: "กรัม" },
       { name: "เบคอน", quantity: 150, unit: "กรัม" },
@@ -55,8 +55,6 @@ async function createContent() {
           "ปิดเตาแก๊ส จากนั้นใส่ส่วนผสมของไข่และชีสลงไป แล้วคลุกเคล้าให้เข้ากับเส้นสปาเก็ตตี้",
       },
     ],
-    comment: [{ description: "อร่อย" }],
-    rating: [{ value: 4 }],
   });
   newContent
     .save()
