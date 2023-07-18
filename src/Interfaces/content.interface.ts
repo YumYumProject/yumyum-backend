@@ -46,7 +46,7 @@ export interface ICalories extends Document {
 }
 
 export interface IContent extends Document, IContentDto {
-  _id: ObjectId;
+  id: ObjectId;
   description: string;
 
   calories: ICalories;

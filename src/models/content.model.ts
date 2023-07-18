@@ -4,10 +4,10 @@ import { IContent } from "../Interfaces/content.interface";
 const contentSchema: Schema = new Schema({
   menu_name: { type: String, required: true, unique: true },
   description: { type: String },
-  menu_image_url: { type: String, required: true },
+  menu_image_url: { type: String },
   calories: { value: { type: String }, unit: { type: String } },
   process: {
-    type: [String],
+    type: String,
     enum: ["ต้ม", "ผัด", "ทอด", "อบ", "นึ่ง", "ยำ", "ย่าง"],
     required: true,
   },
