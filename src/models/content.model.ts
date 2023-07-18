@@ -4,7 +4,7 @@ import { IContent } from "../Interfaces/content.interface";
 const contentSchema: Schema = new Schema({
   menu_name: { type: String, required: true, unique: true },
   description: { type: String },
-  menu_image_url: { type: String },
+  menu_image_url: { type: String, required: true },
   calories: { value: { type: String }, unit: { type: String } },
   process: {
     type: [String],

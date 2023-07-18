@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import "dotenv/config";
 
 import { contentModel } from "../models/content.model";
-import data from "../../recipe.js";
+// import data from "../../recipe.js";
+import { IContent } from "../Interfaces/content.interface";
 
 mongoose.set("strictQuery", true);
 
@@ -10,17 +11,38 @@ mongoose.connect(
   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/?retryWrites=true&w=majority`
 );
 
-async function createContent() {
-  data.forEach(async (item) => {
-    const model = new contentModel(item);
-    await model
-      .save()
-      .then(() => console.log("Content created successfully"))
-      .catch((err) => console.error(err));
-  });
+// async function createContent() {
+//   data.forEach(async (item) => {
+//     const model = new contentModel(item);
+//     await model
+//       .save()
+//       .then(() => console.log("Content created successfully"))
+//       .catch((err) => console.error(err));
+//   });
 
-  console.log("Data imported successfully");
+//   console.log("Data imported successfully");
+// }
+
+// createContent();
+
+async function getRecipesByFilter(
+  material: string[],
+  process: string,
+  nationality: string
+): Promise<IContent[]> {
+  const recipes = await contentModel
+    .find({
+      "material.name": { $in: material },
+      process: { $in: process },
+      nationality: { $in: nationality },
+    })
+    .exec();
+
+  console.log(recipes);
+  return recipes;
 }
+
+getRecipesByFilter(["ปลาทูนึ่ง"], "นึ่ง", "ไทย");
 
 // async function createContent() {
 //   const newContent: IContent = new contentModel({
@@ -79,5 +101,3 @@ async function createContent() {
 //     .then(() => console.log("Content created successfully"))
 //     .catch((err) => console.error(err));
 // }
-
-createContent();

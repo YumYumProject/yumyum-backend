@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 
 // import { QueryResult } from "../paginate/paginate";
 // import { AccessAndRefreshTokens } from "../token/token.interfaces";
@@ -6,7 +6,7 @@ import { Document } from "mongoose";
 // export interface IContent extends Document {
 //   menu_name: string;
 //   description: string;
-//   menu_image_url: string;
+//   menu_image_url: sstring;
 //   calories: Enumerator;
 //   process: Enumerator;
 //   nationality: Enumerator;
@@ -45,10 +45,10 @@ export interface ICalories extends Document {
   unit: string;
 }
 
-export interface IContent extends Document {
-  menu_name: string;
+export interface IContent extends Document, IContentDto {
+  _id: ObjectId;
   description: string;
-  menu_image_url: string;
+
   calories: ICalories;
   process: Enumerator;
   nationality: Enumerator;
@@ -57,6 +57,12 @@ export interface IContent extends Document {
   cooking_step: ICookingStep[];
   updated_at: Date;
   comment: IComment[];
-  average_rating: number;
+
   rating_count: number;
+}
+
+export interface IContentDto extends Document {
+  menu_name: string;
+  menu_image_url: string;
+  average_rating: number;
 }
