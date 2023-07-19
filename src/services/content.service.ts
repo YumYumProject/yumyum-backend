@@ -4,7 +4,7 @@ import { contentModel } from "../models/content.model";
 import data from "../../recipe.js";
 import { IContent } from "../Interfaces/content.interface";
 import mongoose from "mongoose";
-import { IRepositoryContent } from ".";
+import { IRepositoryContent } from "./index";
 
 mongoose.set("strictQuery", true);
 
@@ -12,15 +12,15 @@ mongoose.connect(
   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/?retryWrites=true&w=majority`
 );
 
-export function newRepositoryContent(db: Document): IRepositoryContent {
-  return new RepositoryContent(db);
+export function newRepositoryContent(): IRepositoryContent {
+  return new RepositoryContent();
 }
 class RepositoryContent implements IRepositoryContent {
-  private db: Document;
+  // db: mongoose.Collection;
 
-  constructor(db: Document) {
-    this.db = db;
-  }
+  // constructor(db: mongoose.Collection) {
+  //   this.db = db;
+  // }
 
   async createContent() {
     data.forEach(async (item) => {
