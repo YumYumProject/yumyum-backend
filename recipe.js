@@ -2,7 +2,8 @@ module.exports = [
   {
     menu_name: "ต้มจืดเต้าหู้สาหร่าย",
     description: "เมนูทำทานง่าย",
-    menu_image_url: "",
+    menu_image_url:
+      "https://fondation-wyeth.org/wp-content/uploads/2021/12/%E0%B8%95%E0%B9%89%E0%B8%A1%E0%B8%88%E0%B8%B7%E0%B8%94%E0%B9%80%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%B9%E0%B9%89%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B8%AA%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%B2%E0%B8%AB%E0%B8%A3%E0%B9%88%E0%B8%B2%E0%B8%A22.jpg",
     calories: { value: 732, unit: "กิโลแคลอรี่" },
     process: "ต้ม",
     nationality: "ไทย",
@@ -10,16 +11,16 @@ module.exports = [
     material: [
       { name: "หมูสับบด", quantity: 180, unit: "กรัม" },
       { name: "พริกไทยป่น", quantity: 150, unit: "กรัม" },
-      { name: "ซอสถั่วเหลือง low sodium", quantity: 3, unit: "กรัม" },
+      { name: "ซอสถั่วเหลือง", quantity: 3, unit: "กรัม" },
       { name: "น้ำสะอาด", quantity: 1, unit: "ลิตร" },
       { name: "รสดีซุปก้อน รสหมู", quantity: 1, unit: "ก้อน" },
-      { name: "กระเทียม", quantity: 15, unit: "กรัม" },
-      { name: "รากผักชี", quantity: 5, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 15, unit: "กรัม " },
+      { name: "รากผักชี", quantity: 5, unit: "กรัม " },
       { name: "น้ำปลา", quantity: 5, unit: "กรัม" },
       { name: "ผักกาดขาว", quantity: 90, unit: "กรัม" },
       { name: "สาหร่าย", quantity: 45, unit: "กรัม" },
       { name: "เต้าหู้ไข่", quantity: 270, unit: "กรัม" },
-      { name: "ขึ้นฉ่าย", quantity: 30, unit: "กรัม" },
+      { name: "ขึ้นฉ่าย", quantity: 30, unit: "กรัม " },
     ],
     cooking_step: [
       {
@@ -45,8 +46,9 @@ module.exports = [
   {
     menu_name: "ผัดผักรวมมิตรกุ้ง",
     description: "เมนูแนะนำสำหรับผู้ป่วยเบาหวาน ระดับน้ำตาลและไขมันไม่สูง ",
-    menu_image_url: "",
-    calories: { value: 149, unit: "กิโลแคลอรี่" },
+    menu_image_url:
+      "https://s359.kapook.com/pagebuilder/ae61d460-3f90-40e1-bf8a-cc545d9ee0e4.jpg",
+    calories: { value: 230, unit: "กิโลแคลอรี่" },
     process: "ผัด",
     nationality: "ไทย",
     healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
@@ -54,15 +56,15 @@ module.exports = [
       { name: "ข้าวโพดอ่อน", quantity: 70, unit: "กรัม" },
       { name: "ถั่วลันเตาหวาน", quantity: 80, unit: "กรัม" },
       { name: "แครอท", quantity: 40, unit: "กรัม" },
-      { name: "กระเทียม", quantity: 15, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 15, unit: " กรัม" },
       { name: "น้ำมันรำข้าว", quantity: 1, unit: "ช้อนโต๊ะ" },
-      { name: "ซอสถั่วเหลือง low sodium", quantity: 1, unit: "ช้อนโต๊ะ" },
-      { name: "ซอสหอยนางรม low sodium", quantity: 1, unit: "ช้อนชา" },
+      { name: "ซอสถั่วเหลือง", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "ซอสหอยนางรม", quantity: 1, unit: "ช้อนชา" },
       { name: "รสดี รสหมู สูตรลดโซเดียม", quantity: 1 / 2, unit: "ช้อนโต๊ะ" },
       { name: "น้ำตาลทราย", quantity: 1, unit: "ช้อนชา" },
       { name: "น้ำสะอาด", quantity: 2, unit: "ช้อนโต๊ะ" },
       { name: "กุ้ง", quantity: 80, unit: "กรัม" },
-      { name: "ข้าวสวย", quantity: 340, unit: "กรัม" },
+      { name: "ข้าวสวย", quantity: 340, unit: " กรัม" },
     ],
     cooking_step: [
       {
@@ -84,8 +86,9 @@ module.exports = [
   {
     menu_name: "ปลาทูนึ่งซีอิ๊ว",
     description: "เมนูคลีนคลีน เอาใจคนรักสุขภาพ ",
-    menu_image_url: "",
-    calories: { value: 140, unit: "กิโลแคลอรี่" },
+    menu_image_url:
+      "https://img.wongnai.com/p/1968x0/2020/09/01/4da0ec481c64453ca3b47832108525e4.jpg",
+    calories: { value: 150, unit: "กิโลแคลอรี่" },
     process: "นึ่ง",
     nationality: "ไทย",
     healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
@@ -93,10 +96,10 @@ module.exports = [
       { name: "ปลาทูนึ่ง", quantity: 2, unit: "ตัว" },
       { name: "หอมใหญ่", quantity: 1, unit: "หัว" },
       { name: "น้ำสะอาด", quantity: 600, unit: "มิลลิลิตร" },
-      { name: "ซอสหอยนางรม low sodium", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "ซอสหอยนางรม", quantity: 1, unit: "ช้อนโต๊ะ" },
       { name: "ซีอิ๊วดำ", quantity: 1, unit: "ช้อนโต๊ะ" },
       { name: "น้ำตาลทราย", quantity: 1, unit: "ช้อนชา" },
-      { name: "ขิงแก่", quantity: 4, unit: "แว่น" },
+      { name: "ขิง", quantity: 30, unit: "กรัม" },
       { name: "ดอกเกลือ", quantity: 1, unit: "ช้อนชา" },
       { name: "พริกไทยดำ", quantity: 1, unit: "ช้อนชา" },
       { name: "ผักชี", quantity: 10, unit: "กรัม" },
@@ -127,8 +130,9 @@ module.exports = [
   {
     menu_name: "ผัดวุ้นเส้นเกาหลี",
     description: "อันยองงง เมนูเกาหลี low calories",
-    menu_image_url: "",
-    calories: { value: 242, unit: "กิโลแคลอรี่" },
+    menu_image_url:
+      "https://scontent.fbkk29-7.fna.fbcdn.net/v/t1.6435-9/207852517_342359607261570_7327719954414428524_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=973b4a&_nc_ohc=wLUyG4sVc6EAX85uibR&_nc_ht=scontent.fbkk29-7.fna&oh=00_AfDWr9DlGjCVk3hoysESK5klsK8t2DoNT-flIPqEAj-Wlg&oe=64DDC28E",
+    calories: { value: 265, unit: "กิโลแคลอรี่" },
     process: "ผัด",
     nationality: "เกาหลี",
     healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
@@ -136,19 +140,19 @@ module.exports = [
       { name: "สันในหมู", quantity: 100, unit: "กรัม" },
       { name: "เห็ดหอม", quantity: 4, unit: "ดอก" },
       { name: "ผักปวยเล้ง", quantity: 3, unit: "ต้น" },
-      { name: "ผักกวางตุ้ง low sodium", quantity: 3, unit: "ต้น" },
-      { name: "แครอท", quantity: 1 / 2, unit: "หัว" },
-      { name: "หอมใหญ่", quantity: 1 / 2, unit: "หัว" },
+      { name: "ผักกวางตุ้ง", quantity: 3, unit: " ต้น" },
+      { name: "แครอท", quantity: 0.5, unit: "หัว" },
+      { name: "หอมใหญ่", quantity: 0.5, unit: " หัว" },
       { name: "วุ้นเส้น", quantity: 200, unit: "กรัม" },
       { name: "กระเทียม", quantity: 15, unit: "กรัม" },
       { name: "ซอสถั่วเหลืองเกาหลี", quantity: 4, unit: "ช้อนโต๊ะ" },
       { name: "น้ำมันงา", quantity: 5, unit: "กรัม" },
-      { name: "เกลือ", quantity: 1 / 4, unit: "กรัม" },
+      { name: "เกลือ", quantity: 0.25, unit: "กรัม" },
       { name: "พริกไทยดำ", quantity: 1, unit: "กรัม" },
       { name: "งาขาวคั่ว", quantity: 1, unit: "ช้อนโต๊ะ" },
       { name: "งาดำคั่ว", quantity: 1, unit: "ช้อนโต๊ะ" },
       { name: "น้ำตาลทราย", quantity: 2, unit: "ช้อนโต๊ะ" },
-      { name: "น้ำตาลทรายแดง", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทรายแดง", quantity: 1, unit: " ช้อนโต๊ะ" },
     ],
     cooking_step: [
       {
@@ -180,7 +184,7 @@ module.exports = [
       {
         order: 7,
         description:
-          "ตั้งกระทะอีกครั้งใส่น้ำมันเล็กน้อย นำ วุ้นเส้น ตราต้นสน ที่แช่น้ำไว้มาผัด ปรุงรสด้วยซอสถั่วเหลืองเกาหลี 2 ช้อนโต๊ะ น้ำมันงา 1 ช้อนชา และน้ำตาลทรายแดง 1 ช้อนโต๊ะ ผัดจนสุกนิ่มแล้วตักขึ้นพักไว้",
+          "ตั้งกระทะอีกครั้งใส่น้ำมันเล็กน้อย นำ วุ้น เส้น ตราต้นสน ที่แช่น้ำไว้มาผัด ปรุงรสด้วยซอสถั่วเหลืองเกาหลี 2 ช้อนโต๊ะ น้ำมันงา 1 ช้อนชา และน้ำตาลทรายแดง 1 ช้อนโต๊ะ ผัดจนสุกนิ่มแล้วตักขึ้นพักไว้",
       },
       {
         order: 8,
@@ -191,15 +195,16 @@ module.exports = [
   },
   {
     menu_name: "เนื้อย่างบุลโกกิ",
-    description: "อันยองงง เมนูเกาหลี low calories",
-    menu_image_url: "",
-    calories: { value: 290, unit: "กิโลแคลอรี่" },
+    description: "เนื้อนุ่มมมมม หอม ทำง่าย",
+    menu_image_url:
+      "https://chefoldschool.com/wp-content/uploads/2021/05/%E0%B9%80%E0%B8%99%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%9A%E0%B8%A5%E0%B8%B8%E0%B9%82%E0%B8%81%E0%B8%81%E0%B8%B42.jpg",
+    calories: { value: 170, unit: "กิโลแคลอรี่" },
     process: "ย่าง",
     nationality: "เกาหลี",
     healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
     material: [
       { name: "เนื้อสันแหลม", quantity: 350, unit: "กรัม" },
-      { name: "หอมใหญ่", quantity: 40, unit: "กรัม" },
+      { name: "หอมใหญ่", quantity: 40, unit: " กรัม" },
       { name: "กระเทียม", quantity: 15, unit: "กรัม" },
       { name: "สาลี่หิมะ", quantity: 60, unit: "กรัม" },
       { name: "ต้นหอม", quantity: 15, unit: "กรัม" },
@@ -237,9 +242,10 @@ module.exports = [
     ],
   },
   {
-    menu_name: "สปาเก้ตตี้คาโบนาร่า",
-    description: "",
-    menu_image_url: "",
+    menu_name: "สปาเก็ตตี้คาโบนาร่า",
+    description: "วัตถุดิบน้อย แม่ครัวมือใหม่ทำได้",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/67cb4833a07f7acc/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%AA%E0%B8%9B%E0%B8%B2%E0%B9%80%E0%B8%81%E0%B8%95%E0%B8%95%E0%B8%84%E0%B8%B2%E0%B9%82%E0%B8%9A%E0%B8%99%E0%B8%B2%E0%B8%A3%E0%B8%B2.webp",
     calories: { value: 317, unit: "กิโลแคลอรี่" },
     process: "ผัด",
     nationality: "อิตาเลี่ยน",
@@ -278,6 +284,1345 @@ module.exports = [
         order: 6,
         description:
           "ปิดเตาแก๊ส จากนั้นใส่ส่วนผสมของไข่และชีสลงไป แล้วคลุกเคล้าให้เข้ากับเส้นสปาเก็ตตี้",
+      },
+    ],
+  },
+  {
+    menu_name: "รีซอตโต้เห็ด",
+    description: "อิตาเลี่ยนเอย อิตาเลี่ยนใจ หอม อร่อย",
+    menu_image_url:
+      "https://www.gourmetandcuisine.com/Images/editor_upload/_editor20211227025803_original.jpg",
+    calories: { value: 126, unit: "กิโลแคลอรี่" },
+    process: "ผัด",
+    nationality: "อิตาเลี่ยน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "น้ำมันรำข้าว", quantity: 4, unit: "ช้อนโต๊ะ" },
+      { name: "เห็ดหอม", quantity: 100, unit: "กรัม" },
+      { name: "พาสลี่ย์", quantity: 10, unit: "กรัม" },
+      { name: "ข้าวอาร์โบริโอ้", quantity: 180, unit: "กรัม" },
+      { name: "ไวน์ขาว", quantity: 8, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำสต๊อกไก่", quantity: 700, unit: "มิลลิลิตร" },
+      { name: "หอมใหญ่", quantity: 15, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 15, unit: "กรัม" },
+      { name: "พาเมซานชีส", quantity: 100, unit: "กรัม" },
+      { name: "เนย", quantity: 2, unit: "กรัม" },
+      { name: "เกลือ", quantity: 1, unit: "ช้อนชา" },
+      { name: "พริกไทยดำ", quantity: 1, unit: "ช้อนชา" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ซอยเห็ดหอมสดบางๆ นำไปผัดกับน้ำมันรำข้าว 1 ช้อนโต๊ะ พอสุกดีก็สับพาสลีย์ลงไป ปรุงรสด้วยเกลือและพริกไทยเคล้าให้สุกและเข้ากันดี พักไว้",
+      },
+      {
+        order: 2,
+        description:
+          "ใส่น้ำมันที่เหลือลงในกระทะ ผัดหอมด้วยไฟอ่อนให้สุกดี ประมาณ 5 นาทีบดกระเทียมลงไปใส่ข้าวตามลงไป ผัดให้เม็ดข้าวมีลักษณะใส ตามด้วยไวน์ขาว คนต่อให้ไวน์ซึมเข้าในเม็ดข้าวและระเหยเกือบหมด",
+      },
+      {
+        order: 3,
+        description:
+          "เติมน้ำสต๊อกไก่ลงไปแค่พอท่วมข้าวเล็กน้อยเทคนิคอยู่ที่ต้องคนตลอดเวลา พอน้ำแห้งลงจึงค่อยเติมเพิ่มประมาณ 20 นาทีจนข้าวมีลักษณะเม็ดทึบและเกือบสุกดี (อย่าให้ข้าวสุกในหม้อเพราะความร้อนยังคงอยู่ในเม็ดข้าวข้าวจะสุกต่ออีกเล็กน้อย) ใส่เห็ดที่พักไว้กลับลงไปปรุงรสด้วยเกลือและพริกไทย",
+      },
+      {
+        order: 4,
+        description:
+          "ยกออกจากความร้อนขูดชีสพาร์เมซานลงไป เก็บส่วนหนึ่งไว้โรยหน้า",
+      },
+      {
+        order: 5,
+        description: "ใส่เนยลงไปคนให้ละลายเข้ากัน ความร้อนจะลดลงเล็กน้อย",
+      },
+      {
+        order: 6,
+        description:
+          "ตักใส่จานเสิร์ฟโรยหน้าด้วยชีสพาร์เมซานขูดฝอยส่วนที่เหลือ แต่งหน้าด้วยพาสลี่ย์",
+      },
+    ],
+  },
+  {
+    menu_name: "ก๋วยเตี๋ยวหลอดทรงเครื่อง",
+    description: "หนี่หาวววว ทำอาหารจีนกัน",
+    menu_image_url:
+      "https://www.pim.in.th/images/all-one-dish-food/steamed-rice-noodle-with-tofu-topping/steamed-rice-noodle-with-tofu-and-belly-pork-topping022.JPG",
+    calories: { value: 390, unit: "กิโลแคลอรี่" },
+    process: "ต้ม",
+    nationality: "จีน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ก๋วยเตี๋ยวเส้นใหญ่", quantity: 300, unit: "กรัม" },
+      { name: "หมูสามชั้น", quantity: 200, unit: "กรัม" },
+      { name: "เต้าหู้ขาว", quantity: 80, unit: "กรัม" },
+      { name: "เห็ดหอม", quantity: 100, unit: "กรัม" },
+      { name: "กุ้งแห้ง", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "รากผักชี", quantity: 15, unit: "กรัม" },
+      { name: "ผงพะโล้", quantity: 1, unit: "ช้อนชา" },
+      { name: "พริกไทยป่น", quantity: 1, unit: "ช้อนชา" },
+      { name: "ซีอิ๊วดำหวาน", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "เกลือ", quantity: 1, unit: "ช้อนชา" },
+      { name: "น้ำตาลปี๊บ", quantity: 30, unit: "กรัม" },
+      { name: "น้ำสะอาด", quantity: 1, unit: "ลิตร" },
+      { name: "กระเทียมเจียว", quantity: 10, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 10, unit: "กรัม" },
+      { name: "ถั่วงอก", quantity: 30, unit: "กรัม" },
+      { name: "พริกแดง", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "นำ้ส้มสายชู", quantity: 3, unit: "ช้อนโต๊ะ" },
+      { name: "ซีอิ๊วขาว", quantity: 3, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำเชื่อม", quantity: 3, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ผสมน้ำส้มสายชู พริกแดงสับ ซีอิ๊วขาว และน้ำเชื่อมเข้าด้วยกัน",
+      },
+      {
+        order: 2,
+        description:
+          "นำหม้อขึ้นตั้งไฟปานกลาง ใส่ผงพะโล้ลงไป ตามด้วยพริกไทยป่น และเกลือป่น คั่วจนหอม",
+      },
+      {
+        order: 3,
+        description: "ใส่น้ำตาลปี๊บลงไป แล้วคนให้เข้ากันจนน้ำตาลปี๊บละลาย",
+      },
+      {
+        order: 4,
+        description:
+          "ใส่หมูสามชั้น เต้าหู้ขาว และกุ้งแห้ง ผัดให้เข้ากัน แล้วเทน้ำเปล่าลงไป ตามด้วยรากผักชี ปรุงรสด้วยซีอิ๊วดำหวาน ตุ๋นจนน้ำข้นขึ้น และหมูสามชั้นเปื่อย",
+      },
+      {
+        order: 5,
+        description: "นำถั่วงอกใส่จาน ตามด้วยต้นหอม เส้นใหญ่ และน้ำราด",
+      },
+    ],
+  },
+  {
+    menu_name: "กุ้งผัดเม็ดมะม่วงหิมพานต์",
+    description: "ทำง่าย แคลน้อย อิ่มท้องด้วย",
+    menu_image_url:
+      "http://4.bp.blogspot.com/-raxvERPabMg/UgrppoBuxcI/AAAAAAAAE98/70_syAapO1A/s640/%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%80%E0%B8%A1%E0%B9%87%E0%B8%94%E0%B8%A1%E0%B8%B0%E0%B8%A1%E0%B9%88%E0%B8%A7%E0%B8%871.JPG",
+    calories: { value: 335, unit: "กิโลแคลอรี่" },
+    process: "ผัด",
+    nationality: "จีน",
+    material: [
+      { name: "กุ้งสด", quantity: 400, unit: "กรัม" },
+      { name: "แป้งทอดกรอบ", quantity: 220, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ " },
+      { name: "เม็ดมะม่วงหิมพานต์อบ", quantity: 100, unit: "กรัม" },
+      { name: "พริกแห้ง", quantity: 10, unit: "กรัม " },
+      { name: "หอมใหญ่", quantity: 60, unit: "กรัม" },
+      { name: "พริกหวานสามสี", quantity: 100, unit: "กรัม" },
+      { name: "ซอสหอยนางรม", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "ซีอิ๊วขาว", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทราย", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมันงา", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+      { name: "เหล้าจีน", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "ต้นหอม", quantity: 10, unit: "กรัม " },
+      { name: "แปะก๊วย", quantity: 100, unit: "กรัม" },
+      { name: "แห้วสด", quantity: 100, unit: "กรัม" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "นำกุ้งสดที่แกะเปลือกและนำเส้นดำออกเรียบร้อยแล้ว ไปชุบกับแป้งทอดกรอบ แล้วนำลงทอดในน้ำมันให้เหลืองกรอบ ",
+      },
+      { order: 2, description: "ตักกุ้งทอดขึ้นสะเด็ดน้ำมันพักไว้ " },
+      {
+        order: 3,
+        description:
+          "ตั้งกระทะใบใหม่ ใส่น้ำมันเล็กน้อย ผัดกระเทียมให้ส่งกลิ่นหอม ตามด้วยหอมหัวใหญ่ และพริกหวานสามสี ผัดให้หัวหอมสุกใส ",
+      },
+      {
+        order: 4,
+        description:
+          "ปรุงรสด้วย ซอสหอยนางรม ซีอิ๊วขาว และน้ำตาลทราย ผัดให้เข้ากัน ตามด้วยใส่กุ้งที่ทอดไว้ลงไปคลุกให้เข้ากัน ",
+      },
+      {
+        order: 5,
+        description:
+          "เพิ่มความหอมด้วยเหล้าจีน และน้ำมันงา ตามด้วย เม็ดมะม่วงหิมพานต์อบ แปะก๊วย แห้ว พริกแห้ง และต้นหอม ",
+      },
+    ],
+  },
+  {
+    menu_name: "กุ้งเทมปุระ",
+    description: "กร๊อบบบบกรอบ ทำง่ายไม่ยาก",
+    menu_image_url:
+      "https://mpics.mgronline.com/pics/Images/557000003232601.JPEG",
+    calories: { value: 385, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "ญี่ปุ่น",
+    material: [
+      { name: "กุ้งสด", quantity: 5, unit: "ตัว" },
+      { name: "แป้งทอดกรอบ", quantity: 150, unit: "กรัม" },
+      { name: "ไข่ไก่", quantity: 3, unit: "ฟอง" },
+      { name: "น้ำสะอาด", quantity: 60, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description: "นำกุ้งมาล้างให้สะอาด เด็ดหัวออก ผ่าหลังเอาเส้นดำออก",
+      },
+      {
+        order: 2,
+        description:
+          "หลังจากนั้นหงายท้องกุ้งแล้วบั้งกุ้งเป็นแนวขวาง เพื่อให้กุ้งเหยียดตรง",
+      },
+      {
+        order: 3,
+        description: "เทแป้งอเนกประสงค์ลงใส่ชาม นำกุ้งมาคลุกให้ทั่วแล้วพักไว้",
+      },
+      {
+        order: 4,
+        description:
+          "เสร็จแล้วนำน้ำเปล่าเย็นจัด เทลงผสมในแป้ง ตามด้วยไข่ไก่ ตีด้วยตะกร้อมืออย่างช้า ๆ ให้เข้ากันดี",
+      },
+      {
+        order: 5,
+        description:
+          "ตั้งกระทะใส่น้ำมันให้ท่วมกุ้ง ใช้ไฟกลางรอให้น้ำมันร้อนจัด ทดสอบได้โดยการนำแป้งหยอดลงไปนิดนึง ถ้าฟูก็เป็นอันใช้ได้",
+      },
+      {
+        order: 6,
+        description:
+          "นำกุ้งที่คลุกแป้งแห้งไว้แล้ว นำลงชุบแป้งอีกครั้ง จากนั้นนำไปหยอดใส่กระทะ",
+      },
+      {
+        order: 7,
+        description:
+          "พอแป้งเริ่มเหลืองให้กลับกุ้ง เสร็จแล้วดูจนกุ้งเหลืองสุกได้ที่ ทำการตักขึ้นไว้ให้สะเด็ดน้ำมัน",
+      },
+    ],
+  },
+  {
+    menu_name: "ข้าวอบเห็ด",
+    description: "กลิ่นเห็ดแชมปิยอง หอมกรุ่นจากเตาา",
+    menu_image_url:
+      "https://imgcp.aacdn.jp/img-a/1720/auto/global-aaj-front/article/2018/03/5ab7aab4860d1_5ab7a8e6cdcc3_662579331.jpeg",
+    calories: { value: 645, unit: "กิโลแคลอรี่" },
+    process: "อบ",
+    nationality: "ญี่ปุ่น",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ข้าว", quantity: 220, unit: "กรัม" },
+      { name: "เห็ดแชมปิยอง", quantity: 40, unit: "กรัม" },
+      { name: "เห็ดหอม", quantity: 40, unit: "กรัม" },
+      { name: "เห็ดชิเมจิ", quantity: 150, unit: "กรัม" },
+      { name: "แครอท", quantity: 120, unit: "กรัม" },
+      { name: "มันฝรั่ง", quantity: 120, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 15, unit: "กรัม" },
+      { name: "หอมใหญ่", quantity: 60, unit: "กรัม" },
+      { name: "ขิงซอย", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "เนย", quantity: 2, unit: "ช้อนชา" },
+      { name: "น้ำสะอาด", quantity: 360, unit: "มิลลิลิตร" },
+      { name: "น้ำซุบญี่ปุ่นยามาโมริ", quantity: 120, unit: "มิลลิลิตร" },
+      { name: "น้ำหมักจากมะม่วง", quantity: 120, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      { order: 1, description: "ซาวข้าว 2 ครั้ง กรองให้สะเด็ดน้ำ " },
+      {
+        order: 2,
+        description: "ล้างเห็ดให้สะอาด หั่นเห็ดหนาพอสมควร แช่น้ำเย็นทิ้งไว้ ",
+      },
+      {
+        order: 3,
+        description:
+          "ละลายเนยในกะทะ นำกระเทียม หอมหัวใหญ่ ลงผัดจนหอม ใส่ขิงลงไปผัด 3 นาที ใส่แครอท มันฝรั่ง ลงไปผัดต่อ 5 นาที เทข้าวลงไปผัดอีก 3 นาที ",
+      },
+      {
+        order: 4,
+        description:
+          "นำเห็ดขึ้นจากน้ำ บีบไล่น้ำ ใส่ลงไปผัดในกะทะ เติมน้ำซุปญี่ปุ่น และน้ำหมักมะม่วง ลงไปผัด ชิมรสตามชอบ ถ้าไม่เค็มเติมเกลือเล็กน้อย ",
+      },
+      {
+        order: 5,
+        description:
+          "เทส่วนผสมทั้งหมดลงในหม้อหุงข้าว เทน้ำส่วนที่เหลือ ใช้ไม้พายคนคลุกเคล้า แล้วกดหุงข้าวตามปกติใช้เวลาหุง 45 นาที ",
+      },
+    ],
+  },
+  {
+    menu_name: "ข้าวอบจักรพรรดิ",
+    description: "ครบรส ครบองค์ มาเต็มทุกวัตถุดิบ",
+    menu_image_url:
+      "https://www.nestle.co.th/sites/g/files/pydnoa486/files/baked_rice_main.jpg",
+    calories: { value: 430, unit: "กิโลแคลอรี่" },
+    process: "อบ",
+    nationality: "จีน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ข้าว", quantity: 660, unit: "กรัม" },
+      { name: "กุ้งสด", quantity: 10, unit: "ตัว" },
+      { name: "กุนเชียง", quantity: 150, unit: "กรัม" },
+      { name: "แฮม", quantity: 90, unit: "กรัม" },
+      { name: "แครอท", quantity: 15, unit: "กรัม" },
+      { name: "ถั่วลันเตา", quantity: 30, unit: "กรัม" },
+      { name: "เห็ดหอม", quantity: 100, unit: "กรัม" },
+      { name: "แปะก๊วย", quantity: 100, unit: "กรัม" },
+      { name: "ขิง", quantity: 40, unit: "กรัม" },
+      { name: "รากผักชี", quantity: 80, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "รสดี รสหมู สูตรลดโซเดียม", quantity: 1.5, unit: "ช้อนโต๊ะ" },
+      { name: "ซีอิ๊วดำ", quantity: 1.5, unit: "ช้อนโต๊ะ" },
+      { name: "ซีอิ๊วขาว", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+      { name: "พริกไทยดำ", quantity: 1, unit: "ช้อนชา" },
+      { name: "น้ำมันพืช", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำสะอาด", quantity: 800, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ตั้งกระทะ ใส่น้ำมันพืชลงไป ตั้งไฟให้ร้อน ใส่กุนเชียงลงไปผัดให้พอเปลี่ยนสี ตามด้วยกระเทียม ผัดให้หอม แล้วใส่แฮมลงไป ผัดให้เข้ากันเล็กน้อย",
+      },
+      {
+        order: 2,
+        description:
+          "ใส่ แครอท ถั่วลันเตา และแปะก๊วยตามลงไป ผัดให้เข้ากันอีกครั้ง แล้วตามด้วยกุ้ง และเห็ดหอม ผัดให้กุ้งพอสุก แล้วจึงตักกุ้ง และเห็ดหอม ออกพักไว้",
+      },
+      {
+        order: 3,
+        description:
+          "ใส่ข้าวกล้องลงไป ผัดให้เข้ากัน ปรุงรสด้วย ผงปรุงรสรสหมู ซีอิ๊วขาว พริกไทย และพริกไทย คลุกเคล้าให้เข้ากัน",
+      },
+      {
+        order: 4,
+        description:
+          "ใส่ขิง และรากผักชีลงในหม้อหุงข้าว แล้วตักข้าวที่ผัดเอาไว้ลงไป ใส่น้ำเปล่าลงไป ปิดฝาหม้อ กดหุง แล้วรอจนข้าวสุก",
+      },
+      {
+        order: 5,
+        description:
+          "เมื่อข้าวสุก ตักขึ้นใส่ภาชนะสำหรับเสิร์ฟ นำกุ้ง และเห็ดหอมที่ผัดไว้ตอนแรก มาเรียงด้านหน้าให้สวยงาม",
+      },
+    ],
+  },
+  {
+    menu_name: "ยำปลาแซลมอนทอดน้ำปลาหวาน",
+    description: "หวานนัว กรอบบบ แคลน้อย ทานเล่นได้",
+    menu_image_url:
+      "https://img.wongnai.com/p/1920x0/2019/03/13/421907b370454623a6421affe3a58ef6.jpg",
+    calories: { value: 400, unit: "กิโลแคลอรี่" },
+    process: "ยำ",
+    nationality: "ไทย",
+    material: [
+      { name: "น้ำปลาหวาน", quantity: 150, unit: "กรัม" },
+      { name: "ปลาแซลมอน", quantity: 300, unit: "กรัม" },
+      { name: "ไข่ไก่", quantity: 1, unit: "ฟอง" },
+      { name: "แป้งทอดกรอบ", quantity: 100, unit: "กรัม" },
+      { name: "หอมแดง", quantity: 30, unit: "กรัม" },
+      { name: "พริกแดง", quantity: 30, unit: "กรัม" },
+      { name: "กุ้งแห้ง", quantity: 30, unit: "กรัม" },
+      { name: "สตรอร์เบอรี่", quantity: 30, unit: "กรัม" },
+      { name: "หอมแดงเจียว", quantity: 20, unit: "กรัม" },
+      { name: "ผักชี", quantity: 15, unit: "กรัม" },
+      { name: "น้ำมันพืช", quantity: 300, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "นำปลาแซลมอนมาคลุกกับไข่ไก่ดิบที่ตีไว้ ตามด้วยแป้งทอดกรอบ แล้วทำซ้ำแบบนี้อีกสองรอบ",
+      },
+      {
+        order: 2,
+        description:
+          "ตั้งน้ำมันให้ร้อน นำปลาแซลมอนที่คลุกแป้งเตรียมไว้ลงทอดจนมีสีเหลืองสวย พักให้สะเด็ดน้ำมัน",
+      },
+      {
+        order: 3,
+        description:
+          "นำน้ำปลาหวาน หอมแดง พริกสด กุ้งแห้ง และสตรอว์เบอร์รี มาคลุกเคล้าให้เข้ากัน แล้วตักใส่ถ้วยน้ำจิ้ม เตรียมไว้",
+      },
+      {
+        order: 4,
+        description:
+          "นำปลาแซลมอนทอดมาจัดใส่จาน ตามด้วยถ้วยน้ำปลาหวาน โรยด้วยหอมเจียว วางผักชีด้านบน",
+      },
+    ],
+  },
+  {
+    menu_name: "ซาลาเปาหมูสับ",
+    description: "ทำไม่ยาก ทานได้ทุกวัย",
+    menu_image_url:
+      "https://lifestyle.campus-star.com/app/uploads/2017/01/STEAMED-STUFF-BUN.jpg",
+    calories: { value: 350, unit: "กิโลแคลอรี่" },
+    process: "นึ่ง",
+    nationality: "จีน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "หมูสับบด", quantity: 500, unit: "กรัม" },
+      { name: "ซอสปรุงรส", quantity: 30, unit: "กรัม" },
+      { name: "ซอสหอยนางรม", quantity: 40, unit: "กรัม" },
+      { name: "น้ำตาลทราย", quantity: 50, unit: "กรัม" },
+      { name: "พริกไทยดำ", quantity: 5, unit: "กรัม" },
+      { name: "น้ำมันงา", quantity: 8, unit: "กรัม" },
+      { name: "ไข่ไก่", quantity: 0.5, unit: "ฟอง" },
+      { name: "ไข่ต้ม", quantity: 3, unit: "ฟอง" },
+      { name: "ต้นหอม", quantity: 30, unit: "กรัม" },
+      { name: "เกลือ", quantity: 4, unit: "กรัม" },
+      { name: "แป้งสาลี", quantity: 250, unit: "กรัม" },
+      { name: "น้ำสะอาด", quantity: 130, unit: "กรัม" },
+      { name: "น้ำตาลทราย", quantity: 50, unit: "กรัม" },
+      { name: "น้ำมันถั่วเหลือง", quantity: 10, unit: "กรัม" },
+      { name: "ผงฟู", quantity: 3, unit: "กรัม" },
+      { name: "ยีสต์แห้ง", quantity: 5, unit: "กรัม" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "เตรียมชามผสม ใส่หมูบด ซอสปรุงรส ซอสหอยนางรม น้ำตาลทราย ไข่ไก่ น้ำมันงา พริกไทย คลุกเคล้าทุกอย่างให้เข้ากัน",
+      },
+      {
+        order: 2,
+        description:
+          "ใส่ต้นหอมซอยลงไป นวดให้เข้ากัน เสร็จแล้ว นำไปพักไว้ในตู้เย็น",
+      },
+      {
+        order: 3,
+        description:
+          "ผสมน้ำเปล่า น้ำตาลทรายและยีสต์ คนให้เข้ากัน พักทิ้งไว้ 5 นาที ให้มีฟองฟู่ขึ้น",
+      },
+      {
+        order: 4,
+        description:
+          "ใส่แป้งสาลี เกลือ ผงฟู ผสมให้เข้ากัน แล้วเทใส่ลงในเครื่องนวดแป้ง ใช้สปีดสูง ระหว่างนี้ ให้เทน้ำเปล่าผสมน้ำตาลทรายและยีสต์ลงไป ตามด้วยน้ำมันถั่วเหลือง นวดจนกว่าส่วนผสมทุกอย่างจะเข้ากัน และได้แป้งเนื้อเนียนนุ่ม จับตัวเป็นก้อนเดียว ใช้เวลาประมาณ 5 นาที",
+      },
+      {
+        order: 5,
+        description:
+          "พอแป้งได้ที่แล้ว ให้นำมานวดและคลึงเป็นก้อนกลม ใส่ในชาม แล้วใช้ผ้าขาวบางหรือพลาสติกแรปปิดเอาไว้ พักแป้งเป็นเวลา 45 ถึง 60 นาที",
+      },
+      {
+        order: 6,
+        description:
+          "เมื่อครบเวลา ให้นำแป้งออกมา ตัดแบ่งให้มีขนาดเท่า ๆ กัน แล้วคลึงเป็นก้อนกลม เสร็จแล้วพักแป้งไว้ ให้แป้งคลายตัว เป็นเวลา 30 นาที",
+      },
+      {
+        order: 7,
+        description:
+          "ใช้มือกดแป้ง ให้แบนลง จากนั้น นำไม้นวดแป้ง มารีดขอบแป้งทุกด้าน ให้ขยายตัวออก เพื่อให้ขอบแป้งบางลง ส่วนตรงกลางจะหนา จากนั้น ตักไส้หมูสับที่ทำไว้ลงไป จับจีบและค่อย ๆ ห่อแป้งเข้ามาให้เป็นทรงกลมให้เรียบร้อย วางลงบนกระดาษรองซาลาเปา ทำอย่างนี้จนกว่าจะหมด เสร็จแล้ว พักแป้งไว้ 30 นาที",
+      },
+      {
+        order: 8,
+        description:
+          "ต้มน้ำในซึ่งนึ่งให้เดือด พอน้ำเดือดได้ที่แล้ว ให้นำซาลาเปาไปนึ่ง เป็นเวลา 15 นาที พอครบเวลา ให้นำออกมา พักให้เย็น เป็นอันเสร็จ",
+      },
+    ],
+  },
+  {
+    menu_name: "เต้าหู้ทอดราดซอสมะขาม",
+    description: "เปรี้ยวจี๊ดดด กรอบ หอม มีประโยชน์ แถมแคลน้อย",
+    menu_image_url:
+      "https://images.aws.nestle.recipes/resized/5098da5b36cc4d5f1228518bd089728c_fried-tofu-with-sweet-and-sour-sauce_708_600.jpg",
+    calories: { value: 500, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "ไทย",
+    material: [
+      { name: "ซอสปรุงรส", quantity: 3, unit: "ช้อนโต๊ะ " },
+      { name: "เต้าหู้ขาว", quantity: 250, unit: "กรัม" },
+      { name: "น้ำมะขามเปียก", quantity: 1, unit: "ช้อนโต๊ะ " },
+      { name: "น้ำสะอาด", quantity: 60, unit: "มิลลิลิตร" },
+      { name: "น้ำตาลปี๊บ", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "แป้งทอดกรอบ", quantity: 50, unit: "กรัม" },
+      { name: "น้ำเย็น", quantity: 60, unit: "มิลลิลิตร" },
+      { name: "งาดำคั่ว", quantity: 1, unit: "ช้อนชา" },
+      { name: "งาขาวคั่ว", quantity: 1, unit: "ช้อนชา" },
+      { name: "น้ำมันพืช", quantity: 250, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ผสมซอสปรุงอาหาร น้ำมะขามเปียก น้ำตาลมะพร้าว และน้ำเปล่า จากนั้นผสมให้เข้ากัน นำไปเคี่ยวไฟอ่อน",
+      },
+      {
+        order: 2,
+        description:
+          "หมักเต้าหู้กับซอสปรุงอาหารคลุกเคล้าให้ทั่วชิ้นเต้าหู้ หมักทิ้งไว้ประมาณ 5 นาที",
+      },
+      {
+        order: 3,
+        description: "ผสมแป้งทอดกรอบกับน้ำเย็น นำเต้าหู้ลงชุบให้ทั่วชิ้น",
+      },
+      {
+        order: 4,
+        description:
+          "นำเต้าหู้ลงทอดในน้ำมันที่ร้อนให้เหลืองกรอบ ตักขึ้นให้สะเด็ดน้ำมัน",
+      },
+      {
+        order: 5,
+        description:
+          "ตั้งน้ำมันให้ร้อนจัด นำลงทอดอีกครั้งเพื่อให้เต้าหู้กรอบนาน ตักขึ้นพักให้สะเด็ดน้ำมันอีกครั้ง",
+      },
+      {
+        order: 6,
+        description:
+          "จัดเต้าหู้เรียงใส่จาน จากนั้นนำซอสที่เคี่ยวราดให้ทั่วชิ้นเต้าหู้ โรยหน้าด้วยงาคั่ว",
+      },
+    ],
+  },
+  {
+    menu_name: "ไก่ทอดซอสโคชูจัง",
+    description: "อันยอง เมนูยอดฮิตเกาหลี",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/ff62f935e69ed2fc/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B9%84%E0%B8%81%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%8B%E0%B8%AD%E0%B8%AA%E0%B9%82%E0%B8%84%E0%B8%8A%E0%B8%88%E0%B8%87.webp",
+    calories: { value: 1200, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "เกาหลี",
+    material: [
+      { name: "ปีกไก่", quantity: 10, unit: "น่อง" },
+      { name: "เกลือ", quantity: 1, unit: "ช้อนชา" },
+      { name: "พริกไทยป่น", quantity: 1, unit: "ช้อนชา" },
+      { name: "ซอสโคชูจัง", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำผึ้ง", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "นำ้ส้มสายชู", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "ซอสมะเขือ", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมันพืช", quantity: 700, unit: "มิลลิลิตร" },
+      { name: "น้ำสะอาด", quantity: 30, unit: "มิลลิลิตร" },
+      { name: "งาขาวคั่ว", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "ต้นหอม", quantity: 15, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 30, unit: "กรัม" },
+    ],
+    cooking_step: [
+      { order: 1, description: "หมักปีกไก่ด้วยเกลือและพริกไทย คนให้เข้ากัน" },
+      {
+        order: 2,
+        description:
+          "ตามด้วยแป้งทอดกรอบ แล้วคลุกเคล้าให้เข้ากัน แล้วหมักทิ้งไว้ 15 นาที",
+      },
+      {
+        order: 3,
+        description:
+          "นำปีกไก่ลงไปทอดด้วยไฟกลาง ทอดให้เหลืองกรอบ เมื่อไก่สุดกีให้นำขึ้นจากกระทะมาพักไว้",
+      },
+      {
+        order: 4,
+        description:
+          "ทำซอสเกาหลีคลุกไก่ เริ่มจากเทน้ำมันลงในกระทะ ตามด้วยกระเทียมสับ แล้วผัดให้หอม",
+      },
+      {
+        order: 5,
+        description:
+          "ใส่ซอสโคชูจัง น้ำผึ้ง ซอสมะเขือเทศ และน้ำส้มสายชู ใช้ไฟอ่อนแล้วผัดให้เข้ากัน ถ้าแห้งไปให้เติมน้ำเปล่า",
+      },
+      {
+        order: 6,
+        description:
+          "พอซอสงวดขึ้น ให้นำไก่ที่ทอดไว้ใส่ในกระทะ แล้วคลุกเคล้าให้เข้ากัน",
+      },
+      {
+        order: 7,
+        description: "นำไก่ใส่จาก โรยงาขาว และต้นหอม พร้อมรับประทาน",
+      },
+    ],
+  },
+  {
+    menu_name: "พ็อกเก็ตแฮมชีส",
+    description: "ชีสยั่วๆ หอมๆ",
+    menu_image_url:
+      "https://img.salehere.co.th/p/1200x0/2021/02/02/o1ua2vdou4mq.jpg",
+    calories: { value: 580, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "อิตาเลี่ยน",
+    material: [
+      { name: "แฮม", quantity: 150, unit: "กรัม" },
+      { name: "เชดดาร์ชีส", quantity: 130, unit: "กรัม" },
+      { name: "ขนมปัง", quantity: 350, unit: "กรัม" },
+      { name: "น้ำมันพืช", quantity: 400, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      { order: 1, description: "นำขนมปัง แฮม และชีสวางซ้อนกัน" },
+      {
+        order: 2,
+        description: "คว่ำแก้ว ใช้ส่วนฝา มาประกบให้เป็นรูปวงกลม กดจนขนมปังขาด",
+      },
+      {
+        order: 3,
+        description: "ตั้งไฟ ใส่น้ำมัน พอน้ำมันร้อน เอาขนมปังลงไปทอด",
+      },
+      {
+        order: 4,
+        description: "พอขนมปังเปลี่ยนเป็นสีเหลืองทอง เอาขึ้นพักให้สะเด็ดน้ำมัน",
+      },
+    ],
+  },
+  {
+    menu_name: "คัตสึด้ง",
+    description: "อาริกาโตะ ทำอาหารญี่ปุ่นก็ต้องคัตสึด้งเมนูยอดฮิต",
+    menu_image_url:
+      "https://bk-review.com/wp-content/uploads/2020/05/%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%97%E0%B8%B3-%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%B9%E0%B8%84%E0%B8%B1%E0%B8%95%E0%B8%AA%E0%B8%B6%E0%B8%94%E0%B9%89%E0%B8%87-%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%A3%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%88%E0%B8%99%E0%B8%95%E0%B8%81%E0%B9%83%E0%B8%88-%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%80%E0%B8%A2%E0%B8%AD%E0%B8%B0%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A3%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AB%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%A1%E0%B8%B2%E0%B8%81%E0%B8%81%E0%B8%81%E0%B8%816-768x1152.jpg",
+    calories: { value: 385, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "ญี่ปุ่น",
+    material: [
+      { name: "หมูสันคอ", quantity: 300, unit: "กรัม" },
+      { name: "เกลือ", quantity: 1, unit: "ช้อนชา" },
+      { name: "พริกไทยดำ", quantity: 1, unit: "ช้อนชา" },
+      { name: "แป้งอเนกประสงค์", quantity: 100, unit: "กรัม" },
+      { name: "ไข่ไก่", quantity: 2, unit: "ฟอง" },
+      { name: "เกล็ดขนมปัง", quantity: 220, unit: "กรัม" },
+      { name: "น้ำตาลทราย", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำซุปหมู", quantity: 80, unit: "มิลลิลิตร" },
+      { name: "โชยุ", quantity: 20, unit: "มิลลิลิตร" },
+      { name: "เหล้ามิริน", quantity: 20, unit: "มิลลิลิตร" },
+      { name: "หอมใหญ่", quantity: 70, unit: "กรัม" },
+      { name: "น้ำมันพืช", quantity: 350, unit: "มิลลิลิตร" },
+      { name: "ข้าวญี่ปุ่น", quantity: 220, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 20, unit: "กรัม" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "นำเนื้อหมูมาโรยด้วยเกลือและพริกไทยทั้งสองด้าน นวดให้เครื่องปรุงซึมซับเข้าไปในเนื้อหมู แล้วพักไว้ 5 นาที",
+      },
+      {
+        order: 2,
+        description:
+          "นำเนื้อหมูที่ปรุงรสแล้วไปชุบ แป้งอเนกประสงค์ ไข่ไก่ และเกล็ดขนมปัง ตามลำดับ แล้วนำลงทอดในน้ำมันปาล์ม จนเหลืองทอง แล้วนำขึ้นพักสะเด็ดน้ำมันไว้",
+      },
+      {
+        order: 3,
+        description:
+          "ตั้งกระทะใบเล็ก นำหัวหอมใหญ่ลงไปผัดจนสุกใส ตามด้วย น้ำซุป โชยุ น้ำตาลทราย และเหล้ามิลิน ตั้งไฟจนพอเดือด",
+      },
+      {
+        order: 4,
+        description:
+          "หั่นหมูที่ทอดไว้เป็นชิ้นแล้วนำลงกระทะใบเดียวกัน ตีไข่ไก่ให้พอแตก ราดลงไปรอบ ๆ แล้วยกขึ้น",
+      },
+      {
+        order: 5,
+        description:
+          "ราดตัวหมูทอดและน้ำราดที่ทำไว้ลงบนข้าวญี่ปุ่น โรยด้วยต้นหอมซอย เท่านี้ก็พร้อมรับประทาน",
+      },
+    ],
+  },
+  {
+    menu_name: "ปลาหมึกย่างบาร์บีคิวเกาหลี",
+    description: "หอมมม แซ่บ ซี้ดด",
+    menu_image_url: "https://img.kapook.com/u/2017/surauch/cooking/a8_1.jpg",
+    calories: { value: 235, unit: "กิโลแคลอรี่" },
+    process: "ย่าง",
+    nationality: "เกาหลี",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ปลาหมึก", quantity: 250, unit: "กรัม" },
+      { name: "หอมใหญ่", quantity: 100, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 50, unit: "กรัม" },
+      { name: "แครอท", quantity: 50, unit: "กรัม" },
+      { name: "ซอสโคชูจัง", quantity: 50, unit: "กรัม" },
+      { name: "พริกไทยป่น", quantity: 0.25, unit: "กรัม" },
+      { name: "น้ำมันงา", quantity: 0.5, unit: "กรัม" },
+      { name: "น้ำตาลทราย", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "เกลือ", quantity: 0.1, unit: "ช้อนชา" },
+      { name: "น้ำซุปปลาแห้ง", quantity: 60, unit: "มิลลิลิตร" },
+      { name: "งาขาวคั่ว", quantity: 15, unit: "กรัม" },
+      { name: "ปลาโอแห้ง", quantity: 10, unit: "กรัม" },
+      { name: "น้ำสะอาด", quantity: 500, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ต้มน้ำเปล่าพอเดือด ใส่ปลาโอแห้ง ปิดฝา ยกลงพักไว้ 5 นาที ยกลงกรอง",
+      },
+      {
+        order: 2,
+        description:
+          "ทำซอสบาร์บีคิว โดยผสมซอสพริกเกาหลี พริกไทยป่น น้ำมันงา น้ำตาลทราย เกลือป่น และน้ำซุปปลาแห้ง คนให้เข้ากัน ยกขึ้นตั้งไฟ เคี่ยวพอข้น ยกลงพักไว้ให้เย็น",
+      },
+      {
+        order: 3,
+        description:
+          "นำหอมหัวใหญ่ ต้นหอม แครอท และซอสบาร์บีคิวคลุกเคล้าจนเข้ากัน (แบ่งซอสบาร์บีคิวไว้ทาตอนนำปลาหมึกลงย่างไฟ ประมาณ 3-4 ช้อนโต๊ะ)",
+      },
+      {
+        order: 4,
+        description:
+          "นำส่วนผสมในข้อที่ 2 ยัดไส้ในปลาหมึก ใช้ไม้จิ้มฟันกลัด นำลงย่างบนเตาไฟ พอสุกยกลง ใช้มีดบั้ง ทาซอสบาร์บีคิว ย่างต่อจนสุก ยกลง จัดใส่จาน โรยงาขาวคั่ว จัดเสิร์ฟ",
+      },
+    ],
+  },
+  {
+    menu_name: "ส้มตำทอด",
+    description: "กรอบ มันส์ อร่อยกว่าเดิม",
+    menu_image_url:
+      "https://img.wongnai.com/p/1920x0/2019/06/13/7ec2927cb71b4ae6ac5ed778590fdee9.jpg",
+    calories: { value: 500, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "ไทย",
+    material: [
+      { name: "มะละกอ", quantity: 250, unit: "กรัม" },
+      { name: "แป้งอเนกประสงค์", quantity: 250, unit: "กรัม" },
+      { name: "น้ำมันพืช", quantity: 500, unit: "มิลลิลิตร" },
+      { name: "กุ้ง", quantity: 100, unit: "กรัม" },
+      { name: "มะเขือเทศ", quantity: 30, unit: "กรัม" },
+      { name: "พริกแดง", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "กระเทียม", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมะขามเปียก", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำปลา", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมะนาว", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "ถั่วฝักยาว", quantity: 40, unit: "กรัม" },
+      { name: "เม็ดมะม่วงหิมพานต์อบ", quantity: 3, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description: "นำกระทะขึ้นตั้งไฟปานกลาง เทน้ำมันพืชลงไป แล้วรอจนร้อน",
+      },
+      {
+        order: 2,
+        description:
+          "นำมะละกอผสมแครอทขูด​ คลุกกับแป้งอเนกประสงค์​ จากนั้นนำไปทอดจนเหลืองกรอบ ตักขึ้นพักไว้เพื่อสะเด็ดน้ำมัน",
+      },
+      { order: 3, description: "นำกุ้งลงไปทอด​ แล้วพักไว้" },
+      {
+        order: 4,
+        description:
+          "ใส่กระเทียมสับลงในชามผสม​ ตามด้วยพริกแดงสับ​ น้ำปลา​ น้ำมะขาม​ น้ำมะนาว​ และน้ำตาลทราย​ คนให้เข้ากัน",
+      },
+      {
+        order: 5,
+        description:
+          "ใส่ถั่วฝักยาว​ มะเขือเทศเชอร์รี​ ถั่วลิสง​ และกุ้งทอด​ คนให้เข้ากัน​แแล้วตักใส่ถ้วย",
+      },
+      {
+        order: 6,
+        description:
+          "นำมะละกอผสมแครอทที่ทอดเตรียมไว้ใส่จาน​ จัดเสิร์ฟพร้อมน้ำยำ",
+      },
+    ],
+  },
+  {
+    menu_name: "เกี๊ยวกุ้งนึ่ง",
+    description: "ทำง่าย ไม่ยาก ใครๆก็ทำได้",
+    menu_image_url:
+      "https://www.naibann.com/wp-content/uploads/2019/05/shrimp-and-pork-dumpling-recipe-1.jpg",
+    calories: { value: 375, unit: "กิโลแคลอรี่" },
+    process: "นึ่ง",
+    nationality: "ไทย",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "กุ้งสด", quantity: 400, unit: "กรัม" },
+      { name: "รากผักชี", quantity: 30, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 30, unit: "กรัม" },
+      { name: "พริกไทยดำ", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "ซอสหอยนางรม", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "แผ่นแป้งเกี๊ยว", quantity: 20, unit: "แผ่น" },
+      { name: "กระเทียมเจียว", quantity: 2, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ตำรากผักชี และกระเทียม รวมกันให้ละเอียด นำไปคลุกเคล้ากับกุ้งขาวไว้หางแช่แข็ง และปรุงรสด้วยซอสหอยนางรม และพริกไทย คลุกเคล้าทุกอย่างให้เข้ากัน แล้วหมักทิ้งไว้ประมาณ 30 นาที",
+      },
+      {
+        order: 2,
+        description:
+          "นำกุ้งขาวไว้หางแช่แข็ง ที่หมักจนได้ที่แล้วมาห่อด้วยแผ่นแป้งเกี๊ยว",
+      },
+      {
+        order: 3,
+        description:
+          "ตั้งลังถึงที่ใส่น้ำไว้ รอจนน้ำเดือดนำเกี๊ยวกุ้งลงไปนึ่งประมาณ 10 - 15 นาที เตรียมจัดเสิร์ฟ",
+      },
+    ],
+  },
+  {
+    menu_name: "ลาซานญ่าเห็ดแชมปิยอง",
+    description: "หอมกรุ่นจากเตาา ทำได้ไม่ยาก",
+    menu_image_url:
+      "https://i2.wp.com/5gribov.ru/wp-content/uploads/2017/08/gr_gribnaya_lasania_1234.jpg",
+    calories: { value: 845, unit: "กิโลแคลอรี่" },
+    process: "อบ",
+    nationality: "อิตาเลี่ยน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "มันฝรั่ง", quantity: 70, unit: "กรัม" },
+      { name: "ครีม", quantity: 224, unit: "กรัม" },
+      { name: "เนย", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "เกลือ", quantity: 2, unit: "ช้อนชา" },
+      { name: "พริกไทยป่น", quantity: 2, unit: "ช้อนชา" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "หอมใหญ่", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "เห็ดแชมปิยอง", quantity: 300, unit: "กรัม" },
+      { name: "ไข่ไก่", quantity: 1, unit: "ฟอง" },
+      { name: "ผักชี", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "แผ่นแป้งลาซานญ่า", quantity: 2, unit: "แผ่น" },
+      { name: "มอสเซอรเรลล่าชีส", quantity: 100, unit: "กรัม" },
+      { name: "น้ำมันพืช", quantity: 2, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ตั้งน้ำให้ร้อน แล้วนำมันฝรั่งลงไปต้มจนสุก จากนั้นนำมาบดด้วยส้อม",
+      },
+      {
+        order: 2,
+        description:
+          "ปรุงรสด้วยเนย ครีม 1 ถ้วยตวง เกลือและพริกไทยอย่างละ 1 ช้อนชา ผสมให้ทุกอย่างเข้ากันแล้วพักไว้",
+      },
+      {
+        order: 3,
+        description:
+          "ตั้งน้ำให้เดือด ใส่เกลือและน้ำมันลงไปเล็กน้อย นำเส้นลาซานญ่าลงไปต้มประมาณ 6-7 นาที จากนั้นตักขึ้นพักไว้",
+      },
+      {
+        order: 4,
+        description:
+          "ตั้งกระทะใส่น้ำมัน 1 ช้อนโต๊ะ นำกระเทียมและหอมใหญ่ลงไปผัดจนหอมเริ่มสุก",
+      },
+      {
+        order: 5,
+        description:
+          "ใส่เห็ดแชมปิยองลงไปผัดให้สุกนิ่ม จากนั้นตอกไข่ใส่ลงไป ผัดให้ไข่เริ่มสุก",
+      },
+      {
+        order: 6,
+        description:
+          "ปรุงรสด้วยเกลือและพริกไทย ตามด้วยครีมและผักชีลาว ผัดให้ส่วนผสมเข้ากัน พักไว้",
+      },
+      {
+        order: 7,
+        description:
+          "นำแผ่นลาซานญ่าเรียงลงพิมพ์อบวางสลับมันบด ชีสและเห็ดที่ผัดไว้ โดยเรียงเห็ดด้านบนสุดให้สวยงาม",
+      },
+      {
+        order: 8,
+        description:
+          "วอร์มเตาอบที่อุณหภูมิ 165 องศาเซลเซียส นำเข้าอบเป็นเวลา 40 นาที หรือจนขึ้นสีสวย และจัดเสิร์ฟ",
+      },
+    ],
+  },
+  {
+    menu_name: "ไก่ทอดซอสหัวหอม",
+    description: "ไก่ทอดกรอบๆ กับ ครีมซอสโยเกิร์ต ห้ามพลาดด",
+    menu_image_url:
+      "https://s.isanook.com/wo/0/ud/38/193077/food.jpg?ip/crop/w728h437/q80/webp",
+    calories: { value: 550, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "เกาหลี",
+    material: [
+      { name: "อกไก่", quantity: 250, unit: "กรัม" },
+      { name: "ผงหมักสไปรซี่", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "แป้งทอดกรอบ", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมันพืช", quantity: 400, unit: "มิลลิลิตร" },
+      { name: "หอมใหญ่", quantity: 50, unit: "กรัม" },
+      { name: "โยเกิร์ต", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "มายองเนส", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "เกลือ", quantity: 1, unit: "ช้อนชา" },
+      { name: "พริกไทยดำ", quantity: 10, unit: "กรัม" },
+      { name: "น้ำผึ้ง", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมะนาว", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+      { name: "ออริกาโน่", quantity: 10, unit: "กรัม" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "นำอกไก่มาหั่นเป็นชิ้นพอดีคำ ปรุงรสด้วยผงหมักไก่สไปซี่บิ๊กวิงค์ คลุกเคล้าให้เข้ากัน แช่เย็รหมักทิ้งไว้ 1 คืน",
+      },
+      { order: 2, description: "นำไก่มาคลุกเคล้าแป้งชุบทอดให้ทั่ว" },
+      {
+        order: 3,
+        description:
+          "ตั้งกระทะไฟกลางตามด้วยน้ำมันพืช รอจนน้ำมันร้อนได้ที่ นำไก่ลงทอดจนสุกเหลืองกรอบน่ารับประทาน",
+      },
+      { order: 4, description: "ตักไก่ทอดขึ้นสะเด็ดน้ำมันพักไว้ " },
+      { order: 5, description: "ซอยหัวหอมใหญ่บางๆเตรียมไว้" },
+      {
+        order: 6,
+        description:
+          "ผสมซอสใช้โยเกิร์ตรสธรรมชาติ มายองเนส น้ำมะนาว น้ำผึ้ง เกลือ พริกไทย และออริกาโน่",
+      },
+      { order: 7, description: "นำหัวหอมใหญ่มาคลุกในซอส" },
+    ],
+  },
+  {
+    menu_name: "สาหร่ายห่อวุ้นเส้นทอด",
+    description: "กรอบบบ อร่อยยย",
+    menu_image_url:
+      "https://img.salehere.co.th/p/1200x0/2022/02/04/sosds1xvef40.jpg",
+    calories: { value: 480, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "เกาหลี",
+    material: [
+      { name: "วุ้นเส้น", quantity: 250, unit: "กรัม" },
+      { name: "กุ้งสด", quantity: 20, unit: "ตัว" },
+      { name: "ปูอัด", quantity: 10, unit: "ชิ้น" },
+      { name: "สาหร่าย", quantity: 10, unit: "แผ่น" },
+      { name: "แครอท", quantity: 100, unit: "กรัม" },
+      { name: "ซอสปรุงรส", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "เกลือ", quantity: 0.5, unit: "ช้อนชา" },
+      { name: "พริกไทยป่น", quantity: 1, unit: "ช้อนชา" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "แป้งอเนกประสงค์", quantity: 420, unit: "กรัม" },
+      { name: "น้ำสะอาด", quantity: 300, unit: "มิลลิลิตร" },
+      { name: "น้ำมันพืช", quantity: 700, unit: "มิลลิลิตร" },
+      { name: "มายองเนส", quantity: 40, unit: "กรัม" },
+      { name: "ซอสพริก", quantity: 40, unit: "กรัม" },
+      { name: "ผัก", quantity: 70, unit: "กรัม" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "นำ วุ้นเส้น แช่ในน้ำเปล่า 3 นาที หรือจนกว่าเส้นจะนิ่ม จากนั้นนำมาลวกในน้ำเดือดจัด 10 วินาที แล้วตักออกใส่ชามผสม",
+      },
+      {
+        order: 2,
+        description:
+          "ใส่ซอสปรุงรส เกลือ ผงกระเทียม และพริกไทยลงไป จากนั้นคลุกเคล้าให้เข้ากัน",
+      },
+      {
+        order: 3,
+        description:
+          "นำสาหร่ายมาวางบนเขียง ตามด้วยกุ้งสด วุ้นเส้นที่ปรุงไว้ แครอท และปูอัด ม้วนให้แน่น ทำแบบนี้ไปเรื่อย ๆ จนครบ",
+      },
+      {
+        order: 4,
+        description: "เทน้ำเปล่าลงไปในแป้งสาลีอเนกประสงค์คนให้เข้ากัน",
+      },
+      {
+        order: 5,
+        description:
+          "นำสาหร่ายที่ห่อวุ้นเส้นไว้มาคลุกแป้งสาลีอเนกประสงค์ จากนั้นนำไปคลุกแป้งอเนกประสงค์ที่ผสมน้ำไว้ เตรียมทอด",
+      },
+      {
+        order: 6,
+        description:
+          "นำสาหร่ายที่ห่อวุ้นเส้นที่ชุบแป้งลงไปทอดจนมีสีเหลืองกรอบ จากนั้นตักออกพักไว้เพื่อสะเด็ดน้ำมัน",
+      },
+    ],
+  },
+  {
+    menu_name: "ซุปกิมจิ",
+    description: "ซุปร้อนๆ ทำง่ายย",
+    menu_image_url:
+      "https://img.wongnai.com/p/800x0/2019/01/17/1ca66918f8514f06b82ee563c299df67.jpg",
+    calories: { value: 120, unit: "กิโลแคลอรี่" },
+    process: "ต้ม",
+    nationality: "เกาหลี",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "กิมจิ", quantity: 220, unit: "กรัม" },
+      { name: "น้ำสะอาด", quantity: 400, unit: "มิลลิลิตร" },
+      { name: "หมูสันคอ", quantity: 150, unit: "กรัม" },
+      { name: "เต้าหู้ขาว", quantity: 60, unit: "กรัม" },
+      { name: "หอมใหญ่", quantity: 70, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 40, unit: "กรัม" },
+      { name: "ซอสโคชูจัง", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "พริกเกาหลี", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทราย", quantity: 2, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description: "หั่นสันคอหมูเป็นชิ้นพอดีคำ หั่นกิมจิเป็นท่อน ๆ เตรียมไว้",
+      },
+      {
+        order: 2,
+        description:
+          "นำหอมใหญ่ และสันคอหมูลงไปผัด เมื่อหมูเริ่มสุกให้ใส่กิมจิลงไปผัดต่อสักครู่ เทน้ำลงไป ใส่ต้นหอมญี่ปุ่น ตั้งไฟจนเดือด ต้ม 30 นาที",
+      },
+      {
+        order: 3,
+        description: "เมื่อครบ 30 นาที ใส่เต้าหู้ขาว แล้วต้มต่ออีก 5 นาที",
+      },
+      {
+        order: 4,
+        description:
+          "ตักใส่ชามจัดเสิร์ฟ โรยด้วยต้นหอม เพียงเท่านี้ ซุปกิมจิของเราก็พร้อมรับประทาน",
+      },
+    ],
+  },
+  {
+    menu_name: "เต้าหู้ทอดหมูสับผัด",
+    description: "เมนูอาหารจีน ไม่ยากอย่างที่คิด",
+    menu_image_url:
+      "https://img.wongnai.com/p/800x0/2019/01/17/1ca66918f8514f06b82ee563c299df67.jpg",
+    calories: { value: 220, unit: "กิโลแคลอรี่" },
+    process: "ทอด",
+    nationality: "จีน",
+    material: [
+      { name: "หมูสับบด", quantity: 300, unit: "กรัม" },
+      { name: "เต้าหู้ขาว", quantity: 200, unit: "กรัม" },
+      { name: "น้ำมันถั่วเหลือง", quantity: 2, unit: "ช้อนโต๊ะ " },
+      { name: "ซอสปรุงรส", quantity: 3, unit: "ช้อนชา" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "วอมกะทะเต็มน้ำมันไม่รอให้ร้อน นำเต้าหู้ลงไปทอด ค่อยๆทอดใช้เวลานิดนึง ห้ามพลิกและใช้ไฟอ่อนๆๆ",
+      },
+      { order: 2, description: "ทอดจนเหลืองกรอบ และนำเนื้อหมูลงไปผัด" },
+      { order: 3, description: "ปรุงรสดด้วยซอสปรุงรส พร้อมทาน" },
+    ],
+  },
+  {
+    menu_name: "ยำถั่วงอกเกาหลี",
+    description: "เครื่องเคียง ยอดฮิต",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/557dc08a60855790/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%A2%E0%B8%B3%E0%B8%96%E0%B8%A7%E0%B8%87%E0%B8%AD%E0%B8%81%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%84%E0%B8%A5%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%A2%E0%B9%86-%E0%B8%9E%E0%B8%99%E0%B8%8A%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%AB%E0%B8%A5.webp",
+    calories: { value: 155, unit: "กิโลแคลอรี่" },
+    process: "ยำ",
+    nationality: "เกาหลี",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ถั่วงอก", quantity: 300, unit: "กรัม" },
+      { name: "น้ำมันงา", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "งาขาวคั่ว", quantity: 1, unit: "ช้อนโต๊ะ " },
+      { name: "เกลือ", quantity: 1, unit: "ช้อนชา" },
+      { name: "รสดี", quantity: 1, unit: "ช้อนชา" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "นำถั่วงอกมาต้มน้ำเดือดประมาณ 5 นาที ไม่ต้องเปื่อยมาก พอกรอบๆ จากนั้นเอาไปน็อคแช่น้ำเย็นจัดเพื่อให้ถั่วงอกกรอบ ไม่ระอุจนสุกไปมากกว่านี้",
+      },
+      {
+        order: 2,
+        description:
+          "นำถั่วงอกสะเด็ดน้ำเย็นมาใส่ภาชนะ ปลุงด้วยเกลือเล็กน้อย น้ำมันงา งาขาวคั่ว กระเทียม ",
+      },
+      {
+        order: 3,
+        description:
+          "ค่อยๆคลุกเคล้าให้เข้ากัน จากนั้นตักใส่ภาชนะทานได้เลย หรือจะเก็บใส่ภาชนะแช่ตู้เย็นสำหรับทานกับข้าวต้ม, ทานเคียงกับหมูย่าง หมูกระทะได้",
+      },
+    ],
+  },
+  {
+    menu_name: "ยำซูกินี หรือ ยำแตงกวาญี่ปุ่น",
+    description: "กรอบอร่อย ทานเล่นยามว่าง",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/74fb234618724a73/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%A2%E0%B8%B3%E0%B8%8B%E0%B8%81%E0%B8%99-%E0%B8%A2%E0%B8%B3%E0%B9%81%E0%B8%95%E0%B8%87%E0%B8%81%E0%B8%A7%E0%B8%B2%E0%B8%8D%E0%B8%9B%E0%B8%99-%E0%B8%81%E0%B8%9A%E0%B9%81%E0%B8%81%E0%B8%A5%E0%B8%A1.webp",
+    calories: { value: 95, unit: "กิโลแคลอรี่" },
+    process: "ยำ",
+    nationality: "ญี่ปุ่น",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "แตงกวาญี่ปุ่น", quantity: 200, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "พริกแห้ง", quantity: 5, unit: "กรัม" },
+      { name: "เกลือ", quantity: 0.5, unit: "ช้อนชา" },
+      { name: "รสดี", quantity: 1, unit: "ช้อนชา" },
+      { name: "น้ำมันงา", quantity: 1, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      { order: 1, description: "นำแตงกวาหั่นชิ้นๆแล้วนำไปตำพอบุบๆ" },
+      {
+        order: 2,
+        description:
+          "นำกระเทียมสับ ใส่ลงไป เราซื้อมาแบบสำเร็จรูปยี่ห้อนี้ รสชาติออกเค็มนิดๆ",
+      },
+      {
+        order: 3,
+        description:
+          "คลุกเคล้าให้เข้ากัน ใส่พริกแห้ง ปรุงรสชิมออกเค็ม น้ำแตงกวาก็เริ่มออกมาผสมกัน",
+      },
+    ],
+  },
+  {
+    menu_name: "ยำแตงกวาไข่เยี่ยวม้า",
+    description: "เมนูยำ ไม่จำเจ",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/11a52c00ea84e98c/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%A2%E0%B8%B3%E0%B9%81%E0%B8%95%E0%B8%87%E0%B8%81%E0%B8%A7%E0%B8%B2%E0%B9%84%E0%B8%82%E0%B9%80%E0%B8%A2%E0%B8%A2%E0%B8%A7%E0%B8%A1%E0%B8%B2%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%88%E0%B8%99.webp",
+    calories: { value: 320, unit: "กิโลแคลอรี่" },
+    process: "ยำ",
+    nationality: "จีน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ไข่เยี่ยวม้า", quantity: 2, unit: "ฟอง" },
+      { name: "แตงร้าน", quantity: 100, unit: "กรัม" },
+      { name: "ซีอิ๊วขาว", quantity: 2, unit: "กรัม" },
+      { name: "นำ้ส้มสายชู", quantity: 2, unit: "ช้อนชา" },
+      { name: "น้ำสะอาด", quantity: 5, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทราย", quantity: 2, unit: "ช้อนชา" },
+      { name: "น้ำมันพริกเผา", quantity: 1, unit: "ช้อนชา" },
+      { name: "น้ำมันงา", quantity: 2, unit: "ช้อนชา" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "ต้นหอม", quantity: 2, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "แกะไข่เยี่ยวม้า หั่นลูกละ 4 ชิ้น หั่นแตงร้านเป็นท่อนๆ วางเรียงตามชอบ ปิดแรฟนำเข้าตู้เย็น",
+      },
+      {
+        order: 2,
+        description:
+          "นำเครื่องน้ำยำที่เป็นของเหลวมาผสมกัน ตีจนน้ำตาลละลาย ใส่กระเทียมและต้นหอมสับ นำเข้าตู้เย็น",
+      },
+      {
+        order: 3,
+        description:
+          "เมื่อพร้อมจะทาน นำน้ำยำมาราดบนไข่เยี่ยวม้าและแตงกวา ทานเย็นๆ",
+      },
+    ],
+  },
+  {
+    menu_name: "ยำพาสต้าทูน่า",
+    description: "แซ่บ อิ่มท้อง ต้องลองงง",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/9b863857333827e8/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%A2%E0%B8%B3%E0%B8%9E%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%97%E0%B8%99%E0%B8%B2-spicy-tuna-pasta-salad.webp",
+    calories: { value: 569, unit: "กิโลแคลอรี่" },
+    process: "ยำ",
+    nationality: "อิตาเลี่ยน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "เส้นพาสต้า", quantity: 220, unit: "กรัม" },
+      { name: "ทูน่า", quantity: 110, unit: "กรัม" },
+      { name: "หมูสับบด", quantity: 90, unit: "กรัม" },
+      { name: "ไข่ต้ม", quantity: 2, unit: "ฟอง" },
+      { name: "มะเขือเทศ", quantity: 20, unit: "กรัม" },
+      { name: "หอมใหญ่", quantity: 20, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 10, unit: "กรัม" },
+      { name: "น้ำมะนาว", quantity: 3, unit: "ช้อนโต๊ะ" },
+      { name: "พริกแดง", quantity: 10, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำปลา", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทราย", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "เตรียมวัตถุดิบให้พร้อม แล้วทำน้ำยำโดยผสมพริก กระเทียมดอง+น้ำมะนาว+น้ำปลา+น้ำตาล ปรุงรสตามชอบ แล้วใส่เครื่องยำหมูสับ+ทูน่า+หอมใหญ่+มะเขือเทศ คลุกส่วนผสมทุกอย่างให้เข้ากัน ตามด้วยเส้นพาสต้าคลุกเบาๆ พอให้เข้ากัน แล้วโรยด้วยต้นหอม",
+      },
+      { order: 2, description: "จัดใส่จาน เสิร์ฟพร้อมไข่ต้มยางมะตูม" },
+    ],
+  },
+  {
+    menu_name: "ผักคอสย่างเนยแอนโชวี่",
+    description: "คลีน คลีน ไม่อ้วน",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/aa89551c6c6ad0d8/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%9C%E0%B8%81%E0%B8%84%E0%B8%AD%E0%B8%AA%E0%B8%A2%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%99%E0%B8%A2%E0%B9%81%E0%B8%AD%E0%B8%99%E0%B9%82%E0%B8%8A%E0%B8%A7-grilled-baby-cos-lettuce-anchovy-butter.webp",
+    calories: { value: 60, unit: "กิโลแคลอรี่" },
+    process: "ย่าง",
+    nationality: "อิตาเลี่ยน",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ผักคอส", quantity: 250, unit: "กรัม" },
+      { name: "แอนโชวี่ฟิลเลท", quantity: 60, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมันถั่วเหลือง", quantity: 100, unit: "มิลลิลิตร" },
+      { name: "เนย", quantity: 50, unit: "กรัม" },
+      { name: "น้ำมะนาว", quantity: 1, unit: "ช้อนชา" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "หั่นคอสครึ่งต้น สะเด็ดน้ำให้หมด แล้ววางผึ่งคว่ำไว้ให้แห้งที่สุดเท่าที่ทำได้",
+      },
+      {
+        order: 2,
+        description:
+          "ปั่นกระเทียม แอนโชวี่ เนยอุณหภูมิห้อง น้ำมันมะกอก ให้เข้ากัน นำไปตั้งไฟอ่อน คนในกระทะ จนเข้ากันปิดไฟ ทิ้งไว้ให้เย็น",
+      },
+      {
+        order: 3,
+        description:
+          "ตั้งกระทะเทฟลอนหรือกระทะเหล็กย่างสเต็ก ถ้าใครใช้เตาถ่านหรือเตาย่างบาร์บีคิวยิ่งดีเลยค่ะ ใช้ ไฟแรง ไม่ต้องใช้น้ำมัน ย่างแค่ฝั่งที่ผ่าฝั่งเดียวให้ขึ้นสี มีรอยไหม้เลยก็ได้ค่ะ แล้วเอาขึ้น ราดด้วยน้ำซอสที่ทำไว้",
+      },
+    ],
+  },
+  {
+    menu_name: "หมูปิ้งนมสด",
+    description: "หมูนุ่มมม",
+    menu_image_url:
+      "https://www.smethailandclub.com/upload/startup/image/1685522169.jpeg",
+    calories: { value: 280, unit: "กิโลแคลอรี่" },
+    process: "ย่าง",
+    nationality: "ไทย",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "หมูสันนอก", quantity: 300, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 100, unit: "กรัม" },
+      { name: "รากผักชี", quantity: 3, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลปี๊บ", quantity: 3, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำปลา", quantity: 3, unit: "ช้อนโต๊ะ" },
+      { name: "ซอสหอยนางรม", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทราย", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+      { name: "นมสด", quantity: 100, unit: "กรัม" },
+      { name: "แป้งข้าวโพด", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "เนย", quantity: 0.5, unit: "ช้อนโต๊ะ" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ล้างหั่นซอย เตรียมวัตถุดิบ หั่นหมูเป็นชิ้นๆ และนำมาเสียบไม้",
+      },
+      {
+        order: 2,
+        description:
+          "เอาหมูที่หั่นใส่ภาชนะ ปรุงรส ด้วยน้ำตาลปิ๊บ น้ำปลา ซอสหอยนางรม น้ำตาลทราย คลุกให้เข้ากัน",
+      },
+      {
+        order: 3,
+        description:
+          "จากนั้นใส่แป้งข้าวโพด ใส่นมสด กระเทียมสับ รากผักชีสับ คลุกให้เข้ากัน หมักทิ้งไว้ แช่ตู้เย็น 2-3 ชม. จากนั้นเอาหมูมาเสียบไม้",
+      },
+      {
+        order: 4,
+        description:
+          "เอากระทะตั้งเตา เอาฟอยล์วาง พอกระทะร้อนทาเนยให้ทั่วฟอยล์ ใช้ไฟปานกลาง ปิ้งจนหมูสุก ตัดส่วนที่ไหม้ออก ใส่เสิร์ฟพร้อมทาน",
+      },
+    ],
+  },
+  {
+    menu_name: "ปลาซาบะย่างซีอิ๊ว",
+    description: "หอม มีประโยชน์ ไม่อ้วน",
+    menu_image_url:
+      "https://www.smethailandclub.com/upload/startup/image/1685522169.jpeg",
+    calories: { value: 205, unit: "กิโลแคลอรี่" },
+    process: "ย่าง",
+    nationality: "ไทย",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ปลาซาบะ", quantity: 1, unit: "ตัว" },
+      { name: "ซีอิ๊วดำหวาน", quantity: 2, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำตาลทราย", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "ซอสเทอริยากิ", quantity: 4, unit: "ช้อนโต๊ะ" },
+      { name: "น้ำมันงา", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "งาขาวคั่ว", quantity: 1, unit: "ช้อนชา" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ล้างปลาซาบะ แล่เนื้อให้เป็นชิ้นใหญ่ อาจจะเพิ่มการบั้งหนังปลาพอสวยงาม และเพื่อให้น้ำซอสหมักเข้าเนื้อปลาได้ง่ายขึ้น",
+      },
+      {
+        order: 2,
+        description:
+          "จากนั้นผสม ซีอิ๊วดำหวาน ซอสเทอริยากิ น้ำมันงา น้ำตาลทราย เข้าด้วยกัน แล้วหมักเข้าเนื้อปลา หมักทิ้งไว้ 15 นาที",
+      },
+      {
+        order: 3,
+        description:
+          "นำปลาที่หมักไว้มาย่างในกะทะ ให้สุกเหลือง แล้ว จัดปลาซาบะที่ย่างเสร็จแล้วลงจาน",
+      },
+      {
+        order: 4,
+        description: "งาขาวคั่วบุบหยาบสำหรับโรยหน้าก็จะเพิ่มความหอม",
+      },
+    ],
+  },
+  {
+    menu_name: "ซุปเต้าเจี้ยวเกาหลี",
+    description: "ซุปร้อนๆ ชุ่มคอ ดีต่อสุขภาพ",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/46223e6e4cbe6f36/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%97%E0%B9%80%E0%B8%A7%E0%B8%99%E0%B8%88%E0%B8%87%E0%B8%88%E0%B9%80%E0%B8%81-%E0%B8%8B%E0%B8%9B%E0%B9%80%E0%B8%95%E0%B8%B2%E0%B9%80%E0%B8%88%E0%B8%A2%E0%B8%A7%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%AB%E0%B8%A5.webp",
+    calories: { value: 208, unit: "กิโลแคลอรี่" },
+    process: "ต้ม",
+    nationality: "เกาหลี",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "น้ำสะอาด", quantity: 500, unit: "มิลลิลิตร" },
+      { name: "เต้าเจี้ยวเกาหลี", quantity: 40, unit: "กรัม" },
+      { name: "ไก่สับ", quantity: 200, unit: "กรัม" },
+      { name: "น้ำตาลทราย", quantity: 3, unit: "ช้อนชา" },
+      { name: "พริกเกาหลี", quantity: 1, unit: "ช้อนชา" },
+      { name: "เต้าหู้ขาว", quantity: 200, unit: "กรัม" },
+      { name: "กระเทียม", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "หอมใหญ่", quantity: 30, unit: "กรัม" },
+      { name: "มันฝรั่ง", quantity: 70, unit: "กรัม" },
+      { name: "เห็ดชิเมจิ", quantity: 60, unit: "กรัม" },
+      { name: "พริกหยวก", quantity: 20, unit: "กรัม" },
+      { name: "พริกแดง", quantity: 10, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 10, unit: "กรัม" },
+    ],
+    cooking_step: [
+      { order: 1, description: "นำผักมาล้างและปลอกเปลือกให้สะอาด" },
+      {
+        order: 2,
+        description:
+          "ตำกระเทียมให้ละเอียด และ นำเต้าหู้มาหั่นเป็นเต๋า ขนาดพอดีคำ",
+      },
+      {
+        order: 3,
+        description:
+          "ต้มน้ำรอจนน้ำเดือด ใส่เต้าเจี้ยวเกาหลี พริกป่นเกาหลี และกระเทียมลงไป",
+      },
+      {
+        order: 4,
+        description:
+          "ปรุงรสด้วยน้ำตาลทรายแดง ตามด้วยใส่มันฝรั่ง กับหอมใหญ่ ต้มจนมันฝรั่งเริ่มนิ่ม",
+      },
+      {
+        order: 4,
+        description:
+          "จากนั้นใส่ไก่ เห็ด พริกหยวก และเต้าหู้ โรยด้วยพริกแดงเป็นอันเสร็จ พร้อมทาน",
+      },
+    ],
+  },
+  {
+    menu_name: "ซุปมิโซะ",
+    description: "อร่อย ทำงาน เหมาะกับผู้ขาดไอโอดีน",
+    menu_image_url:
+      "https://img-global.cpcdn.com/recipes/16349dce38ab65ac/1360x964cq70/%E0%B8%A3%E0%B8%9B-%E0%B8%AB%E0%B8%A5%E0%B8%81-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%AA%E0%B8%95%E0%B8%A3-%E0%B8%8B%E0%B8%9B%E0%B8%A1%E0%B9%82%E0%B8%8B%E0%B8%B0.webp",
+    calories: { value: 40, unit: "กิโลแคลอรี่" },
+    process: "ต้ม",
+    nationality: "ญี่ปุ่น",
+    healthy_concern: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
+    material: [
+      { name: "ผงปลาดาชิ", quantity: 1, unit: "ช้อนชา" },
+      { name: "มิโซะเกาหลี", quantity: 1, unit: "ช้อนโต๊ะ" },
+      { name: "สาหร่ายวากาเมะ", quantity: 10, unit: "กรัม" },
+      { name: "น้ำตาลทรายแดง", quantity: 2, unit: "ช้อนชา" },
+      { name: "เต้าหู้ไข่", quantity: 30, unit: "กรัม" },
+      { name: "ต้นหอม", quantity: 10, unit: "กรัม" },
+      { name: "น้ำสะอาด", quantity: 500, unit: "มิลลิลิตร" },
+    ],
+    cooking_step: [
+      {
+        order: 1,
+        description:
+          "ขั้นตอนแรกนำสาหร่ายวากาเมะ 10 กรัมไปแช่ในน้ำเปล่า ใส่น้ำกะปริมาณให้พอท่วมสาหร่ายนะครับ แช่วากาเมะทิ้งไว้ 3 นาที สาหร่ายจะค่อยๆ คลายตัว และนิ่มขึ้น",
+      },
+      {
+        order: 2,
+        description: "จากนั้นล้างต้นหอม 1 ต้นให้สะอาด แล้วนำต้นหอมมาซอยๆ",
+      },
+      {
+        order: 3,
+        description:
+          "จากนั้นตามด้วยนำเต้าหู้ไข่ 1 หลอดมาหั่นเป็นชิ้นๆ หนาประมาณ 1-2 เซนติเมตร ระวังเต้าหู้แตก",
+      },
+      {
+        order: 4,
+        description:
+          "เสร็จแล้วตั้งหม้อใส่น้ำเปล่า 500 มิลลิลิตร รอจนกว่าน้ำจะเดือด",
+      },
+      {
+        order: 5,
+        description:
+          "จากนั้นเราก็จะปรุงรสด้วยผงปลาดาชิ  มิโซะ และน้ำตาลทรายแดง",
+      },
+      {
+        order: 6,
+        description:
+          "จากนั้นใส่สาหร่ายวากาเมะ 10 กรัม และคนเล็กน้อยให้น้ำซุปกับสาหร่ายเข้ากัน",
+      },
+      {
+        order: 7,
+        description:
+          "จากนั้นเราก็จะใส่เต้าหู้ไข่ลงไป ปล่อยให้น้ำซุปเดือดประมาณ 1-2 นาที ก็ตักใส่ชาม โรยด้วยต้นหอมซอย ก็ตักใส่ชาม โรยด้วยต้นหอมซอย พร้อมเสริฟ",
       },
     ],
   },

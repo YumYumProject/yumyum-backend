@@ -1,9 +1,10 @@
 import "dotenv/config";
 
 import { contentModel } from "../models/content.model";
-// import data from "../../recipe.js";
+import data from "../../recipe.js";
 import { IContent } from "../Interfaces/content.interface";
 import mongoose from "mongoose";
+import { IRepositoryContent } from ".";
 
 mongoose.set("strictQuery", true);
 
@@ -11,54 +12,68 @@ mongoose.connect(
   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/?retryWrites=true&w=majority`
 );
 
-// async function createContent() {
-//   data.forEach(async (item) => {
-//     const model = new contentModel(item);
-//     await model
-//       .save()
-//       .then(() => console.log("Content created successfully"))
-//       .catch((err) => console.error(err));
-//   });
+export function newRepositoryContent(db: Document): IRepositoryContent {
+  return new RepositoryContent(db);
+}
+class RepositoryContent implements IRepositoryContent {
+  private db: Document;
 
-//   console.log("Data imported successfully");
-// }
+  constructor(db: Document) {
+    this.db = db;
+  }
 
-// createContent();
+  async createContent() {
+    data.forEach(async (item) => {
+      const model = new contentModel(item);
+      await model
+        .save()
+        .then(() => console.log("Content created successfully"))
+        .catch((err) => console.error(err));
+    });
 
-// async function getRecipesByFilter(
-//   material: string[],
-//   process: string,
-//   nationality: string
-// ): Promise<IContent[]> {
-//   const recipes = await contentModel
-//     .find({
-//       "material.name": { $in: material },
-//       process: { $in: process },
-//       nationality: { $in: nationality },
-//     })
-//     .exec();
+    console.log("Data imported successfully");
+  }
 
-//   console.log(recipes);
-//   return recipes;
-// }
+  async getRecipesByFilter(
+    material: string[],
+    process: string,
+    nationality: string
+  ): Promise<IContent[]> {
+    const recipes = await contentModel
+      .find(
+        {
+          "material.name": { $in: material },
+          process: { $in: process },
+          nationality: { $in: nationality },
+        },
 
-// getRecipesByFilter(["กระเทียม"], "ผัด", "ไทย");
+        //Projection >> select field that you want to show
+        {
+          menu_name: true,
+          menu_image_url: true,
+          average_rating: true,
+        }
+      )
+      .exec();
 
-async function getRecipeById(id: string): Promise<IContent | null> {
-  try {
-    const recipe = await contentModel.findById(id);
+    console.log(recipes);
+    return recipes;
+  }
 
-    if (!recipe) {
-      return Promise.reject(`recipe ${id} not found`);
+  async getRecipeById(id: string): Promise<IContent | null> {
+    try {
+      const recipe = await contentModel.findById(id);
+
+      if (!recipe) {
+        return Promise.reject(`recipe ${id} not found`);
+      }
+      console.log(recipe);
+      return Promise.resolve(recipe);
+    } catch (error) {
+      return Promise.reject(`failed to get content ${id}:${error}`);
     }
-    console.log(recipe);
-    return Promise.resolve(recipe);
-  } catch (error) {
-    return Promise.reject(`failed to get content ${id}:${error}`);
   }
 }
-
-getRecipeById("64b65a2e8265391230d452c5");
 
 // async function createContent() {
 //   const newContent: IContent = new contentModel({
