@@ -17,15 +17,12 @@ async function main() {
   server.use(express.json());
   server.use(cors());
 
-  const contentRouter = express.Router();
-  server.use("/content", contentRouter);
+  const menuRouter = express.Router();
+  server.use("/menu", menuRouter);
 
-  contentRouter.post(
-    "/",
-    handlerContent.getRecipesByFilter.bind(handlerContent)
-  );
+  menuRouter.post("/", handlerContent.getRecipesByFilter.bind(handlerContent));
 
-  contentRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
+  menuRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
 
   server.get("/", (req, res) => {
     res.send("Hello, world!");
