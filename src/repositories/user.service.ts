@@ -11,11 +11,11 @@ mongoose.connect(
 
 async function createUser() {
   const newUser: IUser = new userModel({
-    username: "Gib",
+    username: "eve",
     password: "12345678",
-    display_name: "gibgyb",
-    healthy_concern: "อ้วน",
-    food_allergen: "กุ้ง",
+    display_name: "eve",
+   
+    
   });
   newUser
     .save()
