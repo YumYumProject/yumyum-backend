@@ -1,13 +1,12 @@
 import mongoose, { Schema } from "mongoose";
-import { IContent } from "../Interfaces/content.interface";
 
-const contentSchema: Schema = new Schema({
+export const contentSchema: Schema = new Schema({
   menu_name: { type: String, required: true, unique: true },
   description: { type: String },
-  menu_image_url: { type: String, required: true },
+  menu_image_url: { type: String },
   calories: { value: { type: String }, unit: { type: String } },
   process: {
-    type: [String],
+    type: String,
     enum: ["ต้ม", "ผัด", "ทอด", "อบ", "นึ่ง", "ยำ", "ย่าง"],
     required: true,
   },
@@ -17,7 +16,7 @@ const contentSchema: Schema = new Schema({
     required: true,
   }, // use the correct enum values
   healthy_concern: {
-    type: String,
+    type: [String],
     enum: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
     required: true,
   }, // use the correct enum values
@@ -38,20 +37,19 @@ const contentSchema: Schema = new Schema({
   comment: [
     {
       description: { type: String },
-      commentBy: {
-        name: { type: String },
+      rating: { type: Number },
+      comment_by: {
+        display_name: { type: String },
+        user_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "user",
+        },
         commentedAt: { type: Date, default: Date.now },
       },
     },
   ],
-  rating: [
-    {
-      value: { type: Number },
-      user: {
-        id: { type: Object }, // use the correct reference
-      },
-    },
-  ],
+  average_rating: { type: Number, default: 0 },
+  rating_count: { type: Number, default: 0 },
 });
 
-export const contentModel = mongoose.model<IContent>("content", contentSchema);
+// export const contentModel = mongoose.model<IContent>("content", contentSchema);
