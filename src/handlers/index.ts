@@ -27,6 +27,8 @@ export interface IHandlerContent {
   //    createContent: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   //   getRecipesByFilter: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   getRecipesByFilter(req: Request, res: Response): Promise<Response>;
+  getRecipeById(req: Request, res: Response): Promise<Response>;
+
   //    getContent: HandlerFunc<JwtAuthRequest<WithId, any>>;
 }
 

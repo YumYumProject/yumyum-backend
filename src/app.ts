@@ -25,6 +25,8 @@ async function main() {
     handlerContent.getRecipesByFilter.bind(handlerContent)
   );
 
+  contentRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
+
   server.get("/", (req, res) => {
     res.send("Hello, world!");
   });

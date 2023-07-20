@@ -1,13 +1,17 @@
-import { Document } from "mongoose";
+import { Document, ObjectId } from "mongoose";
 // import { QueryResult } from "../paginate/paginate";
 // import { AccessAndRefreshTokens } from "../token/token.interfaces";
 
-export interface IUser extends Document {
+export interface ICreateUser extends Document {
   username: string;
   password: string;
   display_name: string;
   healthy_concern: Enumerator;
   food_allergen: string;
+}
+
+export interface IUser extends Document, ICreateUser {
+  id: ObjectId;
 }
 
 // export interface IUserDoc extends IUser, Document {

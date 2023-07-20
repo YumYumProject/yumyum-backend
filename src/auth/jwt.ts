@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { IRepositoryBlacklist } from "../repositories/blacklist";
+import { IRepositoryBlacklist } from "../repositories/blacklist.service";
 
 export const secret = process.env.JWT_SECRET || "content-secrets";
 

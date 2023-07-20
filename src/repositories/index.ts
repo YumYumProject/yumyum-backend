@@ -9,3 +9,7 @@ export interface IRepositoryContent {
   ): Promise<IContent[]>;
   getRecipeById(id: string): Promise<IContent | null>;
 }
+
+export interface IRepositoryUser {
+  createUser();
+}
