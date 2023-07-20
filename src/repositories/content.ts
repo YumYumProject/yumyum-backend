@@ -35,8 +35,23 @@ class RepositoryContent implements IRepositoryContent {
     console.log("Data imported successfully");
   }
 
+  async getAllRecipes (): Promise<IContent[]> {
+    return await this.contentModel.find(  
+      {
+        },
+        {
+          menu_name: true,
+          menu_image_url: true,
+          average_rating: true,
+          _id: true,
+        }
+      ).exec();
+  }
+
+ 
+
   async getRecipesByFilter(
-    material: string[],
+    material: string,
     process: string,
     nationality: string
   ): Promise<IContent[]> {

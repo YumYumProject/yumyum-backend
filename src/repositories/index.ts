@@ -2,8 +2,9 @@ import { IContent } from "../Interfaces/content.interface";
 
 export interface IRepositoryContent {
   createContent();
+  getAllRecipes (): Promise<IContent[]>
   getRecipesByFilter(
-    material: string[],
+    material: string,
     process: string,
     nationality: string
   ): Promise<IContent[]>;

@@ -20,7 +20,9 @@ async function main() {
   const menuRouter = express.Router();
   server.use("/menu", menuRouter);
 
-  menuRouter.post("/", handlerContent.getRecipesByFilter.bind(handlerContent));
+  menuRouter.get("/", handlerContent.getRecipesByFilter.bind(handlerContent));
+  server.get("/menus", handlerContent.getAllRecipes.bind(handlerContent));
+
 
   menuRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
 

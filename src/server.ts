@@ -1,6 +1,7 @@
 import express from "express";
 import connectToDatabase from "./database";
 
+
 import { newHandlerContent } from "./handlers/content";
 import { newRepositoryContent } from "./repositories/content";
 
@@ -9,7 +10,7 @@ async function main() {
   const PORT = 3000;
   app.use(express.json());
 
-  const repoContent = newRepositoryContent();
+  const repoContent = newRepositoryContent(db);
   const handlerContent = newHandlerContent(repoContent);
 
   connectToDatabase().then(() => {

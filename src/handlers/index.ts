@@ -12,7 +12,7 @@ export interface WithId {
 }
 
 export interface WithContent {
-  material: string[];
+  material: string;
   process: string;
   nationality: string;
 }
@@ -26,7 +26,8 @@ export interface WithUser {
 export interface IHandlerContent {
   //    createContent: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   //   getRecipesByFilter: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
-  getRecipesByFilter(req: Request, res: Response): Promise<Response>;
+  getAllRecipes(req: Request, res: Response): Promise<Response>
+  getRecipesByFilter(req: Request<Empty,Empty,Empty,WithContent>, res: Response): Promise<Response> 
   getRecipeById(req: Request, res: Response): Promise<Response>;
 
   //    getContent: HandlerFunc<JwtAuthRequest<WithId, any>>;

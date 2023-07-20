@@ -1,9 +1,9 @@
 import { Response, Request } from "express";
-import { IHandlerContent } from ".";
+import { Empty, IHandlerContent, WithContent } from ".";
 import { IRepositoryContent } from "../repositories";
 // import { JwtAuthRequest } from "../auth/jwt";
 
-export function newHandlerContent(repo: IRepositoryContent) {
+export function newHandlerContent(repo: IRepositoryContent): IHandlerContent {
   return new HandlerContent(repo);
 }
 class HandlerContent implements IHandlerContent {
@@ -13,9 +13,20 @@ class HandlerContent implements IHandlerContent {
     this.repo = repo;
   }
 
-  async getRecipesByFilter(req: Request, res: Response): Promise<Response> {
-    const { material, process, nationality } = req.body;
-    if (!material || !process || !nationality) {
+  async getAllRecipes(req: Request, res: Response): Promise<Response> {
+    return this.repo
+    .getAllRecipes()
+    .then((recipes)=> res.status(200).json({data:recipes}).end())
+    .catch((err)=> {
+      console.error(`failed to create content: ${err}`);
+        return res.status(500).json({ error: `failed to get contents` }).end();
+    })
+  }
+
+  async getRecipesByFilter(req: Request<Empty,Empty,Empty,WithContent>, res: Response): Promise<Response> {
+      const {material, process, nationality} = req.query
+   
+    if (!material && !process && !nationality) {
       return res
         .status(400)
         .json({
@@ -23,6 +34,8 @@ class HandlerContent implements IHandlerContent {
         })
         .end();
     }
+
+
 
     return this.repo
       .getRecipesByFilter(material, process, nationality)
