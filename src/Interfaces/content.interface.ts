@@ -1,23 +1,5 @@
 import { Document, ObjectId } from "mongoose";
 
-// import { QueryResult } from "../paginate/paginate";
-// import { AccessAndRefreshTokens } from "../token/token.interfaces";
-
-// export interface IContent extends Document {
-//   menu_name: string;
-//   description: string;
-//   menu_image_url: sstring;
-//   calories: Enumerator;
-//   process: Enumerator;
-//   nationality: Enumerator;
-//   healthy_concern: Enumerator;
-//   material: [{ name: string; quantity: number; unit: string }];
-//   cooking_step: [{ order: number; description: string }];
-//   updated_at: Date;
-//   comment: [{ description: string; commentBy: string; commentedAt: Date }];
-//   rating: [{ value: number; user: { id: ObjectId } }];
-// }
-
 export interface IMaterial extends Document {
   name: string;
   quantity: number;

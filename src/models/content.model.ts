@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { IContent } from "../Interfaces/content.interface";
 
-const contentSchema: Schema = new Schema({
+export const contentSchema: Schema = new Schema({
   menu_name: { type: String, required: true, unique: true },
   description: { type: String },
   menu_image_url: { type: String },
@@ -53,4 +52,4 @@ const contentSchema: Schema = new Schema({
   rating_count: { type: Number, default: 0 },
 });
 
-export const contentModel = mongoose.model<IContent>("content", contentSchema);
+// export const contentModel = mongoose.model<IContent>("content", contentSchema);

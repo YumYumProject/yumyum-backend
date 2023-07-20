@@ -1,30 +1,31 @@
 import "dotenv/config";
-
-import { contentModel } from "../models/content.model";
-import data from "../../recipe.js";
+import { contentSchema } from "../models/content.model";
 import { IContent } from "../Interfaces/content.interface";
-import mongoose from "mongoose";
 import { IRepositoryContent } from "./index";
+import { Model, Mongoose } from "mongoose";
+import data from "../../recipe.js";
 
-mongoose.set("strictQuery", true);
+// mongoose.set("strictQuery", true);
 
-mongoose.connect(
-  `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/?retryWrites=true&w=majority`
-);
+// mongoose.connect(
+//   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
+// );
 
-export function newRepositoryContent(): IRepositoryContent {
-  return new RepositoryContent();
+export function newRepositoryContent(db: Mongoose): IRepositoryContent {
+  return new RepositoryContent(db);
 }
 class RepositoryContent implements IRepositoryContent {
-  // db: mongoose.Collection;
+  private db: Mongoose;
+  private contentModel: Model<IContent>;
 
-  // constructor(db: mongoose.Collection) {
-  //   this.db = db;
-  // }
+  constructor(db: Mongoose) {
+    this.db = db;
+    this.contentModel = this.db.model<IContent>("content", contentSchema);
+  }
 
   async createContent() {
     data.forEach(async (item) => {
-      const model = new contentModel(item);
+      const model = new this.contentModel(item);
       await model
         .save()
         .then(() => console.log("Content created successfully"))
@@ -39,12 +40,18 @@ class RepositoryContent implements IRepositoryContent {
     process: string,
     nationality: string
   ): Promise<IContent[]> {
-    const recipes = await contentModel
+    console.log(material);
+    console.log(process);
+    console.log(nationality);
+
+    const recipes = await this.contentModel
       .find(
         {
-          "material.name": { $in: material },
-          process: { $in: process },
-          nationality: { $in: nationality },
+          $and: [
+            { "material.name": { $in: material } },
+            { process: { $in: process } },
+            { nationality: { $in: nationality } },
+          ],
         },
 
         //Projection >> select field that you want to show
@@ -52,17 +59,18 @@ class RepositoryContent implements IRepositoryContent {
           menu_name: true,
           menu_image_url: true,
           average_rating: true,
+          _id: true,
         }
       )
       .exec();
 
-    console.log(recipes);
+    console.log("repo", recipes);
     return recipes;
   }
 
   async getRecipeById(id: string): Promise<IContent | null> {
     try {
-      const recipe = await contentModel.findById(id);
+      const recipe = await this.contentModel.findById(id);
 
       if (!recipe) {
         return Promise.reject(`recipe ${id} not found`);
