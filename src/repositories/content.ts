@@ -11,6 +11,13 @@ import data from "../../recipe.js";
 //   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
 // );
 
+
+interface QueryFilter {
+  ["material.name"]?: object,
+  process?: object,
+  nationality?: object
+}
+
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
   return new RepositoryContent(db);
 }
@@ -59,16 +66,26 @@ class RepositoryContent implements IRepositoryContent {
     console.log(process);
     console.log(nationality);
 
-    const recipes = await this.contentModel
-      .find(
-        {
-          $and: [
-            { "material.name": { $in: material } },
-            { process: { $in: process } },
-            { nationality: { $in: nationality } },
-          ],
-        },
+    const query: QueryFilter = {          
+      "material.name": { $in: material } ,
+      process: { $in: process } ,
+      nationality: { $in: nationality } ,          
+    }
 
+    if (nationality == "All") { 
+      delete query['nationality']
+    }
+
+    if (process == "All") {
+      delete query['process']
+    }
+
+    console.log(query)
+
+
+    const recipes = await this.contentModel
+      .find(query
+       ,
         //Projection >> select field that you want to show
         {
           menu_name: true,
