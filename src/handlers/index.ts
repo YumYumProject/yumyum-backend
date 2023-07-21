@@ -26,8 +26,11 @@ export interface WithUser {
 export interface IHandlerContent {
   //    createContent: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   //   getRecipesByFilter: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
-  getAllRecipes(req: Request, res: Response): Promise<Response>
-  getRecipesByFilter(req: Request<Empty,Empty,Empty,WithContent>, res: Response): Promise<Response> 
+  getAllRecipes(req: Request, res: Response): Promise<Response>;
+  getRecipesByFilter(
+    req: Request<Empty, Empty, Empty, WithContent>,
+    res: Response
+  ): Promise<Response>;
   getRecipeById(req: Request, res: Response): Promise<Response>;
 
   //    getContent: HandlerFunc<JwtAuthRequest<WithId, any>>;
@@ -41,4 +44,8 @@ export interface IHandlerUser {
     req: JwtAuthRequest<Empty, Empty>,
     res: Response
   ): Promise<Response>;
+}
+
+export interface IUserHandler {
+  register(req: Request, res: Response): Promise<Response>;
 }

@@ -1,8 +1,14 @@
 import { IContent } from "../Interfaces/content.interface";
+import { IUser } from "../Interfaces/user.interface";
+
+export interface IUserRepository {
+  findByUsername(username: string): Promise<IUser | null>;
+  createUser(userData: IUser): Promise<IUser>;
+}
 
 export interface IRepositoryContent {
   createContent();
-  getAllRecipes (): Promise<IContent[]>
+  getAllRecipes(): Promise<IContent[]>;
   getRecipesByFilter(
     material: string,
     process: string,
