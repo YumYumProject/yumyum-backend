@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  back-end:
+    build: .
+    ports:
+      - 8000:8000
+    # environment:
+    #   - DATABASE_URL=mongodb+srv://username:password@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority
+  devdb:
+    image: mongo:6.0
+    ports:
+      - 27017:27017
