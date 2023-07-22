@@ -1,9 +1,10 @@
 import "dotenv/config";
 import { contentSchema } from "../models/content.model";
-import { IContent } from "../Interfaces/content.interface";
+import { IComment, IContent } from "../Interfaces/content.interface";
 import { IRepositoryContent } from "./index";
 import { Model, Mongoose } from "mongoose";
 import data from "../../recipe.js";
+import { CommentSchema } from "../models/comment.model";
 
 // mongoose.set("strictQuery", true);
 
@@ -11,11 +12,10 @@ import data from "../../recipe.js";
 //   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
 // );
 
-
 interface QueryFilter {
-  ["material.name"]?: object,
-  process?: object,
-  nationality?: object
+  ["material.name"]?: object;
+  process?: object;
+  nationality?: object;
 }
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
@@ -24,10 +24,12 @@ export function newRepositoryContent(db: Mongoose): IRepositoryContent {
 class RepositoryContent implements IRepositoryContent {
   private db: Mongoose;
   private contentModel: Model<IContent>;
+  private commentModel: Model<IComment>;
 
   constructor(db: Mongoose) {
     this.db = db;
     this.contentModel = this.db.model<IContent>("content", contentSchema);
+    this.commentModel = this.db.model<IComment>("comment", CommentSchema);
   }
 
   async createContent() {
@@ -42,20 +44,19 @@ class RepositoryContent implements IRepositoryContent {
     console.log("Data imported successfully");
   }
 
-  async getAllRecipes (): Promise<IContent[]> {
-    return await this.contentModel.find(  
-      {
-        },
+  async getAllRecipes(): Promise<IContent[]> {
+    return await this.contentModel
+      .find(
+        {},
         {
           menu_name: true,
           menu_image_url: true,
           average_rating: true,
           _id: true,
         }
-      ).exec();
+      )
+      .exec();
   }
-
- 
 
   async getRecipesByFilter(
     material: string,
@@ -66,26 +67,25 @@ class RepositoryContent implements IRepositoryContent {
     console.log(process);
     console.log(nationality);
 
-    const query: QueryFilter = {          
-      "material.name": { $in: material } ,
-      process: { $in: process } ,
-      nationality: { $in: nationality } ,          
-    }
+    const query: QueryFilter = {
+      "material.name": { $in: material },
+      process: { $in: process },
+      nationality: { $in: nationality },
+    };
 
-    if (nationality == "All") { 
-      delete query['nationality']
+    if (nationality == "All") {
+      delete query["nationality"];
     }
 
     if (process == "All") {
-      delete query['process']
+      delete query["process"];
     }
 
-    console.log(query)
-
+    console.log(query);
 
     const recipes = await this.contentModel
-      .find(query
-       ,
+      .find(
+        query,
         //Projection >> select field that you want to show
         {
           menu_name: true,
@@ -113,6 +113,51 @@ class RepositoryContent implements IRepositoryContent {
       return Promise.reject(`failed to get content ${id}:${error}`);
     }
   }
+
+  async createCommentAndAddToContent(
+    _id: string,
+    commentByUser: IComment
+    // commentedAt: Date;
+  ): Promise<IContent> {
+    // Create a comment
+    const comment = new Comment(commentByU);
+    await comment.save();
+
+    // Update the content with the new comment
+    const updatedContent = await this.contentModel
+      .findOneAndUpdate(
+        { _id: contentId },
+        { $push: { comments: comment._id } },
+        { new: true } // Returns the modified document rather than the original
+      )
+      .populate("comments");
+
+    return updatedContent;
+  }
+}
+
+async function updateUserContent(arg: {
+  contentId: string;
+  userId: string;
+  comment: string;
+  rating: number;
+}): Promise<IContent> {
+  const updatedcomment = await this.contentModel.findOneAndUpdate(
+    arg.contentId,
+    {
+      comment: arg.comment,
+      rating: arg.rating,
+    }
+  );
+
+  if (!updatedcomment) {
+    return Promise.reject(`no such content ${arg.contentId}`);
+  }
+
+  if (updatedcomment.userId !== arg.userId) {
+    return Promise.reject(`bad userId: ${arg.userId}`);
+  }
+  return updatedcomment;
 }
 
 // async function createContent() {

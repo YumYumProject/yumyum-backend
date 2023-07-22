@@ -34,20 +34,21 @@ export const contentSchema: Schema = new Schema({
     },
   ],
   updated_at: { type: Date, default: Date.now },
-  comment: [
-    {
-      description: { type: String },
-      rating: { type: Number },
-      comment_by: {
-        display_name: { type: String },
-        user_id: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "user",
-        },
-        commentedAt: { type: Date, default: Date.now },
-      },
-    },
-  ],
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+  // comment: [
+  //   {
+  //     description: { type: String },
+  //     rating: { type: Number },
+  //     comment_by: {
+  //       display_name: { type: String },
+  //       user_id: {
+  //         type: mongoose.Schema.Types.ObjectId,
+  //         ref: "user",
+  //       },
+  //       commentedAt: { type: Date, default: Date.now },
+  //     },
+  //   },
+  // ],
   average_rating: { type: Number, default: 0 },
   rating_count: { type: Number, default: 0 },
 });
