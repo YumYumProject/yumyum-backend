@@ -11,11 +11,17 @@ export interface ICookingStep extends Document {
   description: string;
 }
 
-export interface IComment extends Document {
+export interface IComment {
+  id: ObjectId;
   description: string;
   rating: number;
-  commentBy: string;
+  commentBy: ICommentBy;
   commentedAt: Date;
+}
+
+export interface ICommentBy {
+  display_name: string;
+  user_id: ObjectId;
 }
 
 // export interface IRating extends Document {
