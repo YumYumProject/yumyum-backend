@@ -16,6 +16,8 @@ export interface WithContent {
   material: string;
   process: string;
   nationality: string;
+  healthy_concern: string;
+  food_allergen: string;
 }
 
 export interface WithComment {

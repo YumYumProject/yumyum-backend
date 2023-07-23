@@ -6,7 +6,9 @@ export interface IRepositoryContent {
   getRecipesByFilter(
     material: string,
     process: string,
-    nationality: string
+    nationality: string,
+    healthy_concern: string,
+    food_allergen: string
   ): Promise<IContent[]>;
   getRecipeById(id: string): Promise<IContent | null>;
   createCommentAndUpdateToContent(

@@ -17,6 +17,7 @@ interface QueryFilter {
   ["material.name"]?: object;
   process?: object;
   nationality?: object;
+  healthy_concern: object;
 }
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
@@ -62,15 +63,18 @@ class RepositoryContent implements IRepositoryContent {
   async getRecipesByFilter(
     material: string,
     process: string,
-    nationality: string
+    nationality: string,
+    healthy_concern: string,
+    food_allergen: string
   ): Promise<IContent[]> {
     console.log(material);
     console.log(process);
     console.log(nationality);
 
     const query: QueryFilter = {
-      "material.name": { $in: material },
+      "material.name": { $nin: food_allergen, $in: material },
       process: { $in: process },
+      healthy_concern: { $in: healthy_concern },
       nationality: { $in: nationality },
     };
 
