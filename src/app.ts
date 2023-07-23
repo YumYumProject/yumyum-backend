@@ -26,7 +26,7 @@ async function main() {
   menuRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
 
   menuRouter.post(
-    "/:id/comment",
+    "/:id",
     handlerContent.createCommentAndUpdateToContent.bind(handlerContent)
   );
 
