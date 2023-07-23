@@ -21,7 +21,7 @@ import mongoose, { Schema } from "mongoose";
 //   CommentSchema
 // );
 
-const CommentSchema = new Schema({
+export const commentSchema = new Schema({
   description: { type: String },
   rating: { type: Number },
   comment_by: {
