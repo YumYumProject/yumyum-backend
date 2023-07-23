@@ -15,7 +15,7 @@ export interface IComment {
   id: ObjectId;
   description: string;
   rating: number;
-  commentBy: ICommentBy;
+  comment_by: ICommentBy;
   commentedAt: Date;
 }
 

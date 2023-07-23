@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { Empty, IHandlerContent, WithContent } from ".";
+import { Empty, IHandlerContent, WithComment, WithContent, WithId } from ".";
 import { IRepositoryContent } from "../repositories";
 // import { JwtAuthRequest } from "../auth/jwt";
 
@@ -15,17 +15,20 @@ class HandlerContent implements IHandlerContent {
 
   async getAllRecipes(req: Request, res: Response): Promise<Response> {
     return this.repo
-    .getAllRecipes()
-    .then((recipes)=> res.status(200).json({data:recipes}).end())
-    .catch((err)=> {
-      console.error(`failed to create content: ${err}`);
+      .getAllRecipes()
+      .then((recipes) => res.status(200).json({ data: recipes }).end())
+      .catch((err) => {
+        console.error(`failed to create content: ${err}`);
         return res.status(500).json({ error: `failed to get contents` }).end();
-    })
+      });
   }
 
-  async getRecipesByFilter(req: Request<Empty,Empty,Empty,WithContent>, res: Response): Promise<Response> {
-      const {material, process, nationality} = req.query
-   
+  async getRecipesByFilter(
+    req: Request<Empty, Empty, Empty, WithContent>,
+    res: Response
+  ): Promise<Response> {
+    const { material, process, nationality } = req.query;
+
     if (!material && !process && !nationality) {
       return res
         .status(400)
@@ -34,8 +37,6 @@ class HandlerContent implements IHandlerContent {
         })
         .end();
     }
-
-
 
     return this.repo
       .getRecipesByFilter(material, process, nationality)
@@ -85,6 +86,34 @@ class HandlerContent implements IHandlerContent {
         const errMsg = `failed to get recipe ${id}: ${err}`;
         console.error(errMsg);
         return res.status(500).json({ error: errMsg });
+      });
+  }
+
+  async createCommentAndUpdateToContent(
+    req: Request<WithId, Empty, WithComment>,
+    res: Response
+  ): Promise<Response> {
+    const content_id = String(req.params.id);
+
+    const { description, rating, display_name, user_id } = req.body;
+
+    if (!req.body) {
+      return res.status(400).json({ error: "missing msg in json body" }).end();
+    }
+
+    return this.repo
+      .createCommentAndUpdateToContent(
+        content_id,
+        description,
+        rating,
+        display_name,
+        user_id
+      )
+      .then((updated) => res.status(201).json(updated).end())
+      .catch((err) => {
+        const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
+        console.error(errMsg);
+        return res.status(500).json({ error: errMsg }).end();
       });
   }
 }

@@ -2,16 +2,16 @@ import "dotenv/config";
 import { contentSchema } from "../models/content.model";
 import { IComment, IContent } from "../Interfaces/content.interface";
 import { IRepositoryContent } from "./index";
-import mongoose, { Model, Mongoose } from "mongoose";
+import { Model, Mongoose } from "mongoose";
 
 import data from "../../recipe.js";
 import { commentSchema } from "../models/comment.model";
 
-mongoose.set("strictQuery", true);
+// mongoose.set("strictQuery", true);
 
-mongoose.connect(
-  `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
-);
+// mongoose.connect(
+//   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
+// );
 
 interface QueryFilter {
   ["material.name"]?: object;
@@ -116,18 +116,18 @@ class RepositoryContent implements IRepositoryContent {
   }
 
   async createCommentAndUpdateToContent(
-    contentId: string,
+    content_id: string,
     description: string,
     rating: number,
-    displayName: string,
-    userId: string
+    display_name: string,
+    user_id: string
   ): Promise<IContent> {
     const comment = new this.commentModel({
       description,
       rating,
       comment_by: {
-        display_name: displayName,
-        user_id: userId,
+        display_name: display_name,
+        user_id: user_id,
       },
     });
 
@@ -138,7 +138,7 @@ class RepositoryContent implements IRepositoryContent {
     const savedComment = await comment.save();
 
     const res = await this.contentModel.findOneAndUpdate(
-      { _id: contentId },
+      { _id: content_id },
       { $push: { comment: savedComment } },
       { new: true }
     );

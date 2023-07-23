@@ -23,8 +23,12 @@ async function main() {
   menuRouter.get("/", handlerContent.getRecipesByFilter.bind(handlerContent));
   server.get("/menus", handlerContent.getAllRecipes.bind(handlerContent));
 
-
   menuRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
+
+  menuRouter.post(
+    "/:id/comment",
+    handlerContent.createCommentAndUpdateToContent.bind(handlerContent)
+  );
 
   server.get("/", (req, res) => {
     res.send("Hello, world!");
