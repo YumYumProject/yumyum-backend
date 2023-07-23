@@ -16,6 +16,7 @@ export interface IRepositoryContent {
     display_name: string,
     userId: string
   ): Promise<IContent>;
+  updateAverageRatingForContent(contentId: string): Promise<IContent>;
 }
 
 export interface IRepositoryUser {

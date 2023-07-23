@@ -101,20 +101,30 @@ class HandlerContent implements IHandlerContent {
       return res.status(400).json({ error: "missing msg in json body" }).end();
     }
 
-    return this.repo
-      .createCommentAndUpdateToContent(
+    try {
+      await this.repo.createCommentAndUpdateToContent(
         content_id,
         description,
         rating,
         display_name,
         user_id
-      )
-      .then((updated) => res.status(201).json(updated).end())
-      .catch((err) => {
-        const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
-        console.error(errMsg);
-        return res.status(500).json({ error: errMsg }).end();
-      });
+      );
+
+      const updated = await this.repo.updateAverageRatingForContent(content_id);
+
+      return res.status(201).json(updated).end();
+    } catch (err) {
+      const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
+      console.error(errMsg);
+      return res.status(500).json({ error: errMsg }).end();
+    }
+
+    // .then((updated) => res.status(201).json(updated))
+    // .catch((err) => {
+    //   const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
+    //   console.error(errMsg);
+    //   return res.status(500).json({ error: errMsg }).end();
+    // });
   }
 }
 

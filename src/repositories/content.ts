@@ -148,6 +148,27 @@ class RepositoryContent implements IRepositoryContent {
     // console.log("Data imported successfully");
     return Promise.resolve(res);
   }
+
+  async updateAverageRatingForContent(contentId: string): Promise<IContent> {
+    const content = await this.contentModel
+      .findById(contentId)
+      .populate("comment");
+    if (!content) {
+      throw new Error("Content not found");
+    }
+
+    const totalRatings = content.comment.reduce(
+      (acc, comment: IComment) => acc + comment.rating,
+      0
+    );
+    const averageRating = totalRatings / content.comment.length;
+    const roundedAverageRating = Math.round(averageRating);
+
+    content.average_rating = roundedAverageRating;
+    content.rating_count = content.comment.length;
+
+    return await content.save();
+  }
 }
 
 // createCommentAndUpdateToContent(
