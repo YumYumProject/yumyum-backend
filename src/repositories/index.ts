@@ -4,13 +4,22 @@ import { IComment, IContent } from "../Interfaces/content.interface";
 export interface IRepositoryContent {
   createContent();
   getAllRecipes(): Promise<IContent[]>;
+  // getRecipesByFilter(
+  //   material: string,
+  //   process: string,
+  //   nationality: string
+  //   // healthy_concern: string,
+  //   // food_allergen: string
+  // ): Promise<IContent[]>;
+
   getRecipesByFilter(
     material: string,
     process: string,
-    nationality: string
-    // healthy_concern: string,
-    // food_allergen: string
+    nationality: string,
+    healthy_concern: string,
+    food_allergen: string
   ): Promise<IContent[]>;
+
   getRecipeById(id: string): Promise<IContent | null>;
   createCommentAndUpdateToContent(
     contentId: string,

@@ -37,10 +37,10 @@ class HandlerContent implements IHandlerContent {
     req: Request<Empty, Empty, Empty, WithContent>,
     res: Response
   ): Promise<Response> {
-    const { material, process, nationality } = req.query;
+    // const { material, process, nationality } = req.query;
 
-    // const { material, process, nationality, healthy_concern, food_allergen } =
-    //   req.query;
+    const { material, process, nationality, healthy_concern, food_allergen } =
+      req.query;
 
     if (!material && !process && !nationality) {
       return res
@@ -55,9 +55,9 @@ class HandlerContent implements IHandlerContent {
       .getRecipesByFilter(
         material,
         process,
-        nationality
-        // healthy_concern,
-        // food_allergen
+        nationality,
+        healthy_concern,
+        food_allergen
       )
       .then((recipes) => {
         if (!recipes) {

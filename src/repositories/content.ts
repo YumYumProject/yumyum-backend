@@ -18,7 +18,7 @@ interface QueryFilter {
   ["material.name"]?: object;
   process?: object;
   nationality?: object;
-  // healthy_concern: object;
+  healthy_concern?: object;
 }
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
@@ -126,21 +126,69 @@ class RepositoryContent implements IRepositoryContent {
     }
   }
 
+  // async getRecipesByFilter(
+  //   material: string,
+  //   process: string,
+  //   nationality: string
+  //   // healthy_concern: string,
+  //   // food_allergen: string
+  // ): Promise<IContent[]> {
+  //   console.log(material);
+  //   console.log(process);
+  //   console.log(nationality);
+
+  //   const query: QueryFilter = {
+  //     "material.name": { $in: material },
+  //     process: { $in: process },
+  //     // healthy_concern: { $in: healthy_concern },
+  //     nationality: { $in: nationality },
+  //   };
+
+  //   if (nationality == "All") {
+  //     delete query["nationality"];
+  //   }
+
+  //   if (process == "All") {
+  //     delete query["process"];
+  //   }
+
+  //   console.log(query);
+
+  //   const recipes = await this.contentModel
+  //     .find(
+  //       query,
+  //       //Projection >> select field that you want to show
+  //       {
+  //         menu_name: true,
+  //         menu_image_url: true,
+  //         average_rating: true,
+  //         _id: true,
+  //       }
+  //     )
+  //     .exec();
+
+  //   console.log("repo", recipes);
+  //   return recipes;
+  // }
+
   async getRecipesByFilter(
     material: string,
     process: string,
-    nationality: string
-    // healthy_concern: string,
-    // food_allergen: string
+    nationality: string,
+    healthy_concern: string,
+    food_allergen: string
   ): Promise<IContent[]> {
     console.log(material);
     console.log(process);
     console.log(nationality);
 
     const query: QueryFilter = {
-      "material.name": { $in: material },
+      "material.name": {
+        $regex: material,
+        $not: { $regex: food_allergen },
+      },
       process: { $in: process },
-      // healthy_concern: { $in: healthy_concern },
+      healthy_concern: { $in: healthy_concern },
       nationality: { $in: nationality },
     };
 
