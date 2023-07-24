@@ -1,4 +1,5 @@
-import { IContent } from "../Interfaces/content.interface";
+import mongoose from "mongoose";
+import { IComment, IContent } from "../Interfaces/content.interface";
 
 export interface IRepositoryContent {
   createContent();
@@ -6,9 +7,9 @@ export interface IRepositoryContent {
   getRecipesByFilter(
     material: string,
     process: string,
-    nationality: string,
-    healthy_concern: string,
-    food_allergen: string
+    nationality: string
+    // healthy_concern: string,
+    // food_allergen: string
   ): Promise<IContent[]>;
   getRecipeById(id: string): Promise<IContent | null>;
   createCommentAndUpdateToContent(
@@ -18,7 +19,14 @@ export interface IRepositoryContent {
     display_name: string,
     userId: string
   ): Promise<IContent>;
+
   updateAverageRatingForContent(contentId: string): Promise<IContent>;
+  editComment(
+    content_id: string,
+    comment_id: string,
+    newDescription: string,
+    newRating: number
+  ): Promise<IContent>;
 }
 
 export interface IRepositoryUser {

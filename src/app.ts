@@ -34,6 +34,8 @@ async function main() {
     res.send("Hello, world!");
   });
 
+  menuRouter.patch("/:id", handlerContent.editComment.bind(handlerContent));
+
   server.listen(port, () => console.log(`server listening on ${port}`));
 }
 

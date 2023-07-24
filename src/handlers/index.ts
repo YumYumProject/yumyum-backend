@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { JwtAuthRequest } from "../auth/jwt";
-import { ICommentBy } from "../Interfaces/content.interface";
 
 export interface AppRequest<Params, Body> extends Request<Params, any, Body> {}
 
@@ -23,14 +22,21 @@ export interface WithContent {
 export interface WithComment {
   description: string;
   rating: number;
+}
+
+export interface WithEditComment extends WithComment {
+  comment_id: string;
+}
+
+export interface WithNewComment extends WithComment {
   display_name: string;
   user_id: string;
 }
 
-// export interface WithCommentBy {
-//   display_name: string;
-//   user_id: string;
-// }
+export interface WithCommentBy {
+  display_name: string;
+  user_id: string;
+}
 export interface WithUser {
   username: string;
   name: string;
@@ -47,7 +53,12 @@ export interface IHandlerContent {
   ): Promise<Response>;
   getRecipeById(req: Request, res: Response): Promise<Response>;
   createCommentAndUpdateToContent(
-    req: Request<WithId, Empty, WithComment>,
+    req: Request<WithId, Empty, WithNewComment>,
+    res: Response
+  ): Promise<Response>;
+
+  editComment(
+    req: Request<WithId, Empty, WithEditComment>,
     res: Response
   ): Promise<Response>;
 

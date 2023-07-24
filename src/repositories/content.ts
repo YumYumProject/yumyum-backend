@@ -2,10 +2,11 @@ import "dotenv/config";
 import { contentSchema } from "../models/content.model";
 import { IComment, IContent } from "../Interfaces/content.interface";
 import { IRepositoryContent } from "./index";
-import { Model, Mongoose } from "mongoose";
+import mongoose, { Model, Mongoose } from "mongoose";
 
 import data from "../../recipe.js";
 import { commentSchema } from "../models/comment.model";
+// import { commentSchema } from "../models/comment.model";
 
 // mongoose.set("strictQuery", true);
 
@@ -17,7 +18,7 @@ interface QueryFilter {
   ["material.name"]?: object;
   process?: object;
   nationality?: object;
-  healthy_concern: object;
+  // healthy_concern: object;
 }
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
@@ -46,6 +47,12 @@ class RepositoryContent implements IRepositoryContent {
     console.log("Data imported successfully");
   }
 
+  // async addNewRecipes() {
+  //   data.forEach(async(item) => {
+  //     return await this.contentModel.
+  // })
+  // }
+
   async getAllRecipes(): Promise<IContent[]> {
     return await this.contentModel
       .find(
@@ -60,21 +67,80 @@ class RepositoryContent implements IRepositoryContent {
       .exec();
   }
 
+  // async getRecipesByFilter(
+  //   material: string,
+  //   process: string,
+  //   nationality: string,
+  //   healthy_concern: string,
+  //   food_allergen: string
+  // ): Promise<IContent[]> {
+  //   console.log(material);
+  //   console.log(process);
+  //   console.log(nationality);
+
+  //   const query: QueryFilter = {
+  //     "material.name": { $nin: food_allergen, $in: material },
+  //     process: { $in: process },
+  //     healthy_concern: { $in: healthy_concern },
+  //     nationality: { $in: nationality },
+  //   };
+
+  //   if (nationality == "All") {
+  //     delete query["nationality"];
+  //   }
+
+  //   if (process == "All") {
+  //     delete query["process"];
+  //   }
+
+  //   console.log(query);
+
+  //   const recipes = await this.contentModel
+  //     .find(
+  //       query,
+  //       //Projection >> select field that you want to show
+  //       {
+  //         menu_name: true,
+  //         menu_image_url: true,
+  //         average_rating: true,
+  //         _id: true,
+  //       }
+  //     )
+  //     .exec();
+
+  //   console.log("repo", recipes);
+  //   return recipes;
+  // }
+
+  async getRecipeById(id: string): Promise<IContent | null> {
+    try {
+      const recipe = await this.contentModel.findById(id);
+
+      if (!recipe) {
+        return Promise.reject(`recipe ${id} not found`);
+      }
+      console.log(recipe);
+      return Promise.resolve(recipe);
+    } catch (error) {
+      return Promise.reject(`failed to get content ${id}:${error}`);
+    }
+  }
+
   async getRecipesByFilter(
     material: string,
     process: string,
-    nationality: string,
-    healthy_concern: string,
-    food_allergen: string
+    nationality: string
+    // healthy_concern: string,
+    // food_allergen: string
   ): Promise<IContent[]> {
     console.log(material);
     console.log(process);
     console.log(nationality);
 
     const query: QueryFilter = {
-      "material.name": { $nin: food_allergen, $in: material },
+      "material.name": { $in: material },
       process: { $in: process },
-      healthy_concern: { $in: healthy_concern },
+      // healthy_concern: { $in: healthy_concern },
       nationality: { $in: nationality },
     };
 
@@ -105,19 +171,19 @@ class RepositoryContent implements IRepositoryContent {
     return recipes;
   }
 
-  async getRecipeById(id: string): Promise<IContent | null> {
-    try {
-      const recipe = await this.contentModel.findById(id);
+  // async getRecipeById(id: string): Promise<IContent | null> {
+  //   try {
+  //     const recipe = await this.contentModel.findById(id);
 
-      if (!recipe) {
-        return Promise.reject(`recipe ${id} not found`);
-      }
-      console.log(recipe);
-      return Promise.resolve(recipe);
-    } catch (error) {
-      return Promise.reject(`failed to get content ${id}:${error}`);
-    }
-  }
+  //     if (!recipe) {
+  //       return Promise.reject(`recipe ${id} not found`);
+  //     }
+  //     console.log(recipe);
+  //     return Promise.resolve(recipe);
+  //   } catch (error) {
+  //     return Promise.reject(`failed to get content ${id}:${error}`);
+  //   }
+  // }
 
   async createCommentAndUpdateToContent(
     content_id: string,
@@ -139,11 +205,11 @@ class RepositoryContent implements IRepositoryContent {
       return Promise.reject(`no such comment`);
     }
 
-    const savedComment = await comment.save();
+    // const savedComment = await comment.save();
 
     const res = await this.contentModel.findOneAndUpdate(
       { _id: content_id },
-      { $push: { comment: savedComment } },
+      { $push: { comment } },
       { new: true }
     );
 
@@ -172,6 +238,39 @@ class RepositoryContent implements IRepositoryContent {
     content.rating_count = content.comment.length;
 
     return await content.save();
+  }
+
+  async editComment(
+    content_id: string,
+    comment_id: string,
+    newDescription: string,
+    newRating: number
+  ): Promise<IContent> {
+    try {
+      const res = await this.contentModel.findOneAndUpdate(
+        { _id: content_id, "comment._id": comment_id },
+        {
+          $set: {
+            "comment.$.description": newDescription,
+            "comment.$.rating": newRating,
+          },
+        }
+      );
+
+      // console.log("Hi from repo");
+      if (!res) {
+        return Promise.reject(`no such comment`);
+      }
+
+      // console.log("gibbbbbbbbbbbbbbbbbbb\n\n\n\n\n");
+
+      // const c = res.comment[0];
+
+      return Promise.resolve(res);
+    } catch (err) {
+      console.log(err);
+      return Promise.reject("edit failed");
+    }
   }
 }
 

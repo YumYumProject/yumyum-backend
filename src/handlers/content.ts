@@ -1,6 +1,15 @@
 import { Response, Request } from "express";
-import { Empty, IHandlerContent, WithComment, WithContent, WithId } from ".";
+import {
+  Empty,
+  IHandlerContent,
+  WithContent,
+  WithEditComment,
+  // WithEditComment,
+  WithId,
+  WithNewComment,
+} from ".";
 import { IRepositoryContent } from "../repositories";
+// import { IComment } from "../Interfaces/content.interface";
 // import { JwtAuthRequest } from "../auth/jwt";
 
 export function newHandlerContent(repo: IRepositoryContent): IHandlerContent {
@@ -29,6 +38,9 @@ class HandlerContent implements IHandlerContent {
   ): Promise<Response> {
     const { material, process, nationality } = req.query;
 
+    // const { material, process, nationality, healthy_concern, food_allergen } =
+    //   req.query;
+
     if (!material && !process && !nationality) {
       return res
         .status(400)
@@ -39,7 +51,13 @@ class HandlerContent implements IHandlerContent {
     }
 
     return this.repo
-      .getRecipesByFilter(material, process, nationality)
+      .getRecipesByFilter(
+        material,
+        process,
+        nationality
+        // healthy_concern,
+        // food_allergen
+      )
       .then((recipes) => {
         if (!recipes) {
           return res
@@ -90,7 +108,7 @@ class HandlerContent implements IHandlerContent {
   }
 
   async createCommentAndUpdateToContent(
-    req: Request<WithId, Empty, WithComment>,
+    req: Request<WithId, Empty, WithNewComment>,
     res: Response
   ): Promise<Response> {
     const content_id = String(req.params.id);
@@ -118,17 +136,39 @@ class HandlerContent implements IHandlerContent {
       console.error(errMsg);
       return res.status(500).json({ error: errMsg }).end();
     }
+  }
 
-    // .then((updated) => res.status(201).json(updated))
-    // .catch((err) => {
-    //   const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
-    //   console.error(errMsg);
-    //   return res.status(500).json({ error: errMsg }).end();
-    // });
+  async editComment(
+    req: Request<WithId, Empty, WithEditComment>,
+    res: Response
+  ): Promise<Response> {
+    const content_id = String(req.params.id);
+    const { comment_id, description, rating } = req.body;
+
+    if (!req.body) {
+      return res.status(400).json({ error: "missing msg in json body" }).end();
+    }
+
+    try {
+      await this.repo.editComment(content_id, comment_id, description, rating);
+      const updated = await this.repo.updateAverageRatingForContent(content_id);
+
+      return res.status(201).json(updated).end();
+    } catch (err) {
+      const errMsg = `failed to edit comment ${content_id}: ${err}`;
+      console.error(errMsg);
+      return res.status(500).json({ error: errMsg }).end();
+    }
   }
 }
 
 //     try {
+// .then((updated) => res.status(201).json(updated))
+// .catch((err) => {
+//   const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
+//   console.error(errMsg);
+//   return res.status(500).json({ error: errMsg }).end();
+// });
 //       //   console.log(req.body);
 //       const { material, process, nationality } = req.body;
 
@@ -158,5 +198,3 @@ class HandlerContent implements IHandlerContent {
 //       return res
 //         .status(500)
 //         .json({ error: "Failed to get Recipes by filters" });
-//     }
-//   }
