@@ -19,8 +19,10 @@ export interface WithContent {
 
 export interface WithUser {
   username: string;
-  name: string;
   password: string;
+  display_name: string;
+  healthy_concern?: Enumerator;
+  food_allergen?: string;
 }
 
 export interface IHandlerContent {
@@ -37,15 +39,11 @@ export interface IHandlerContent {
 }
 
 export interface IHandlerUser {
-  register: HandlerFunc<AppRequest<Empty, WithUser>>;
-  login: HandlerFunc<AppRequest<Empty, WithUser>>;
-  logout: HandlerFunc<JwtAuthRequest<Empty, Empty>>;
-  getDataUser(
+  register(req: AppRequest<Empty, WithUser>, res: Response): Promise<Response>;
+  login(req: AppRequest<Empty, WithUser>, res: Response): Promise<Response>;
+  getDataUserById(
     req: JwtAuthRequest<Empty, Empty>,
     res: Response
   ): Promise<Response>;
-}
-
-export interface IUserHandler {
-  register(req: Request, res: Response): Promise<Response>;
+  logout(req: JwtAuthRequest<Empty, Empty>, res: Response): Promise<Response>;
 }

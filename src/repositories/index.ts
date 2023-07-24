@@ -1,10 +1,7 @@
+// import { ObjectId } from "mongodb";
 import { IContent } from "../Interfaces/content.interface";
-import { IUser } from "../Interfaces/user.interface";
-
-export interface IUserRepository {
-  findByUsername(username: string): Promise<IUser | null>;
-  createUser(userData: IUser): Promise<IUser>;
-}
+// import { IUser } from "../Interfaces/user.interface";
+import { ICreateUser, IUser } from "../Interfaces/user.interface";
 
 export interface IRepositoryContent {
   createContent();
@@ -18,5 +15,11 @@ export interface IRepositoryContent {
 }
 
 export interface IRepositoryUser {
-  createUser();
+  createUser(user: ICreateUser): Promise<IUser>;
+  getUser(username: string): Promise<IUser>;
+  getDataUserById(id: string): Promise<IUser | null>;
+}
+export interface IRepositoryBlacklist {
+  addToBlacklist(token: string): Promise<void>;
+  isBlacklisted(token: string): Promise<boolean>;
 }
