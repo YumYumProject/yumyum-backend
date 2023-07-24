@@ -3,6 +3,7 @@ import {
   Empty,
   IHandlerContent,
   WithContent,
+  WithDelete,
   WithEditComment,
   // WithEditComment,
   WithId,
@@ -156,6 +157,26 @@ class HandlerContent implements IHandlerContent {
       return res.status(201).json(updated).end();
     } catch (err) {
       const errMsg = `failed to edit comment ${content_id}: ${err}`;
+      console.error(errMsg);
+      return res.status(500).json({ error: errMsg }).end();
+    }
+  }
+
+  async deleteCommentById(
+    req: Request<WithId, Empty, WithDelete>,
+    res: Response
+  ): Promise<Response> {
+    const content_id = String(req.params.id);
+    const { comment_id } = req.body;
+
+    try {
+      await this.repo.deleteCommentById(content_id, comment_id);
+
+      const updated = await this.repo.updateAverageRatingForContent(content_id);
+
+      return res.status(201).json(updated).end();
+    } catch (err) {
+      const errMsg = `failed to create comment and update to content ${content_id}: ${err}`;
       console.error(errMsg);
       return res.status(500).json({ error: errMsg }).end();
     }

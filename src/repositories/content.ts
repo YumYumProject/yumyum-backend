@@ -272,6 +272,21 @@ class RepositoryContent implements IRepositoryContent {
       return Promise.reject("edit failed");
     }
   }
+
+  async deleteCommentById(
+    content_id: string,
+    comment_id: string
+  ): Promise<void> {
+    return await this.contentModel
+      .updateOne(
+        { _id: content_id },
+        { $pull: { comment: { _id: comment_id } } }
+      )
+      .then((_) => Promise.resolve())
+      .catch((err) =>
+        Promise.reject(`failed to delete content ${content_id}: ${err}`)
+      );
+  }
 }
 
 // createCommentAndUpdateToContent(

@@ -36,6 +36,11 @@ async function main() {
 
   menuRouter.patch("/:id", handlerContent.editComment.bind(handlerContent));
 
+  menuRouter.delete(
+    "/:id",
+    handlerContent.deleteCommentById.bind(handlerContent)
+  );
+
   server.listen(port, () => console.log(`server listening on ${port}`));
 }
 

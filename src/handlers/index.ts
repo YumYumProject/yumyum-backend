@@ -24,6 +24,10 @@ export interface WithComment {
   rating: number;
 }
 
+export interface WithDelete {
+  comment_id: string;
+}
+
 export interface WithEditComment extends WithComment {
   comment_id: string;
 }
@@ -31,6 +35,10 @@ export interface WithEditComment extends WithComment {
 export interface WithNewComment extends WithComment {
   display_name: string;
   user_id: string;
+}
+
+export interface WithDeleteComment {
+  comment_id: string;
 }
 
 export interface WithCommentBy {
@@ -56,9 +64,12 @@ export interface IHandlerContent {
     req: Request<WithId, Empty, WithNewComment>,
     res: Response
   ): Promise<Response>;
-
   editComment(
     req: Request<WithId, Empty, WithEditComment>,
+    res: Response
+  ): Promise<Response>;
+  deleteCommentById(
+    req: Request<WithId, Empty, WithDelete>,
     res: Response
   ): Promise<Response>;
 
