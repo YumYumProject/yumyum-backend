@@ -1,6 +1,10 @@
 import "dotenv/config";
 import { contentSchema } from "../models/content.model";
-import { IComment, IContent } from "../Interfaces/content.interface";
+import {
+  IComment,
+  IContent,
+  IGetComment,
+} from "../Interfaces/content.interface";
 import { IRepositoryContent } from "./index";
 import mongoose, { Model, Mongoose } from "mongoose";
 
@@ -20,6 +24,11 @@ interface QueryFilter {
   nationality?: object;
   healthy_concern?: object;
 }
+
+// interface QueryFilterComment {
+//   _id: object;
+//   ["comment._id"]?: object;
+// }
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
   return new RepositoryContent(db);
@@ -334,6 +343,47 @@ class RepositoryContent implements IRepositoryContent {
       .catch((err) =>
         Promise.reject(`failed to delete content ${content_id}: ${err}`)
       );
+  }
+
+  async getCommentById(content_id: string, comment_id: string): Promise<any> {
+    // const query: QueryFilterComment = {
+    //   _id: { content_id },
+    //   "comment._id": { comment_id },
+    // };
+
+    // console.log(query);
+
+    // try {
+    //   const comment = await this.contentModel.find({
+    //     _id: content_id,
+    //     "comment._id": comment_id,
+    //   });
+
+    try {
+      const comment = await this.contentModel.aggregate([
+        { $match: { _id: content_id, "comment.id": comment_id } },
+        { $unwind: "$comment" },
+        {
+          $project: {
+            _id: "$comment._id",
+            description: "$comment.description",
+            rating: "$comment.rating",
+            display_name: "$comment.comment_by.display_name",
+            commentedAt: "$comment.comment_by.commentedAt",
+          },
+        },
+      ]);
+
+      // console.log(comment);
+
+      if (!comment) {
+        return Promise.reject(`comment ${comment_id} not found`);
+      }
+
+      return Promise.resolve(comment);
+    } catch (error) {
+      return Promise.reject(`failed to get comment ${comment_id}:${error}`);
+    }
   }
 }
 

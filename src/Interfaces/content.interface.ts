@@ -20,6 +20,13 @@ export interface IComment {
   commentedAt: Date;
 }
 
+export interface IGetComment {
+  id: ObjectId;
+  description: string;
+  rating: number;
+  comment_by: ICommentBy;
+  commentedAt: Date;
+}
 export interface ICommentBy {
   display_name: string;
   user_id: ObjectId;

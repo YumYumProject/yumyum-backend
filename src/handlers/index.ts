@@ -28,6 +28,9 @@ export interface WithDelete {
   comment_id: string;
 }
 
+export interface WithGetComment {
+  comment_id: string;
+}
 export interface WithEditComment extends WithComment {
   comment_id: string;
 }
@@ -70,6 +73,11 @@ export interface IHandlerContent {
   ): Promise<Response>;
   deleteCommentById(
     req: Request<WithId, Empty, WithDelete>,
+    res: Response
+  ): Promise<Response>;
+
+  getCommentById(
+    req: Request<WithId, Empty, Empty, WithGetComment>,
     res: Response
   ): Promise<Response>;
 

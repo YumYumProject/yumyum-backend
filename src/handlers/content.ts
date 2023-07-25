@@ -5,6 +5,7 @@ import {
   WithContent,
   WithDelete,
   WithEditComment,
+  WithGetComment,
   // WithEditComment,
   WithId,
   WithNewComment,
@@ -180,6 +181,42 @@ class HandlerContent implements IHandlerContent {
       console.error(errMsg);
       return res.status(500).json({ error: errMsg }).end();
     }
+  }
+
+  async getCommentById(
+    req: Request<WithId, Empty, Empty, WithGetComment>,
+    res: Response
+  ): Promise<Response> {
+    const content_id = String(req.params.id);
+
+    const { comment_id } = req.query;
+
+    if (!comment_id) {
+      return res
+        .status(400)
+        .json({
+          error: "material_id are required.",
+        })
+        .end();
+    }
+
+    return this.repo
+      .getCommentById(content_id, comment_id)
+      .then((comment) => {
+        if (!comment) {
+          return res
+            .status(404)
+            .json({ error: `no such comment: ${comment_id}` })
+            .end();
+        }
+
+        return res.status(200).json(comment).end();
+      })
+      .catch((err) => {
+        const errMsg = `failed to get recipe ${comment_id}: ${err}`;
+        console.error(errMsg);
+        return res.status(500).json({ error: errMsg });
+      });
   }
 }
 

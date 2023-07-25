@@ -18,7 +18,10 @@ async function main() {
   server.use(cors());
 
   const menuRouter = express.Router();
+  // const commentRouter = express.Router();
+
   server.use("/menu", menuRouter);
+  // server.use("/comment", commentRouter);
 
   menuRouter.get("/", handlerContent.getRecipesByFilter.bind(handlerContent));
   server.get("/menus", handlerContent.getAllRecipes.bind(handlerContent));
@@ -35,6 +38,8 @@ async function main() {
   });
 
   menuRouter.patch("/:id", handlerContent.editComment.bind(handlerContent));
+
+  menuRouter.get("/:id", handlerContent.getCommentById.bind(handlerContent));
 
   menuRouter.delete(
     "/:id",
