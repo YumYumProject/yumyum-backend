@@ -18,10 +18,10 @@ async function main() {
   server.use(cors());
 
   const menuRouter = express.Router();
-  // const commentRouter = express.Router();
+  const commentRouter = express.Router();
 
   server.use("/menu", menuRouter);
-  // server.use("/comment", commentRouter);
+  server.use("/comment", commentRouter);
 
   menuRouter.get("/", handlerContent.getRecipesByFilter.bind(handlerContent));
   server.get("/menus", handlerContent.getAllRecipes.bind(handlerContent));
@@ -37,9 +37,9 @@ async function main() {
     res.send("Hello, world!");
   });
 
-  menuRouter.patch("/:id", handlerContent.editComment.bind(handlerContent));
+  commentRouter.patch("/:id/", handlerContent.editComment.bind(handlerContent));
 
-  menuRouter.get("/:id", handlerContent.getCommentById.bind(handlerContent));
+  commentRouter.get("/:id", handlerContent.getCommentById.bind(handlerContent));
 
   menuRouter.delete(
     "/:id",

@@ -2,6 +2,7 @@ import { Response, Request } from "express";
 import {
   Empty,
   IHandlerContent,
+  WithComment,
   WithContent,
   WithDelete,
   WithEditComment,
@@ -141,11 +142,13 @@ class HandlerContent implements IHandlerContent {
   }
 
   async editComment(
-    req: Request<WithId, Empty, WithEditComment>,
+    req: Request<WithId, Empty, WithComment, WithEditComment>,
     res: Response
   ): Promise<Response> {
     const content_id = String(req.params.id);
-    const { comment_id, description, rating } = req.body;
+    const { comment_id } = req.query;
+
+    const { description, rating } = req.body;
 
     if (!req.body) {
       return res.status(400).json({ error: "missing msg in json body" }).end();

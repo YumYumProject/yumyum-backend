@@ -25,11 +25,6 @@ interface QueryFilter {
   healthy_concern?: object;
 }
 
-// interface QueryFilterComment {
-//   _id: object;
-//   ["comment._id"]?: object;
-// }
-
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
   return new RepositoryContent(db);
 }
@@ -277,12 +272,13 @@ class RepositoryContent implements IRepositoryContent {
   }
 
   async updateAverageRatingForContent(contentId: string): Promise<IContent> {
-    const content = await this.contentModel
-      .findById(contentId)
-      .populate("comment");
+    const content = await this.contentModel.findById(contentId);
+    // .populate("comment");
     if (!content) {
       throw new Error("Content not found");
     }
+
+    console.log("from updateRating", content);
 
     const totalRatings = content.comment.reduce(
       (acc, comment: IComment) => acc + comment.rating,
@@ -345,35 +341,15 @@ class RepositoryContent implements IRepositoryContent {
       );
   }
 
-  async getCommentById(content_id: string, comment_id: string): Promise<any> {
-    // const query: QueryFilterComment = {
-    //   _id: { content_id },
-    //   "comment._id": { comment_id },
-    // };
-
-    // console.log(query);
-
-    // try {
-    //   const comment = await this.contentModel.find({
-    //     _id: content_id,
-    //     "comment._id": comment_id,
-    //   });
-
+  async getCommentById(
+    content_id: string,
+    comment_id: string
+  ): Promise<IContent> {
     try {
-      const comment = await this.contentModel.aggregate([
-        { $match: { _id: content_id, "comment.id": comment_id } },
-        { $unwind: "$comment" },
-        {
-          $project: {
-            _id: "$comment._id",
-            description: "$comment.description",
-            rating: "$comment.rating",
-            display_name: "$comment.comment_by.display_name",
-            commentedAt: "$comment.comment_by.commentedAt",
-          },
-        },
-      ]);
-
+      const comment = await this.contentModel.findOne(
+        { _id: content_id, "comment._id": comment_id },
+        { "comment.$": 1 } // This projection selects only the matching comment from the array
+      );
       // console.log(comment);
 
       if (!comment) {

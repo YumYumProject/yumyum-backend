@@ -37,7 +37,7 @@ export interface IRepositoryContent {
     newRating: number
   ): Promise<IContent>;
   deleteCommentById(content_id: string, comment_id: string): Promise<void>;
-  getCommentById(content_id: string, comment_id: string): Promise<IGetComment>;
+  getCommentById(content_id: string, comment_id: string): Promise<IContent>;
 }
 
 export interface IRepositoryUser {

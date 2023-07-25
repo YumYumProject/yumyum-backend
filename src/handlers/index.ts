@@ -31,7 +31,7 @@ export interface WithDelete {
 export interface WithGetComment {
   comment_id: string;
 }
-export interface WithEditComment extends WithComment {
+export interface WithEditComment {
   comment_id: string;
 }
 
@@ -68,7 +68,7 @@ export interface IHandlerContent {
     res: Response
   ): Promise<Response>;
   editComment(
-    req: Request<WithId, Empty, WithEditComment>,
+    req: Request<WithId, Empty, WithComment, WithEditComment>,
     res: Response
   ): Promise<Response>;
   deleteCommentById(
