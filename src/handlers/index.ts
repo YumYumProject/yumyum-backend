@@ -21,8 +21,8 @@ export interface WithUser {
   username: string;
   password: string;
   display_name: string;
-  healthy_concern?: Enumerator;
-  food_allergen?: string;
+  // healthy_concern?: Enumerator;
+  // food_allergen?: string;
 }
 
 export interface IHandlerContent {

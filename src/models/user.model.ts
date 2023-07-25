@@ -18,13 +18,6 @@ export const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  healthy_concern: {
-    type: String,
-    enum: ["เบาหวาน", "ความดัน", "หัวใจ", "ไต", "ลดน้ำหนัก", "อ้วน"],
-  },
-  food_allergen: {
-    type: String,
-  },
 });
 
 // export const userModel = mongoose.model<IUser>("user", userSchema);

@@ -6,13 +6,11 @@ export async function expirer(redis: RedisClientType<any, any, any>) {
   while (1) {
     await expire(redis);
 
-    // Every minute
     await new Promise((r) => setTimeout(r, 60 * 1000));
   }
 }
 
 async function expire(redis: RedisClientType<any, any, any>) {
-  // Get all blacklisted tokens
   const blacklisteds = await redis.sMembers(keyBlacklist);
   const now = Date.now();
 

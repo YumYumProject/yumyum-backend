@@ -27,8 +27,7 @@ class HandlerUser implements IHandlerUser {
     req: AppRequest<Empty, WithUser>,
     res: Response
   ): Promise<Response> {
-    const { username, password, display_name, food_allergen, healthy_concern } =
-      req.body;
+    const { username, password, display_name } = req.body;
     if (!username || !password || !display_name) {
       return res
         .status(400)
@@ -40,8 +39,6 @@ class HandlerUser implements IHandlerUser {
         username,
         password: hashPassword(password),
         display_name,
-        food_allergen,
-        healthy_concern,
       })
 
       .then((user) => {

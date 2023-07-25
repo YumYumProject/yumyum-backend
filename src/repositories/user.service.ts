@@ -30,8 +30,6 @@ class RepositoryUser implements IRepositoryUser {
         username: user.username,
         password: user.password,
         display_name: user.display_name,
-        healthy_concern: user.healthy_concern,
-        food_allergen: user.food_allergen,
       })
       .catch((err) =>
         Promise.reject(`failed to create user ${user.username}: ${err}`)

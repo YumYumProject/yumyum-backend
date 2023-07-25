@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 
 import { IRepositoryBlacklist } from ".";
 
-export const keyBlacklist = "todo-jwt-blacklist"; // set
-export const keyJwtExpire = "todo-jwt-expirations"; // hash
+export const keyBlacklist = "user-jwt-blacklist";
+export const keyJwtExpire = "user-jwt-expirations";
 
 export function newRepositoryBlacklist(
   db: RedisClientType<any, any, any>
