@@ -18,12 +18,33 @@ import { commentSchema } from "../models/comment.model";
 //   `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
 // );
 
+// interface QueryFilter {
+//   ["material.name"]?: object;
+//   process?: object;
+//   nationality?: object;
+//   healthy_concern?: object;
+// }
+
+
+
 interface QueryFilter {
-  ["material.name"]?: object;
-  process?: object;
-  nationality?: object;
-  healthy_concern?: object;
+  "material.name"?: {
+    $regex?: string;
+    $not?: {
+      $regex: string;
+    };
+  };
+  process?: {
+    $in: string;
+  };
+  healthy_concern?: {
+    $in: string;
+  };
+  nationality?: {
+    $in: string;
+  };
 }
+
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
   return new RepositoryContent(db);
@@ -175,6 +196,76 @@ class RepositoryContent implements IRepositoryContent {
   //   return recipes;
   // }
 
+
+  //__________________________
+
+  // async getRecipesByFilter(
+  //   material: string,
+  //   process: string,
+  //   nationality: string,
+  //   healthy_concern: string,
+  //   food_allergen: string
+  // ): Promise<IContent[]> {
+  //   console.log(material);
+  //   console.log(process);
+  //   console.log(nationality);
+
+  //   const query: QueryFilter = {
+  //     "material.name": {
+  //       $regex: material,
+  //       // if food_allergen is empty, this condition shouldn't be included in the query at first place
+  //       $not: { $regex: food_allergen },
+  //     },
+  //     process: { $in: process },
+  //     healthy_concern: { $in: healthy_concern },
+  //     nationality: { $in: nationality },
+  //   };
+
+  
+
+  //   if (nationality === "All") {
+  //     delete query["nationality"];
+  //   }
+
+  //   if (process === "All") {
+  //     delete query["process"];
+  //   }
+
+  //   console.log("food allergen",typeof food_allergen)
+
+
+  //   if (food_allergen === "") {
+  //     delete query["food_allergen"];
+  //   }
+
+  //   if (healthy_concern === "") {
+  //     delete query["healthy_concern"];
+  //   }
+
+  //   console.log("query" ,query);
+
+  //   const recipes = await this.contentModel
+  //     .find(
+  //       query,
+  //       //Projection >> select field that you want to show
+  //       {
+  //         menu_name: true,
+  //         menu_image_url: true,
+  //         average_rating: true,
+  //         _id: true,
+  //       }
+  //     )
+  //     .exec();
+
+  //   console.log("repo", recipes);
+  //   return recipes;
+  // }
+
+
+    //__________________________
+
+
+
   async getRecipesByFilter(
     material: string,
     process: string,
@@ -187,24 +278,47 @@ class RepositoryContent implements IRepositoryContent {
     console.log(nationality);
 
     const query: QueryFilter = {
-      "material.name": {
-        $regex: material,
-        $not: { $regex: food_allergen },
-      },
       process: { $in: process },
       healthy_concern: { $in: healthy_concern },
       nationality: { $in: nationality },
     };
 
-    if (nationality == "All") {
+
+// Add condition for material name based on the material input value
+if (material) {
+  query["material.name"] = { $regex: material };
+}
+
+// If food_allergen is not an empty string, modify the material.name condition to include the $not condition
+if (food_allergen) {
+  if (!query["material.name"]) {
+    query["material.name"] = {};  // Initialize it if it doesn't exist
+  }
+  query["material.name"].$not = { $regex: food_allergen };
+}
+
+  
+
+    if (nationality === "All") {
       delete query["nationality"];
     }
 
-    if (process == "All") {
+    if (process === "All") {
       delete query["process"];
     }
 
-    console.log(query);
+    console.log("food allergen",typeof food_allergen)
+
+
+    if (food_allergen === "") {
+      delete query["food_allergen"];
+    }
+
+    if (healthy_concern === "") {
+      delete query["healthy_concern"];
+    }
+
+    console.log("query" ,query);
 
     const recipes = await this.contentModel
       .find(
@@ -222,6 +336,11 @@ class RepositoryContent implements IRepositoryContent {
     console.log("repo", recipes);
     return recipes;
   }
+
+
+
+
+
 
   // async getRecipeById(id: string): Promise<IContent | null> {
   //   try {

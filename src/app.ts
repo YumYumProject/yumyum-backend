@@ -41,7 +41,7 @@ async function main() {
 
   commentRouter.get("/:id", handlerContent.getCommentById.bind(handlerContent));
 
-  menuRouter.delete(
+  commentRouter.delete(
     "/:id",
     handlerContent.deleteCommentById.bind(handlerContent)
   );

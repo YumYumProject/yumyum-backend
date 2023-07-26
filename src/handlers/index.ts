@@ -72,9 +72,9 @@ export interface IHandlerContent {
     res: Response
   ): Promise<Response>;
   deleteCommentById(
-    req: Request<WithId, Empty, WithDelete>,
+    req: Request<WithId, Empty,Empty, WithDelete>,
     res: Response
-  ): Promise<Response>;
+  ): Promise<Response>
 
   getCommentById(
     req: Request<WithId, Empty, Empty, WithGetComment>,

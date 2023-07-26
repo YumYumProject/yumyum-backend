@@ -117,6 +117,7 @@ class HandlerContent implements IHandlerContent {
     const content_id = String(req.params.id);
 
     const { description, rating, display_name, user_id } = req.body;
+    //  const { description, rating, user_id } = req.body;
 
     if (!req.body) {
       return res.status(400).json({ error: "missing msg in json body" }).end();
@@ -167,11 +168,11 @@ class HandlerContent implements IHandlerContent {
   }
 
   async deleteCommentById(
-    req: Request<WithId, Empty, WithDelete>,
+    req: Request<WithId, Empty,Empty, WithDelete>,
     res: Response
   ): Promise<Response> {
     const content_id = String(req.params.id);
-    const { comment_id } = req.body;
+    const { comment_id } = req.query;
 
     try {
       await this.repo.deleteCommentById(content_id, comment_id);
