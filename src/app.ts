@@ -55,6 +55,9 @@ async function main() {
 
   userRouter.post("/register", handlerUser.register.bind(handlerUser));
   authRouter.post("/login", handlerUser.login.bind(handlerUser));
+  authRouter.get("/me",
+  handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+  handlerUser.getDataUserById.bind(handlerUser));
   authRouter.get(
     "/logout",
     handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),

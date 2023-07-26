@@ -28,6 +28,7 @@ class HandlerUser implements IHandlerUser {
     res: Response
   ): Promise<Response> {
     const { username, password, display_name } = req.body;
+
     if (!username || !password || !display_name) {
       return res
         .status(400)
@@ -54,7 +55,7 @@ class HandlerUser implements IHandlerUser {
       .catch((err) => {
         const errMsg = `failed`;
         console.error(errMsg);
-        return res.status(500).json({ error: errMsg });
+        return res.status(500).json({ error: `${errMsg} to register` });
       });
   }
   async login(
@@ -62,6 +63,7 @@ class HandlerUser implements IHandlerUser {
     res: Response
   ): Promise<Response> {
     const { username, password } = req.body;
+
     if (!username || !password) {
       return res
         .status(400)
@@ -75,7 +77,7 @@ class HandlerUser implements IHandlerUser {
         if (!compareHash(password, user.password)) {
           return res
             .status(401)
-            .json({ error: "invalid username or password" })
+            .json({ error: "invalid username or password",statusCode: 401 })
             .end();
         }
         const payload: Payload = { id: user.id, username: user.username };
