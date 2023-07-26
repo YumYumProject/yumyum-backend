@@ -151,52 +151,6 @@ class RepositoryContent implements IRepositoryContent {
     }
   }
 
-  // async getRecipesByFilter(
-  //   material: string,
-  //   process: string,
-  //   nationality: string
-  //   // healthy_concern: string,
-  //   // food_allergen: string
-  // ): Promise<IContent[]> {
-  //   console.log(material);
-  //   console.log(process);
-  //   console.log(nationality);
-
-  //   const query: QueryFilter = {
-  //     "material.name": { $in: material },
-  //     process: { $in: process },
-  //     // healthy_concern: { $in: healthy_concern },
-  //     nationality: { $in: nationality },
-  //   };
-
-  //   if (nationality == "All") {
-  //     delete query["nationality"];
-  //   }
-
-  //   if (process == "All") {
-  //     delete query["process"];
-  //   }
-
-  //   console.log(query);
-
-  //   const recipes = await this.contentModel
-  //     .find(
-  //       query,
-  //       //Projection >> select field that you want to show
-  //       {
-  //         menu_name: true,
-  //         menu_image_url: true,
-  //         average_rating: true,
-  //         _id: true,
-  //       }
-  //     )
-  //     .exec();
-
-  //   console.log("repo", recipes);
-  //   return recipes;
-  // }
-
-
   //__________________________
 
   // async getRecipesByFilter(
@@ -336,10 +290,6 @@ if (food_allergen) {
     console.log("repo", recipes);
     return recipes;
   }
-
-
-
-
 
 
   // async getRecipeById(id: string): Promise<IContent | null> {
@@ -482,19 +432,3 @@ if (food_allergen) {
   }
 }
 
-// createCommentAndUpdateToContent(
-//   "64b7804f60ef0973d0bfb4cf",
-//   "Aroi",
-//   3,
-//   "M",
-//   "64b78131dd55d107e4e5fccc"
-// );
-
-// return await contentModel
-//   .findOneAndUpdate(
-//     { _id: contentId },
-//     { $push: { comment: savedComment._id } },
-//     { new: true }
-//   )
-//   .then((res) => res)
-//   .catch((err) => console.error(err));
