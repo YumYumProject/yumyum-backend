@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { IRepositoryBlacklist } from "../repositories/blacklist.service";
+import { IRepositoryBlacklist } from "../repositories";
+// import { ObjectId } from "mongodb";
 
-export const secret = process.env.JWT_SECRET || "content-secrets";
+export const secret = process.env.JWT_SECRET || "user-secrets";
 
 export interface Payload {
   user_id: string;
@@ -26,7 +27,11 @@ export interface JwtAuthRequest<Params, Body, Query>
   payload: Payload;
 }
 
-export class HandlerMiddleware {
+export function newHandlerMiddleware(repoBlacklist: IRepositoryBlacklist) {
+  return new HandlerMiddleware(repoBlacklist);
+}
+
+class HandlerMiddleware {
   private repoBlacklist: IRepositoryBlacklist;
 
   constructor(repo: IRepositoryBlacklist) {

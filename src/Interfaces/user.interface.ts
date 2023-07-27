@@ -1,4 +1,4 @@
-import { Document, ObjectId } from "mongoose";
+// import { ObjectId } from "mongoose";
 
 export interface ICreateUser {
   username: string;
@@ -8,6 +8,10 @@ export interface ICreateUser {
   food_allergen?: string;
 }
 
-export interface IUser extends Document, ICreateUser {
-  id: ObjectId;
+export interface IUser {
+  id: string;
+  username: string;
+  password: string;
+  display_name: string
+  _doc: ICreateUser;
 }

@@ -1,17 +1,9 @@
-import mongoose, { ObjectId } from "mongoose";
-import { IComment, IContent } from "../Interfaces/content.interface";
+import { IContent } from "../Interfaces/content.interface";
+import { ICreateUser, IUser } from "../Interfaces/user.interface";
 
 export interface IRepositoryContent {
   createContent();
   getAllRecipes(): Promise<IContent[]>;
-  // getRecipesByFilter(
-  //   material: string,
-  //   process: string,
-  //   nationality: string
-  //   // healthy_concern: string,
-  //   // food_allergen: string
-  // ): Promise<IContent[]>;
-
   getRecipesByFilter(
     material: string,
     process: string,
@@ -50,5 +42,11 @@ export interface IRepositoryContent {
 }
 
 export interface IRepositoryUser {
-  createUser();
+  createUser(user: ICreateUser): Promise<IUser>;
+  getUser(username: string): Promise<IUser>;
+  getDataUserById(id: string): Promise<IUser | null>;
+}
+export interface IRepositoryBlacklist {
+  addToBlacklist(token: string): Promise<void>;
+  isBlacklisted(token: string): Promise<boolean>;
 }

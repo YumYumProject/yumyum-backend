@@ -56,8 +56,10 @@ export interface WithCommentBy {
 }
 export interface WithUser {
   username: string;
-  name: string;
   password: string;
+  display_name: string;
+  // healthy_concern?: Enumerator;
+  // food_allergen?: string;
 }
 
 export interface Recipes {
@@ -118,11 +120,11 @@ export interface IHandlerContent {
 }
 
 export interface IHandlerUser {
-  register: HandlerFunc<AppRequest<Empty, WithUser, Empty>>;
-  login: HandlerFunc<AppRequest<Empty, WithUser, Empty>>;
-  logout: HandlerFunc<JwtAuthRequest<Empty, Empty, Empty>>;
-  getDataUser(
+  register(req: AppRequest<Empty, WithUser, Empty>, res: Response): Promise<Response>;
+  login(req: AppRequest<Empty, WithUser, Empty>, res: Response): Promise<Response>;
+  getDataUserById(
     req: JwtAuthRequest<Empty, Empty, Empty>,
     res: Response
   ): Promise<Response>;
+  logout(req: JwtAuthRequest<Empty, Empty, Empty>, res: Response): Promise<Response>;
 }

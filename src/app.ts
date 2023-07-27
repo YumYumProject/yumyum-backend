@@ -1,37 +1,33 @@
 import mongoose from "mongoose";
-import { newRepositoryContent } from "./repositories/content";
-import { newHandlerContent } from "./handlers/content";
 import express from "express";
 import cors from "cors";
-import { HandlerMiddleware } from "./auth/jwt";
-import { newRepositoryBlacklist } from "./repositories/blacklist.service";
+import dotenv from "dotenv";
+
+import { newRepositoryContent } from "./repositories/content";
+import { newHandlerContent } from "./handlers/content";
+import { newRepositoryUser } from "./repositories/user.service";
+import { newHandlerUser } from "./handlers/user";
 import { createClient } from "redis";
+import { expirer } from "./expirer";
+import { newHandlerMiddleware } from "./auth/jwt";
+import { newRepositoryBlacklist } from "./repositories/blacklist.service";
 
-// async function main() {
-
-//   const redis = createClient();
-
-//   try {
-//     redis.connect();
-//     db.$connect();
-//   } catch (err) {
-//     console.error(err);
-//     return;
-//   }
+dotenv.config()
 
 async function main() {
-  const db = await mongoose.connect(
-    `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`
-  );
-
+  // const db = await mongoose.connect(`${process.env.MONGO_URI}`);
+  const db = await mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`);
   const redis = createClient();
-
+  
   try {
     redis.connect();
+    mongoose.set("strictQuery", true);
   } catch (err) {
     console.error(err);
     return;
   }
+
+  expirer(redis);
 
   // const repoUser = newRepositoryUser(db);
   const repoBlacklist = newRepositoryBlacklist(redis);
@@ -39,13 +35,23 @@ async function main() {
 
   const repoContent = newRepositoryContent(db);
   const handlerContent = newHandlerContent(repoContent);
+  const repositoryUser = newRepositoryUser(db);
+  const repositoryoBlacklist = newRepositoryBlacklist(redis);
+  const handlerUser = newHandlerUser(repositoryUser, repositoryoBlacklist);
+  const handlerMiddleware = newHandlerMiddleware(repositoryoBlacklist);
+
   const port = process.env.PORT || 8000;
   const server = express();
 
-  const handlerMiddleware = new HandlerMiddleware(repoBlacklist);
 
   server.use(express.json());
   server.use(cors());
+
+  const userRouter = express.Router();
+  server.use("/user", userRouter);
+
+  const authRouter = express.Router();
+  server.use("/auth", authRouter);
 
   const menuRouter = express.Router();
   const commentRouter = express.Router();
@@ -84,6 +90,22 @@ async function main() {
     handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
     handlerContent.deleteCommentById.bind(handlerContent)
   );
+  userRouter.post("/register", handlerUser.register.bind(handlerUser));
+  authRouter.post("/login", handlerUser.login.bind(handlerUser));
+  authRouter.get("/me",
+  handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+  handlerUser.getDataUserById.bind(handlerUser));
+  authRouter.get(
+    "/logout",
+    handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+    handlerUser.logout.bind(handlerUser)
+  );
+
+  authRouter.use(handlerMiddleware.jwtMiddleware.bind(handlerMiddleware));
+
+  server.get("/", (req, res) => {
+    res.send("Hello, world!");
+  });
 
   server.listen(port, () => console.log(`server listening on ${port}`));
 }
