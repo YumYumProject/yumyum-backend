@@ -54,6 +54,7 @@ async function main() {
   server.use("/comment", commentRouter);
 
   menuRouter.get("/", handlerContent.getRecipesByFilter.bind(handlerContent));
+  
   server.get("/menus", handlerContent.getAllRecipes.bind(handlerContent));
 
   menuRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
@@ -64,9 +65,7 @@ async function main() {
     handlerContent.createCommentAndUpdateToContent.bind(handlerContent)
   );
 
-  server.get("/", (req, res) => {
-    res.send("Hello, world!");
-  });
+  server.get("/", handlerContent.getThreeTopRecipes.bind(handlerContent))
 
   commentRouter.patch(
     "/:id/",

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { JwtAuthRequest } from "../auth/jwt";
+import { IContent } from "../Interfaces/content.interface";
 
 export interface AppRequest<Params, Body, Query>
   extends Request<Params, any, Body, Query> {}
@@ -59,6 +60,13 @@ export interface WithUser {
   password: string;
 }
 
+export interface Recipes {
+    id: string;
+    menu_name: string;
+    menu_image_url: string;
+    average_rating: number;
+}
+
 export interface IHandlerContent {
   //    createContent: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   //   getRecipesByFilter: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
@@ -67,6 +75,12 @@ export interface IHandlerContent {
     // req: Request,
     res: Response
   ): Promise<Response>;
+
+  getThreeTopRecipes(
+    req: AppRequest<Empty, Empty, Empty>,
+    // req: Request,
+    res: Response
+  ): Promise<Response>
   getRecipesByFilter(
     req: AppRequest<Empty, Empty, WithContent>,
     // req: Request<Empty, Empty, Empty, WithContent>,

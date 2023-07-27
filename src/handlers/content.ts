@@ -3,6 +3,7 @@ import {
   AppRequest,
   Empty,
   IHandlerContent,
+  Recipes,
   WithComment,
   WithContent,
   WithDelete,
@@ -18,6 +19,14 @@ import { JwtAuthRequest } from "../auth/jwt";
 // import { IComment } from "../Interfaces/content.interface";
 // import { JwtAuthRequest } from "../auth/jwt";
 
+// interface Recipes {
+//     _id: string;
+//     menu_name: string;
+//     menu_image_url: string;
+//     average_rating: number;
+// }
+
+
 export function newHandlerContent(repo: IRepositoryContent): IHandlerContent {
   return new HandlerContent(repo);
 }
@@ -28,19 +37,76 @@ class HandlerContent implements IHandlerContent {
     this.repo = repo;
   }
 
+  // async getAllRecipes(
+  //   req: AppRequest<Empty, Empty, Empty>,
+  //   // req: Request,
+  //   res: Response
+  // ): Promise<Response> {
+  //   return this.repo
+  //     .getAllRecipes()
+  //     .then((recipes) => res.status(200).json({ data: recipes }).end())
+  //     .catch((err) => {
+  //       console.error(`failed to create content: ${err}`);
+  //       return res.status(500).json({ error: `failed to get contents` }).end();
+  //     }); 
+  // }
+
+
+
+
   async getAllRecipes(
     req: AppRequest<Empty, Empty, Empty>,
     // req: Request,
     res: Response
   ): Promise<Response> {
+
+    const sortRecipesByRating = (recipes: Recipes[]): Recipes[] => {
+    return recipes.sort((a, b) => b.average_rating - a.average_rating);
+}
+
+
     return this.repo
       .getAllRecipes()
-      .then((recipes) => res.status(200).json({ data: recipes }).end())
+      .then((recipes) => {
+            const sortedRecipes = sortRecipesByRating(recipes);
+            return res.status(200).json({ data: sortedRecipes }).end();
+        })
       .catch((err) => {
         console.error(`failed to create content: ${err}`);
         return res.status(500).json({ error: `failed to get contents` }).end();
-      });
+      }); 
   }
+
+  
+
+async getThreeTopRecipes(
+    req: AppRequest<Empty, Empty, Empty>,
+    // req: Request,
+    res: Response
+  ): Promise<Response> {
+
+    const getTopRatedRecipes = (recipes: Recipes[], topN: number): Recipes[] => {
+    return recipes.sort((a, b) => b.average_rating - a.average_rating)
+    .slice(0, topN);
+}
+
+
+    return this.repo
+      .getAllRecipes()
+      .then((recipes) => {
+            const topRatedRecipes = getTopRatedRecipes(recipes, 3);
+            return res.status(200).json({ data: topRatedRecipes }).end();
+        })
+      .catch((err) => {
+        console.error(`failed to create content: ${err}`);
+        return res.status(500).json({ error: `failed to get contents` }).end();
+      }); 
+  }
+
+
+
+
+
 
   async getRecipesByFilter(
     req: AppRequest<Empty, Empty, WithContent>,
