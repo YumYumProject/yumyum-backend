@@ -82,7 +82,6 @@ class RepositoryContent implements IRepositoryContent {
         {
           menu_name: true,
           menu_image_url: true,
-          calories: true,
       
           average_rating: true,
 
