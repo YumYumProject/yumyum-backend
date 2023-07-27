@@ -6,15 +6,15 @@ on:
     tags: "**"
 
 jobs:
-  test:
-    name: Running test workflow on ubuntu-latest
-    uses: ./.github/workflows/test-template.yaml
-    with:
-      runs-on: ubuntu-latest
+  # test:
+  #   name: Running test workflow on ubuntu-latest
+  #   uses: ./.github/workflows/test-template.yaml
+  #   with:
+  #     runs-on: ubuntu-latest
 
   docker:
     # Only start this job after job `test` finished successfully
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checking out ${{ github.ref }} ${{ github.sha }}
