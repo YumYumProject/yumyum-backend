@@ -12,8 +12,7 @@ import { newHandlerMiddleware } from "./auth/jwt";
 import { newRepositoryBlacklist } from "./repositories/blacklist.service";
 
 async function main() {
-  const db = await mongoose.connect(
-    `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.58yc13x.mongodb.net/yumyum?retryWrites=true&w=majority`
+  const db = await mongoose.connect(`${process.env.MONGO_URI}`
   );
   const redis = createClient();
 
