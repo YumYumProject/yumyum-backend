@@ -2,13 +2,10 @@ import { RedisClientType } from "redis";
 
 import jwt from "jsonwebtoken";
 
-export const keyBlacklist = "content-jwt-blacklist";
-export const keyJwtExpire = "todo-jwt-expirations";
+import { IRepositoryBlacklist } from ".";
 
-export interface IRepositoryBlacklist {
-  addToBlacklist(token: string): Promise<void>;
-  isBlacklisted(token: string): Promise<boolean>;
-}
+export const keyBlacklist = "user-jwt-blacklist";
+export const keyJwtExpire = "user-jwt-expirations";
 
 export function newRepositoryBlacklist(
   db: RedisClientType<any, any, any>

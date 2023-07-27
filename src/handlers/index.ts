@@ -19,26 +19,31 @@ export interface WithContent {
 
 export interface WithUser {
   username: string;
-  name: string;
   password: string;
+  display_name: string;
+  // healthy_concern?: Enumerator;
+  // food_allergen?: string;
 }
 
 export interface IHandlerContent {
   //    createContent: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   //   getRecipesByFilter: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
-  getAllRecipes(req: Request, res: Response): Promise<Response>
-  getRecipesByFilter(req: Request<Empty,Empty,Empty,WithContent>, res: Response): Promise<Response> 
+  getAllRecipes(req: Request, res: Response): Promise<Response>;
+  getRecipesByFilter(
+    req: Request<Empty, Empty, Empty, WithContent>,
+    res: Response
+  ): Promise<Response>;
   getRecipeById(req: Request, res: Response): Promise<Response>;
 
   //    getContent: HandlerFunc<JwtAuthRequest<WithId, any>>;
 }
 
 export interface IHandlerUser {
-  register: HandlerFunc<AppRequest<Empty, WithUser>>;
-  login: HandlerFunc<AppRequest<Empty, WithUser>>;
-  logout: HandlerFunc<JwtAuthRequest<Empty, Empty>>;
-  getDataUser(
+  register(req: AppRequest<Empty, WithUser>, res: Response): Promise<Response>;
+  login(req: AppRequest<Empty, WithUser>, res: Response): Promise<Response>;
+  getDataUserById(
     req: JwtAuthRequest<Empty, Empty>,
     res: Response
   ): Promise<Response>;
+  logout(req: JwtAuthRequest<Empty, Empty>, res: Response): Promise<Response>;
 }
