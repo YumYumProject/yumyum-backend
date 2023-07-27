@@ -29,7 +29,7 @@ export interface IGetComment {
 }
 export interface ICommentBy {
   display_name: string;
-  user_id: ObjectId;
+  user_id: string;
 }
 
 // export interface IRating extends Document {

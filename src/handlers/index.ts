@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { JwtAuthRequest } from "../auth/jwt";
 
-export interface AppRequest<Params, Body> extends Request<Params, any, Body> {}
+export interface AppRequest<Params, Body, Query>
+  extends Request<Params, any, Body, Query> {}
 
 export type HandlerFunc<Req> = (req: Req, res: Response) => Promise<Response>;
 
@@ -11,6 +12,9 @@ export interface WithId {
   id: string;
 }
 
+export interface WithUserId {
+  user_id: string;
+}
 export interface WithContent {
   material: string;
   process: string;
@@ -20,6 +24,7 @@ export interface WithContent {
 }
 
 export interface WithComment {
+  user_id: string;
   description: string;
   rating: number;
 }
@@ -57,27 +62,41 @@ export interface WithUser {
 export interface IHandlerContent {
   //    createContent: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
   //   getRecipesByFilter: HandlerFunc<JwtAuthRequest<Empty, WithContent>>;
-  getAllRecipes(req: Request, res: Response): Promise<Response>;
+  getAllRecipes(
+    req: AppRequest<Empty, Empty, Empty>,
+    // req: Request,
+    res: Response
+  ): Promise<Response>;
   getRecipesByFilter(
-    req: Request<Empty, Empty, Empty, WithContent>,
+    req: AppRequest<Empty, Empty, WithContent>,
+    // req: Request<Empty, Empty, Empty, WithContent>,
     res: Response
   ): Promise<Response>;
-  getRecipeById(req: Request, res: Response): Promise<Response>;
+  getRecipeById(
+    req: AppRequest<WithId, Empty, Empty>,
+    res: Response
+  ): Promise<Response>;
   createCommentAndUpdateToContent(
-    req: Request<WithId, Empty, WithNewComment>,
+    req: JwtAuthRequest<WithId, WithNewComment, Empty>,
+    // req: Request<WithId, Empty, WithNewComment>,
     res: Response
   ): Promise<Response>;
+
   editComment(
-    req: Request<WithId, Empty, WithComment, WithEditComment>,
+    req: JwtAuthRequest<WithId, WithComment, WithEditComment>,
+    // req: Request<WithId, Empty, WithComment, WithEditComment>,
     res: Response
   ): Promise<Response>;
+
   deleteCommentById(
-    req: Request<WithId, Empty,Empty, WithDelete>,
+    req: JwtAuthRequest<WithId, WithUserId, WithDelete>,
+    // req: Request<WithId, Empty,Empty, WithDelete>,
     res: Response
-  ): Promise<Response>
+  ): Promise<Response>;
 
   getCommentById(
-    req: Request<WithId, Empty, Empty, WithGetComment>,
+    req: JwtAuthRequest<WithId, Empty, WithGetComment>,
+    // req: Request<WithId, Empty, Empty, WithGetComment>,
     res: Response
   ): Promise<Response>;
 
@@ -85,11 +104,11 @@ export interface IHandlerContent {
 }
 
 export interface IHandlerUser {
-  register: HandlerFunc<AppRequest<Empty, WithUser>>;
-  login: HandlerFunc<AppRequest<Empty, WithUser>>;
-  logout: HandlerFunc<JwtAuthRequest<Empty, Empty>>;
+  register: HandlerFunc<AppRequest<Empty, WithUser, Empty>>;
+  login: HandlerFunc<AppRequest<Empty, WithUser, Empty>>;
+  logout: HandlerFunc<JwtAuthRequest<Empty, Empty, Empty>>;
   getDataUser(
-    req: JwtAuthRequest<Empty, Empty>,
+    req: JwtAuthRequest<Empty, Empty, Empty>,
     res: Response
   ): Promise<Response>;
 }

@@ -6,7 +6,7 @@ import {
   IGetComment,
 } from "../Interfaces/content.interface";
 import { IRepositoryContent } from "./index";
-import mongoose, { Model, Mongoose } from "mongoose";
+import mongoose, { Model, Mongoose, ObjectId } from "mongoose";
 
 import data from "../../recipe.js";
 import { commentSchema } from "../models/comment.model";
@@ -25,8 +25,6 @@ import { commentSchema } from "../models/comment.model";
 //   healthy_concern?: object;
 // }
 
-
-
 interface QueryFilter {
   "material.name"?: {
     $regex?: string;
@@ -44,7 +42,6 @@ interface QueryFilter {
     $in: string;
   };
 }
-
 
 export function newRepositoryContent(db: Mongoose): IRepositoryContent {
   return new RepositoryContent(db);
@@ -175,8 +172,6 @@ class RepositoryContent implements IRepositoryContent {
   //     nationality: { $in: nationality },
   //   };
 
-  
-
   //   if (nationality === "All") {
   //     delete query["nationality"];
   //   }
@@ -186,7 +181,6 @@ class RepositoryContent implements IRepositoryContent {
   //   }
 
   //   console.log("food allergen",typeof food_allergen)
-
 
   //   if (food_allergen === "") {
   //     delete query["food_allergen"];
@@ -215,10 +209,7 @@ class RepositoryContent implements IRepositoryContent {
   //   return recipes;
   // }
 
-
-    //__________________________
-
-
+  //__________________________
 
   async getRecipesByFilter(
     material: string,
@@ -237,21 +228,18 @@ class RepositoryContent implements IRepositoryContent {
       nationality: { $in: nationality },
     };
 
+    // Add condition for material name based on the material input value
+    if (material) {
+      query["material.name"] = { $regex: material };
+    }
 
-// Add condition for material name based on the material input value
-if (material) {
-  query["material.name"] = { $regex: material };
-}
-
-// If food_allergen is not an empty string, modify the material.name condition to include the $not condition
-if (food_allergen) {
-  if (!query["material.name"]) {
-    query["material.name"] = {};  // Initialize it if it doesn't exist
-  }
-  query["material.name"].$not = { $regex: food_allergen };
-}
-
-  
+    // If food_allergen is not an empty string, modify the material.name condition to include the $not condition
+    if (food_allergen) {
+      if (!query["material.name"]) {
+        query["material.name"] = {}; // Initialize it if it doesn't exist
+      }
+      query["material.name"].$not = { $regex: food_allergen };
+    }
 
     if (nationality === "All") {
       delete query["nationality"];
@@ -261,8 +249,7 @@ if (food_allergen) {
       delete query["process"];
     }
 
-    console.log("food allergen",typeof food_allergen)
-
+    console.log("food allergen", typeof food_allergen);
 
     if (food_allergen === "") {
       delete query["food_allergen"];
@@ -272,7 +259,7 @@ if (food_allergen) {
       delete query["healthy_concern"];
     }
 
-    console.log("query" ,query);
+    console.log("query", query);
 
     const recipes = await this.contentModel
       .find(
@@ -290,7 +277,6 @@ if (food_allergen) {
     console.log("repo", recipes);
     return recipes;
   }
-
 
   // async getRecipeById(id: string): Promise<IContent | null> {
   //   try {
@@ -363,6 +349,7 @@ if (food_allergen) {
   }
 
   async editComment(
+    user_id: string,
     content_id: string,
     comment_id: string,
     newDescription: string,
@@ -384,6 +371,10 @@ if (food_allergen) {
         return Promise.reject(`no such comment`);
       }
 
+      if (res.comment[0].comment_by.user_id !== user_id) {
+        return Promise.reject(`bad userId: ${user_id}`);
+      }
+
       // console.log("gibbbbbbbbbbbbbbbbbbb\n\n\n\n\n");
 
       // const c = res.comment[0];
@@ -396,9 +387,13 @@ if (food_allergen) {
   }
 
   async deleteCommentById(
+    user_id: string,
     content_id: string,
     comment_id: string
   ): Promise<void> {
+    if (!user_id) {
+      return Promise.reject(`failed to authorize`);
+    }
     return await this.contentModel
       .updateOne(
         { _id: content_id },
@@ -411,6 +406,7 @@ if (food_allergen) {
   }
 
   async getCommentById(
+    user_id: string,
     content_id: string,
     comment_id: string
   ): Promise<IContent> {
@@ -425,10 +421,13 @@ if (food_allergen) {
         return Promise.reject(`comment ${comment_id} not found`);
       }
 
+      if (comment.comment[0].comment_by.user_id !== user_id) {
+        return Promise.reject(`bad userId: ${user_id}`);
+      }
+
       return Promise.resolve(comment);
     } catch (error) {
       return Promise.reject(`failed to get comment ${comment_id}:${error}`);
     }
   }
 }
-

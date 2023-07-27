@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { ObjectId } from "mongoose";
 import { IComment, IContent } from "../Interfaces/content.interface";
 
 export interface IRepositoryContent {
@@ -31,13 +31,22 @@ export interface IRepositoryContent {
 
   updateAverageRatingForContent(contentId: string): Promise<IContent>;
   editComment(
+    user_id: string,
     content_id: string,
     comment_id: string,
     newDescription: string,
     newRating: number
   ): Promise<IContent>;
-  deleteCommentById(content_id: string, comment_id: string): Promise<void>;
-  getCommentById(content_id: string, comment_id: string): Promise<IContent>;
+  deleteCommentById(
+    user_id: string,
+    content_id: string,
+    comment_id: string
+  ): Promise<void>;
+  getCommentById(
+    user_id: string,
+    content_id: string,
+    comment_id: string
+  ): Promise<IContent>;
 }
 
 export interface IRepositoryUser {

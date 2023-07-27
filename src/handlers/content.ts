@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import {
+  AppRequest,
   Empty,
   IHandlerContent,
   WithComment,
@@ -10,8 +11,10 @@ import {
   // WithEditComment,
   WithId,
   WithNewComment,
+  WithUserId,
 } from ".";
 import { IRepositoryContent } from "../repositories";
+import { JwtAuthRequest } from "../auth/jwt";
 // import { IComment } from "../Interfaces/content.interface";
 // import { JwtAuthRequest } from "../auth/jwt";
 
@@ -25,7 +28,11 @@ class HandlerContent implements IHandlerContent {
     this.repo = repo;
   }
 
-  async getAllRecipes(req: Request, res: Response): Promise<Response> {
+  async getAllRecipes(
+    req: AppRequest<Empty, Empty, Empty>,
+    // req: Request,
+    res: Response
+  ): Promise<Response> {
     return this.repo
       .getAllRecipes()
       .then((recipes) => res.status(200).json({ data: recipes }).end())
@@ -36,7 +43,8 @@ class HandlerContent implements IHandlerContent {
   }
 
   async getRecipesByFilter(
-    req: Request<Empty, Empty, Empty, WithContent>,
+    req: AppRequest<Empty, Empty, WithContent>,
+    // req: Request<Empty, Empty, Empty, WithContent>,
     res: Response
   ): Promise<Response> {
     // const { material, process, nationality } = req.query;
@@ -81,7 +89,10 @@ class HandlerContent implements IHandlerContent {
 
   //question get/ post for getRecipesByFilters
 
-  async getRecipeById(req: Request, res: Response): Promise<Response> {
+  async getRecipeById(
+    req: AppRequest<WithId, Empty, Empty>,
+    res: Response
+  ): Promise<Response> {
     const id = String(req.params.id);
     // question about type of id
 
@@ -111,12 +122,20 @@ class HandlerContent implements IHandlerContent {
   }
 
   async createCommentAndUpdateToContent(
-    req: Request<WithId, Empty, WithNewComment>,
+    req: JwtAuthRequest<WithId, WithNewComment, Empty>,
+    // req: Request<WithId, Empty, WithNewComment>,
     res: Response
   ): Promise<Response> {
     const content_id = String(req.params.id);
 
-    const { description, rating, display_name, user_id } = req.body;
+    const display_name = req.payload.display_name;
+    const user_id = req.payload.user_id;
+
+    // if (!user_id) {
+    //   return res.status(400).end();
+    // }
+
+    const { description, rating } = req.body;
     //  const { description, rating, user_id } = req.body;
 
     if (!req.body) {
@@ -142,10 +161,51 @@ class HandlerContent implements IHandlerContent {
     }
   }
 
+  // async editComment(
+  //   req: JwtAuthRequest<WithId, WithComment, WithEditComment>,
+  //   // req: Request<WithId, Empty, WithComment, WithEditComment>,
+  //   res: Response
+  // ): Promise<Response> {
+  //   const { user_id, username, display_name } = req.payload;
+  //   const content_id = String(req.params.id);
+  //   const { comment_id } = req.query;
+
+  //   const { description, rating } = req.body;
+
+  //   if (!req.body) {
+  //     return res.status(400).json({ error: "missing msg in json body" }).end();
+  //   }
+
+  //   try {
+  //     const x = await this.repo.getCommentById(content_id, comment_id);
+  //     if (user_id === String(x.comment[0].comment_by.user_id))
+  //       await this.repo.editComment(
+  //         content_id,
+  //         comment_id,
+  //         description,
+  //         rating
+  //       );
+  //     else
+  //       return res
+  //         .status(403)
+  //         .json({ error: "user is not authorized to update the comment" })
+  //         .end();
+  //     const updated = await this.repo.updateAverageRatingForContent(content_id);
+
+  //     return res.status(201).json(updated).end();
+  //   } catch (err) {
+  //     const errMsg = `failed to edit comment ${content_id}: ${err}`;
+  //     console.error(errMsg);
+  //     return res.status(500).json({ error: errMsg }).end();
+  //   }
+  // }
+
   async editComment(
-    req: Request<WithId, Empty, WithComment, WithEditComment>,
+    req: JwtAuthRequest<WithId, WithComment, WithEditComment>,
+    // req: Request<WithId, Empty, WithComment, WithEditComment>,
     res: Response
   ): Promise<Response> {
+    const { user_id } = req.payload;
     const content_id = String(req.params.id);
     const { comment_id } = req.query;
 
@@ -156,7 +216,20 @@ class HandlerContent implements IHandlerContent {
     }
 
     try {
-      await this.repo.editComment(content_id, comment_id, description, rating);
+      // const x = await this.repo.getCommentById(content_id, comment_id);
+      // if (user_id === String(x.comment[0].comment_by.user_id))
+      await this.repo.editComment(
+        user_id,
+        content_id,
+        comment_id,
+        description,
+        rating
+      );
+      // else
+      //   return res
+      //     .status(403)
+      //     .json({ error: "user is not authorized to update the comment" })
+      //     .end();
       const updated = await this.repo.updateAverageRatingForContent(content_id);
 
       return res.status(201).json(updated).end();
@@ -168,14 +241,16 @@ class HandlerContent implements IHandlerContent {
   }
 
   async deleteCommentById(
-    req: Request<WithId, Empty,Empty, WithDelete>,
+    req: JwtAuthRequest<WithId, WithUserId, WithDelete>,
+    // req: Request<WithId, Empty,Empty, WithDelete>,
     res: Response
   ): Promise<Response> {
     const content_id = String(req.params.id);
     const { comment_id } = req.query;
+    const { user_id } = req.payload;
 
     try {
-      await this.repo.deleteCommentById(content_id, comment_id);
+      await this.repo.deleteCommentById(user_id, content_id, comment_id);
 
       const updated = await this.repo.updateAverageRatingForContent(content_id);
 
@@ -188,10 +263,13 @@ class HandlerContent implements IHandlerContent {
   }
 
   async getCommentById(
-    req: Request<WithId, Empty, Empty, WithGetComment>,
+    req: JwtAuthRequest<WithId, WithUserId, WithGetComment>,
+    // req: Request<WithId, Empty, Empty, WithGetComment>,
     res: Response
   ): Promise<Response> {
     const content_id = String(req.params.id);
+
+    const user_id = req.payload.user_id;
 
     const { comment_id } = req.query;
 
@@ -205,7 +283,7 @@ class HandlerContent implements IHandlerContent {
     }
 
     return this.repo
-      .getCommentById(content_id, comment_id)
+      .getCommentById(user_id, content_id, comment_id)
       .then((comment) => {
         if (!comment) {
           return res
