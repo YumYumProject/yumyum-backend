@@ -6,8 +6,9 @@ import { IRepositoryBlacklist } from "../repositories";
 export const secret = process.env.JWT_SECRET || "user-secrets";
 
 export interface Payload {
-  id: string;
+  user_id: string;
   username: string;
+  display_name: string;
 }
 
 export function newJwt(payload: Payload): string {
@@ -20,8 +21,8 @@ export function newJwt(payload: Payload): string {
   });
 }
 
-export interface JwtAuthRequest<Params, Body>
-  extends Request<Params, any, Body> {
+export interface JwtAuthRequest<Params, Body, Query>
+  extends Request<Params, any, Body, Query> {
   token: string;
   payload: Payload;
 }
@@ -38,7 +39,7 @@ class HandlerMiddleware {
   }
 
   async jwtMiddleware(
-    req: JwtAuthRequest<any, any>,
+    req: JwtAuthRequest<any, any, any>,
     res: Response,
     next: NextFunction
   ) {
@@ -58,10 +59,11 @@ class HandlerMiddleware {
       }
 
       const decoded = jwt.verify(token, secret);
-      const id = decoded["id"];
+      const user_id = decoded["id"];
       const username = decoded["username"];
+      const display_name = decoded["display_name"];
 
-      if (!id) {
+      if (!user_id) {
         return res.status(401).json({ error: "missing payload `id`" }).end();
       }
       if (!username) {
@@ -73,8 +75,9 @@ class HandlerMiddleware {
 
       req.token = token;
       req.payload = {
-        id,
+        user_id,
         username,
+        display_name,
       };
 
       return next();

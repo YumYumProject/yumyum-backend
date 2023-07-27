@@ -11,11 +11,25 @@ export interface ICookingStep extends Document {
   description: string;
 }
 
-export interface IComment extends Document {
+export interface IComment {
+  content_id: ObjectId;
+  id: ObjectId;
   description: string;
   rating: number;
-  commentBy: string;
+  comment_by: ICommentBy;
   commentedAt: Date;
+}
+
+export interface IGetComment {
+  id: ObjectId;
+  description: string;
+  rating: number;
+  comment_by: ICommentBy;
+  commentedAt: Date;
+}
+export interface ICommentBy {
+  display_name: string;
+  user_id: string;
 }
 
 // export interface IRating extends Document {
@@ -28,7 +42,7 @@ export interface ICalories extends Document {
 }
 
 export interface IContent extends Document, IContentDto {
-  id: ObjectId;
+  id: string;
   description: string;
 
   calories: ICalories;

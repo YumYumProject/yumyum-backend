@@ -24,7 +24,7 @@ class HandlerUser implements IHandlerUser {
   }
 
   async register(
-    req: AppRequest<Empty, WithUser>,
+    req: AppRequest<Empty, WithUser, Empty>,
     res: Response
   ): Promise<Response> {
     const { username, password, display_name } = req.body;
@@ -59,7 +59,7 @@ class HandlerUser implements IHandlerUser {
       });
   }
   async login(
-    req: AppRequest<Empty, WithUser>,
+    req: AppRequest<Empty, WithUser, Empty>,
     res: Response
   ): Promise<Response> {
     const { username, password } = req.body;
@@ -80,7 +80,7 @@ class HandlerUser implements IHandlerUser {
             .json({ error: "invalid username or password",statusCode: 401 })
             .end();
         }
-        const payload: Payload = { id: user.id, username: user.username };
+        const payload: Payload = { user_id: user.id, username: user.username, display_name: user.display_name };
         const token = newJwt(payload);
 
         return res
@@ -100,17 +100,17 @@ class HandlerUser implements IHandlerUser {
   }
 
   async getDataUserById(
-    req: JwtAuthRequest<Empty, Empty>,
+    req: JwtAuthRequest<Empty, Empty, Empty>,
     res: Response
   ): Promise<Response> {
-    if (!req.payload.id) {
+    if (!req.payload.user_id) {
       return res.status(400).json({ error: "wrong username or password" });
     }
 
-    console.log(req.payload.id);
+    console.log(req.payload.user_id);
 
     return this.repo
-      .getDataUserById(req.payload.id)
+      .getDataUserById(req.payload.user_id)
       .then((user) => res.status(200).json(user))
       .catch((err) => {
         const errMsg = `failed to get id`;
@@ -120,7 +120,7 @@ class HandlerUser implements IHandlerUser {
       });
   }
   async logout(
-    req: JwtAuthRequest<Empty, Empty>,
+    req: JwtAuthRequest<Empty, Empty, Empty>,
     res: Response
   ): Promise<Response> {
     return await this.RepositoryBlacklist.addToBlacklist(req.token)

@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
-import { newRepositoryContent } from "./repositories/content";
-import { newHandlerContent } from "./handlers/content";
 import express from "express";
 import cors from "cors";
-import "dotenv/config";
+import dotenv from "dotenv";
+
+import { newRepositoryContent } from "./repositories/content";
+import { newHandlerContent } from "./handlers/content";
 import { newRepositoryUser } from "./repositories/user.service";
 import { newHandlerUser } from "./handlers/user";
 import { createClient } from "redis";
@@ -11,19 +12,26 @@ import { expirer } from "./expirer";
 import { newHandlerMiddleware } from "./auth/jwt";
 import { newRepositoryBlacklist } from "./repositories/blacklist.service";
 
-async function main() {
-  const db = await mongoose.connect(`${process.env.MONGO_URI}`
-  );
-  const redis = createClient();
+dotenv.config()
 
+async function main() {
+  // const db = await mongoose.connect(`${process.env.MONGO_URI}`);
+  const db = await mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`);
+  const redis = createClient();
+  
   try {
     redis.connect();
+    mongoose.set("strictQuery", true);
   } catch (err) {
     console.error(err);
     return;
   }
 
   expirer(redis);
+
+  // const repoUser = newRepositoryUser(db);
+  const repoBlacklist = newRepositoryBlacklist(redis);
+  // const handlerUser = newHandlerUser(repoUser, repoBlacklist);
 
   const repoContent = newRepositoryContent(db);
   const handlerContent = newHandlerContent(repoContent);
@@ -35,6 +43,7 @@ async function main() {
   const port = process.env.PORT || 8000;
   const server = express();
 
+
   server.use(express.json());
   server.use(cors());
 
@@ -45,13 +54,42 @@ async function main() {
   server.use("/auth", authRouter);
 
   const menuRouter = express.Router();
+  const commentRouter = express.Router();
+
   server.use("/menu", menuRouter);
+  server.use("/comment", commentRouter);
 
   menuRouter.get("/", handlerContent.getRecipesByFilter.bind(handlerContent));
+  
   server.get("/menus", handlerContent.getAllRecipes.bind(handlerContent));
 
   menuRouter.get("/:id", handlerContent.getRecipeById.bind(handlerContent));
 
+  menuRouter.post(
+    "/:id",
+    handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+    handlerContent.createCommentAndUpdateToContent.bind(handlerContent)
+  );
+
+  server.get("/", handlerContent.getThreeTopRecipes.bind(handlerContent))
+
+  commentRouter.patch(
+    "/:id/",
+    handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+    handlerContent.editComment.bind(handlerContent)
+  );
+
+  commentRouter.get(
+    "/:id",
+    handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+    handlerContent.getCommentById.bind(handlerContent)
+  );
+
+  commentRouter.delete(
+    "/:id",
+    handlerMiddleware.jwtMiddleware.bind(handlerMiddleware),
+    handlerContent.deleteCommentById.bind(handlerContent)
+  );
   userRouter.post("/register", handlerUser.register.bind(handlerUser));
   authRouter.post("/login", handlerUser.login.bind(handlerUser));
   authRouter.get("/me",

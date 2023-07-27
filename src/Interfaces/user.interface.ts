@@ -12,5 +12,6 @@ export interface IUser {
   id: string;
   username: string;
   password: string;
+  display_name: string
   _doc: ICreateUser;
 }

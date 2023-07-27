@@ -6,12 +6,6 @@ import { IRepositoryUser } from ".";
 import { ICreateUser, IUser } from "../Interfaces/user.interface";
 // import { ObjectId } from "mongodb";
 
-mongoose.set("strictQuery", true);
-
-mongoose.connect(
-  `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.58yc13x.mongodb.net/yumyum?retryWrites=true&w=majority`
-);
-
 export function newRepositoryUser(db: Mongoose): IRepositoryUser {
   return new RepositoryUser(db);
 }
