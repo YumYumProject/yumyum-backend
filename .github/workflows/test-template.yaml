@@ -1,0 +1,39 @@
+name: Test TypeScript code on Node.js >=18.x and latest
+
+on:
+  # Allow this workflow to be reused/called
+  workflow_call:
+    inputs:
+      runs-on:
+        type: string
+        required: false
+        description: OS type to run this job on
+        default: ubuntu-latest
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-nodejs:
+    name: Test Node.js TypeScript code for event ${{ github.event_name }} on ${{ github.ref }}
+    strategy:
+      matrix:
+        nodeversion: [">=18.x", latest]
+
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+      - name: Checking out ${{ github.ref }} ${{ github.sha }}
+        uses: actions/checkout@v3
+      - name: Setup Node.js ${{ matrix.nodeversion }} on ${{ inputs.runs-on }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.nodeversion }}
+      - name: Setup pnpm@latest with Node.js ${{ matrix.nodeversion }} on ${{ inputs.runs-on }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Installing dependencies with `pnpm install`
+        run: pnpm install
+      - name: Running Jest tests with Node.js ${{ matrix.nodeversion }} on ${{ inputs.runs-on }}
+        run: pnpm test
