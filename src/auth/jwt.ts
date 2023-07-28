@@ -1,5 +1,5 @@
+import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { Request, Response, NextFunction } from "express";
 import { IRepositoryBlacklist } from "../repositories";
 // import { ObjectId } from "mongodb";
 
@@ -59,7 +59,7 @@ class HandlerMiddleware {
       }
 
       const decoded = jwt.verify(token, secret);
-      const user_id = decoded["id"];
+      const user_id = decoded["user_id"];
       const username = decoded["username"];
       const display_name = decoded["display_name"];
 
