@@ -111,6 +111,10 @@ async getThreeTopRecipes(
   ): Promise<Response> {
     // const { material, process, nationality } = req.query;
 
+       const sortRecipesByRating = (recipes: Recipes[]): Recipes[] => {
+    return recipes.sort((a, b) => b.average_rating - a.average_rating);
+}
+
     const { material, process, nationality, healthy_concern, food_allergen } =
       req.query;
 
@@ -140,7 +144,9 @@ async getThreeTopRecipes(
             })
             .end();
         }
-        return res.status(200).json(recipes).end();
+       const sortedRecipes = sortRecipesByRating(recipes);
+       
+            return res.status(200).json(sortedRecipes ).end();
       })
       .catch((err) => {
         const errMsg = `failed to get content by filters`;
