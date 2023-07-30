@@ -411,7 +411,7 @@ class RepositoryContent implements IRepositoryContent {
     user_id: string,
     content_id: string,
     comment_id: string
-  ): Promise<IContent> {
+  ): Promise<IComment> {
     try {
       const comment = await this.contentModel.findOne(
         { _id: content_id, "comment._id": comment_id },
@@ -423,11 +423,11 @@ class RepositoryContent implements IRepositoryContent {
         return Promise.reject(`comment ${comment_id} not found`);
       }
 
-      if (comment.comment[0].comment_by.user_id !== user_id) {
+      if (String(comment.comment[0].comment_by.user_id) !== user_id) {
         return Promise.reject(`bad userId: ${user_id}`);
       }
 
-      return Promise.resolve(comment);
+      return Promise.resolve(comment.comment[0]);
     } catch (error) {
       return Promise.reject(`failed to get comment ${comment_id}:${error}`);
     }

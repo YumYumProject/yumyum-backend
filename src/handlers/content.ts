@@ -357,7 +357,7 @@ async getThreeTopRecipes(
         return res.status(200).json(comment).end();
       })
       .catch((err) => {
-        const errMsg = `failed to get recipe ${comment_id}: ${err}`;
+        const errMsg = `failed to get recipe ${content_id}: ${err}`;
         console.error(errMsg);
         return res.status(500).json({ error: errMsg });
       });

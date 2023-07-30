@@ -1,4 +1,4 @@
-import { IContent } from "../Interfaces/content.interface";
+import { IComment, IContent } from "../Interfaces/content.interface";
 import { ICreateUser, IUser } from "../Interfaces/user.interface";
 
 export interface IRepositoryContent {
@@ -38,7 +38,7 @@ export interface IRepositoryContent {
     user_id: string,
     content_id: string,
     comment_id: string
-  ): Promise<IContent>;
+  ): Promise<IComment>;
 }
 
 export interface IRepositoryUser {
