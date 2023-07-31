@@ -17,7 +17,7 @@ dotenv.config()
 async function main() {
   // const db = await mongoose.connect(`${process.env.MONGO_URI}`);
   const db = await mongoose.connect(`${process.env.MONGO_URI}`)
-  const redis = createClient();
+  const redis = createClient<any,any,any>({url: process.env.REDIS_URL});
   
   try {
     redis.connect();

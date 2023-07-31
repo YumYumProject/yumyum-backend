@@ -43,7 +43,6 @@ class HandlerUser implements IHandlerUser {
       })
 
       .then((user) => {
-        console.log(user);
         return res
           .status(201)
           .json({
@@ -106,8 +105,6 @@ class HandlerUser implements IHandlerUser {
     if (!req.payload.user_id) {
       return res.status(400).json({ error: "wrong username or password" });
     }
-
-    console.log(req.payload.user_id);
 
     return this.repo
       .getDataUserById(req.payload.user_id)
