@@ -341,6 +341,7 @@ class RepositoryContent implements IRepositoryContent {
       (acc, comment: IComment) => acc + comment.rating,
       0
     );
+    
     const averageRating = totalRatings / content.comment.length;
     const roundedAverageRating = Math.round(averageRating);
 
@@ -368,12 +369,13 @@ class RepositoryContent implements IRepositoryContent {
         }
       );
 
+      
       // console.log("Hi from repo");
       if (!res) {
         return Promise.reject(`no such comment`);
       }
 
-      if (res.comment[0].comment_by.user_id !== user_id) {
+      if (String(res.comment[0].comment_by.user_id) !== user_id) {
         return Promise.reject(`bad userId: ${user_id}`);
       }
 
