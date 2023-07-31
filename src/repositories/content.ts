@@ -8,7 +8,7 @@ import {
 import { IRepositoryContent } from "./index";
 import mongoose, { Model, Mongoose, ObjectId } from "mongoose";
 
-import data from "../../recipe.js";
+import data from "../../recipeU";
 import { commentSchema } from "../models/comment.model";
 // import { commentSchema } from "../models/comment.model";
 
