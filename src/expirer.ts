@@ -26,10 +26,7 @@ async function expire(redis: RedisClientType<any, any, any>) {
       return;
     }
 
-    console.log({ now, token, exp });
-
     if (now >= exp) {
-      console.log(`expiring ${token} at ${exp}`);
       await redis.sRem(keyBlacklist, token);
       await redis.hDel(keyJwtExpire, token);
     }

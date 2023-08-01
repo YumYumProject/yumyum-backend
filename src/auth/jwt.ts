@@ -59,7 +59,7 @@ class HandlerMiddleware {
       }
 
       const decoded = jwt.verify(token, secret);
-      const user_id = decoded["id"];
+      const user_id = decoded["user_id"];
       const username = decoded["username"];
       const display_name = decoded["display_name"];
 

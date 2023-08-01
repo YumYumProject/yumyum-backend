@@ -8,7 +8,7 @@ import {
 import { IRepositoryContent } from "./index";
 import mongoose, { Model, Mongoose, ObjectId } from "mongoose";
 
-import data from "../../recipe.js";
+import data from "../../recipeU";
 import { commentSchema } from "../models/comment.model";
 // import { commentSchema } from "../models/comment.model";
 
@@ -143,7 +143,7 @@ class RepositoryContent implements IRepositoryContent {
       if (!recipe) {
         return Promise.reject(`recipe ${id} not found`);
       }
-      console.log(recipe);
+
       return Promise.resolve(recipe);
     } catch (error) {
       return Promise.reject(`failed to get content ${id}:${error}`);
@@ -220,9 +220,6 @@ class RepositoryContent implements IRepositoryContent {
     healthy_concern: string,
     food_allergen: string
   ): Promise<IContent[]> {
-    console.log(material);
-    console.log(process);
-    console.log(nationality);
 
     const query: QueryFilter = {
       process: { $in: process },
@@ -251,8 +248,6 @@ class RepositoryContent implements IRepositoryContent {
       delete query["process"];
     }
 
-    console.log("food allergen", typeof food_allergen);
-
     if (food_allergen === "") {
       delete query["food_allergen"];
     }
@@ -260,8 +255,6 @@ class RepositoryContent implements IRepositoryContent {
     if (healthy_concern === "") {
       delete query["healthy_concern"];
     }
-
-    console.log("query", query);
 
     const recipes = await this.contentModel
       .find(
@@ -276,7 +269,6 @@ class RepositoryContent implements IRepositoryContent {
       )
       .exec();
 
-    console.log("repo", recipes);
     return recipes;
   }
 
@@ -335,14 +327,14 @@ class RepositoryContent implements IRepositoryContent {
       throw new Error("Content not found");
     }
 
-    console.log("from updateRating", content);
-
     const totalRatings = content.comment.reduce(
       (acc, comment: IComment) => acc + comment.rating,
       0
     );
+
+    
     const averageRating = totalRatings / content.comment.length;
-    const roundedAverageRating = Math.round(averageRating);
+    const roundedAverageRating = Math.round(averageRating || 0);
 
     content.average_rating = roundedAverageRating;
     content.rating_count = content.comment.length;
@@ -367,19 +359,18 @@ class RepositoryContent implements IRepositoryContent {
           },
         }
       );
-
-      // console.log("Hi from repo");
+      
+      
       if (!res) {
         return Promise.reject(`no such comment`);
       }
 
-      if (res.comment[0].comment_by.user_id !== user_id) {
+      const matchedComment = res.comment.filter((comment) => String(comment._id) === comment_id)
+      
+      if (String(matchedComment[0].comment_by.user_id) !== user_id) {
         return Promise.reject(`bad userId: ${user_id}`);
       }
 
-      // console.log("gibbbbbbbbbbbbbbbbbbb\n\n\n\n\n");
-
-      // const c = res.comment[0];
 
       return Promise.resolve(res);
     } catch (err) {
@@ -411,7 +402,7 @@ class RepositoryContent implements IRepositoryContent {
     user_id: string,
     content_id: string,
     comment_id: string
-  ): Promise<IContent> {
+  ): Promise<IComment> {
     try {
       const comment = await this.contentModel.findOne(
         { _id: content_id, "comment._id": comment_id },
@@ -423,11 +414,11 @@ class RepositoryContent implements IRepositoryContent {
         return Promise.reject(`comment ${comment_id} not found`);
       }
 
-      if (comment.comment[0].comment_by.user_id !== user_id) {
+      if (String(comment.comment[0].comment_by.user_id) !== user_id) {
         return Promise.reject(`bad userId: ${user_id}`);
       }
 
-      return Promise.resolve(comment);
+      return Promise.resolve(comment.comment[0]);
     } catch (error) {
       return Promise.reject(`failed to get comment ${comment_id}:${error}`);
     }

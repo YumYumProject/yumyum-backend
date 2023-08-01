@@ -16,8 +16,8 @@ dotenv.config()
 
 async function main() {
   // const db = await mongoose.connect(`${process.env.MONGO_URI}`);
-  const db = await mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.pqbm4xu.mongodb.net/EazyEat?retryWrites=true&w=majority`);
-  const redis = createClient();
+  const db = await mongoose.connect(`${process.env.MONGO_URI}`)
+  const redis = createClient<any,any,any>({url: process.env.REDIS_URL});
   
   try {
     redis.connect();
