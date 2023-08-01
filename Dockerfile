@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . .
 
+ENV CORS="yes"
 ENV MONGO_URI="foo"
 ENV REDIS_URL="redis://localhost:6379"
 ENV PORT=8000

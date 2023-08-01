@@ -1,0 +1,18 @@
+services:
+  backend:
+    image: gibgyb/yumyum-backend:latest
+    ports:
+      - "8000:8000"
+    environment:
+      REDIS_URL: "redis://rd:6379"
+      MONGO_URI: ${MONGO_URI}
+      CORS: ${CORS}
+
+  frontend:
+    image: gibgyb/yumyum-frontend:latest
+    ports:
+      - "80:80"
+    environment:
+      BE_URL: ${BE_URL} 
+  rd:
+    image: redis:latest

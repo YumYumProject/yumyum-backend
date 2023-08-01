@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
 
 import { newRepositoryContent } from "./repositories/content";
@@ -15,13 +14,13 @@ import { newRepositoryBlacklist } from "./repositories/blacklist.service";
 dotenv.config()
 
 async function main() {
-  // const db = await mongoose.connect(`${process.env.MONGO_URI}`);
+  const useCors = process.env.CORS || "yes"
   const db = await mongoose.connect(`${process.env.MONGO_URI}`)
   const redis = createClient<any,any,any>({url: process.env.REDIS_URL});
   
   try {
-    redis.connect();
-    mongoose.set("strictQuery", true);
+    await redis.connect();
+    await mongoose.set("strictQuery", true);
   } catch (err) {
     console.error(err);
     return;
@@ -38,14 +37,17 @@ async function main() {
   const repositoryUser = newRepositoryUser(db);
   const repositoryoBlacklist = newRepositoryBlacklist(redis);
   const handlerUser = newHandlerUser(repositoryUser, repositoryoBlacklist);
-  const handlerMiddleware = newHandlerMiddleware(repositoryoBlacklist);
+  const handlerMiddleware = newHandlerMiddleware(repoBlacklist);
 
   const port = process.env.PORT || 8000;
   const server = express();
-
-
   server.use(express.json());
-  server.use(cors());
+
+  if (useCors.startsWith("y")) {
+    console.log(`Using CORS middleware due to env CORS: ${useCors}`)
+    const cors = require("cors");
+    server.use(cors());
+  }
 
   const userRouter = express.Router();
   server.use("/user", userRouter);
