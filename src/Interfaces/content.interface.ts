@@ -13,7 +13,7 @@ export interface ICookingStep extends Document {
 
 export interface IComment {
   content_id: ObjectId;
-  id: ObjectId;
+  _id: ObjectId;
   description: string;
   rating: number;
   comment_by: ICommentBy;

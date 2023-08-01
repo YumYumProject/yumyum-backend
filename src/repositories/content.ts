@@ -365,9 +365,7 @@ class RepositoryContent implements IRepositoryContent {
         return Promise.reject(`no such comment`);
       }
 
-      const matchedComment = res.comment.filter((comment) => String(comment.id) === comment_id)
-
-      console.log(matchedComment)
+      const matchedComment = res.comment.filter((comment) => String(comment._id) === comment_id)
       
       if (String(matchedComment[0].comment_by.user_id) !== user_id) {
         return Promise.reject(`bad userId: ${user_id}`);
