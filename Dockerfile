@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 ENV MONGO_URI="foo"
-ENV REDIS_URL="redis://localhost:6379
+ENV REDIS_URL="redis://localhost:6379"
 ENV PORT=8000
 
 RUN npm install -g pnpm
